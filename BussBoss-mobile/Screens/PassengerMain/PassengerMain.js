@@ -7,6 +7,7 @@ export default function PassengerMain() {
     <View>
       <Background />
       <Logo />
+      <Greeting />
     </View>
   );
 }
