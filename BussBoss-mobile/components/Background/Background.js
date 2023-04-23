@@ -8,7 +8,6 @@ function Background() {
       style={{
         width: "100%",
         height: "60%",
-        // position: "relative",
         zIndex: 2,
       }}
     />
