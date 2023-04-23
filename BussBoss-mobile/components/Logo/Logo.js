@@ -4,7 +4,7 @@ import { Image } from "react-native";
 function logo() {
   return (
     <Image
-      source={require("./assets/logo.png")}
+      source={require("/assets/logo.png")}
       style={{
         width: 170,
         height: 40,
