@@ -19,6 +19,7 @@ function DriverCard() {
         imageSize={30}
         ratingBackgroundColor="#D9D9D9"
         tintColor="#FFF"
+        readonly="true"
         onFinishRating={this.ratingCompleted}
         style={{ paddingVertical: 10, top: -70, left: 25 }}
       />
