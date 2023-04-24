@@ -9,7 +9,6 @@ export default function PassengerMain() {
   return (
     <View style={{ backgroundColor: "#F6F1F1", flex: 1 }}>
       <Background />
-      <Logo />
       <Greeting />
       <Text style={styles.search_title}>Where are you heading?</Text>
       <Search />
