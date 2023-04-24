@@ -15,7 +15,10 @@ export default function PassengerMain() {
       <Search />
       <TripsBar />
       <Text style={styles.choose_driver}>Choose your driver</Text>
-      <DriverCard />
+      <View style={{ flexDirection: "column", gap: 10 }}>
+        <DriverCard />
+        <DriverCard />
+      </View>
     </View>
   );
 }
