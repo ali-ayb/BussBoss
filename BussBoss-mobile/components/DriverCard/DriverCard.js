@@ -1,4 +1,5 @@
 import { StyleSheet, View, Image, Text } from "react-native";
+import { Rating } from "react-native-ratings";
 
 function DriverCard() {
   return (
@@ -11,6 +12,16 @@ function DriverCard() {
       <Text style={styles.trip_date}>When: 19/4 10:30</Text>
       <Text style={styles.trip_source}>Souce: Position1</Text>
       <Text style={styles.driver_Rating}>Rating</Text>
+      <Rating
+        type="custom"
+        ratingColor="#146C94"
+        ratingCount={5}
+        imageSize={30}
+        ratingBackgroundColor="#D9D9D9"
+        tintColor="#FFF"
+        onFinishRating={this.ratingCompleted}
+        style={{ paddingVertical: 10, top: -70, left: 25 }}
+      />
     </View>
   );
 }
