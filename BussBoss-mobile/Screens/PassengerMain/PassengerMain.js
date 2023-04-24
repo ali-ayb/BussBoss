@@ -6,7 +6,7 @@ import Search from "../../components/Search/Search";
 import TripsBar from "../../components/TripsBar/TripsBar";
 export default function PassengerMain() {
   return (
-    <View>
+    <View style={{ backgroundColor: "#F6F1F1", flex: 1 }}>
       <Background />
       <Logo />
       <Greeting />
@@ -19,6 +19,9 @@ export default function PassengerMain() {
 }
 
 const styles = StyleSheet.create({
+  main: {
+    backgroundColor: "#F6F1F1",
+  },
   search_title: {
     left: 35,
     top: 130,
