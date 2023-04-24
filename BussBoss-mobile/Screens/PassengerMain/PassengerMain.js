@@ -4,6 +4,7 @@ import Logo from "../../components/Logo/Logo";
 import Greeting from "../../components/Greeting/Greeting";
 import Search from "../../components/Search/Search";
 import TripsBar from "../../components/TripsBar/TripsBar";
+import DriverCard from "../../components/DriverCard/DriverCard";
 export default function PassengerMain() {
   return (
     <View style={{ backgroundColor: "#F6F1F1", flex: 1 }}>
@@ -14,6 +15,7 @@ export default function PassengerMain() {
       <Search />
       <TripsBar />
       <Text style={styles.choose_driver}>Choose your driver</Text>
+      <DriverCard />
     </View>
   );
 }
