@@ -7,6 +7,10 @@ function DriverCard() {
         style={styles.driver_img}
         source={require("../../assets/driver_img.png")}
       />
+      <Text style={styles.driver_name}>Sami Ktiesh</Text>
+      <Text style={styles.trip_date}>When: 19/4 10:30</Text>
+      <Text style={styles.trip_source}>Souce: Position1</Text>
+      <Text style={styles.driver_Rating}>Rating</Text>
     </View>
   );
 }
@@ -24,5 +28,29 @@ const styles = StyleSheet.create({
   driver_img: {
     top: 25,
     left: 23,
+  },
+  driver_name: {
+    top: -75,
+    left: 125,
+    fontSize: 16,
+    fontWeight: "bold",
+  },
+  trip_date: {
+    top: -70,
+    left: 125,
+    fontSize: 14,
+    color: "#C2C2C2",
+  },
+  trip_source: {
+    top: -70,
+    left: 125,
+    fontSize: 14,
+    color: "#C2C2C2",
+  },
+  driver_Rating: {
+    top: -70,
+    left: 125,
+    fontSize: 14,
+    color: "#C2C2C2",
   },
 });
