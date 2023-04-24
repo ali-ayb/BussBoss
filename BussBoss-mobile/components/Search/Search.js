@@ -10,12 +10,12 @@ function Search() {
         top: 160,
         left: 40,
         position: "absolute",
-        // zIndex: 2,
-        // width: 330,
-        // borderWidth: 1,
-        // borderColor: "#FFF",
-        // borderRadius: 5,
-        // paddingHorizontal: 10,
+        zIndex: 2,
+        width: 330,
+        borderWidth: 1,
+        borderColor: "#FFF",
+        borderRadius: 5,
+        paddingHorizontal: 10,
       }}
     />
   );
