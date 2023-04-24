@@ -1,6 +1,7 @@
 import { StyleSheet, View, Text, Image } from "react-native";
 import Background from "../../components/Background/Background";
 import Logo from "../../components/Logo/Logo";
+import CurrentTripCard from "../../components/CurrentTripCard/CurrentTripCard";
 
 export default function PassengerMain() {
   return (
@@ -19,6 +20,7 @@ export default function PassengerMain() {
         }}
       />
       <Text style={styles.choose_driver}>Trips:</Text>
+      <CurrentTripCard />
     </View>
   );
 }
