@@ -4,6 +4,8 @@ function TripsBar() {
     <View style={styles.trips_bar}>
       <Text style={styles.trips_title}>TOTAL TRIPS</Text>
       <Text style={styles.trips_count}>102</Text>
+      <Text style={styles.paid_title}>TOTAL PAID</Text>
+      <Text style={styles.paid_number}>52$</Text>
     </View>
   );
 }
@@ -33,5 +35,20 @@ const styles = StyleSheet.create({
     color: "white",
     top: 20,
     left: 40,
+  },
+  paid_title: {
+    fontSize: 16,
+    fontWeight: "bold",
+    color: "white",
+    color: "rgba(255, 255, 255, 0.5)",
+    top: -50,
+    left: 215,
+  },
+  paid_number: {
+    fontSize: 42,
+    fontWeight: "bold",
+    color: "white",
+    top: -50,
+    left: 230,
   },
 });
