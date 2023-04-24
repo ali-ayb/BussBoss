@@ -13,6 +13,7 @@ export default function PassengerMain() {
       <Text style={styles.search_title}>Where are you heading?</Text>
       <Search />
       <TripsBar />
+      <Text style={styles.choose_driver}>Choose your driver</Text>
     </View>
   );
 }
@@ -27,43 +28,13 @@ const styles = StyleSheet.create({
     color: "white",
     fontWeight: "bold",
   },
-  trips_bar: {
-    backgroundColor: "#19A7CE",
-    top: 240,
-    left: 35,
-    height: 120,
-    width: 335,
+  choose_driver: {
+    left: 40,
+    top: 380,
     position: "absolute",
     zIndex: 2,
-    borderRadius: 15,
-  },
-  trips_title: {
-    fontSize: 16,
+    fontSize: 18,
+    color: "black",
     fontWeight: "bold",
-    color: "rgba(255, 255, 255, 0.5)",
-    top: 20,
-    left: 30,
-  },
-  trips_count: {
-    fontSize: 42,
-    fontWeight: "bold",
-    color: "white",
-    top: 20,
-    left: 40,
-  },
-  paid_title: {
-    fontSize: 16,
-    fontWeight: "bold",
-    color: "white",
-    color: "rgba(255, 255, 255, 0.5)",
-    top: -50,
-    left: 215,
-  },
-  paid_number: {
-    fontSize: 42,
-    fontWeight: "bold",
-    color: "white",
-    top: -50,
-    left: 230,
   },
 });
