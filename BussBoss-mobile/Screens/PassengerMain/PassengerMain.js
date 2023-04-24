@@ -1,7 +1,8 @@
-import { StyleSheet, View, Image, Text } from "react-native";
+import { StyleSheet, View, Text } from "react-native";
 import Background from "../../components/Background/Background";
 import Logo from "../../components/Logo/Logo";
 import Greeting from "../../components/Greeting/Greeting";
+import Search from "../../components/Search/Search";
 export default function PassengerMain() {
   return (
     <View>
@@ -9,6 +10,7 @@ export default function PassengerMain() {
       <Logo />
       <Greeting />
       <Text style={styles.search_title}>Where are you heading?</Text>
+      <Search />
     </View>
   );
 }

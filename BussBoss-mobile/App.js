@@ -1,12 +1,8 @@
 import { StyleSheet, View } from "react-native";
 import PassengerMain from "./Screens/PassengerMain/PassengerMain";
-import Search from "./components/Search/Search";
+
 export default function App() {
-  return (
-    <View>
-      <Search />
-    </View>
-  );
+  return <PassengerMain />;
 }
 
 const styles = StyleSheet.create({});
