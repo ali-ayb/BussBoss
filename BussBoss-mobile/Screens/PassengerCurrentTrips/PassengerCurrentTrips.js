@@ -18,6 +18,7 @@ export default function PassengerMain() {
           position: "absolute",
         }}
       />
+      <Text style={styles.choose_driver}>Trips:</Text>
     </View>
   );
 }
@@ -25,5 +26,14 @@ export default function PassengerMain() {
 const styles = StyleSheet.create({
   main: {
     backgroundColor: "#F6F1F1",
+  },
+  choose_driver: {
+    left: 40,
+    top: 340,
+    position: "absolute",
+    zIndex: 2,
+    fontSize: 32,
+    color: "black",
+    fontWeight: "bold",
   },
 });
