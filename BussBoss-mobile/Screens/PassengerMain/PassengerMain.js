@@ -12,6 +12,7 @@ export default function PassengerMain() {
       <Greeting />
       <Text style={styles.search_title}>Where are you heading?</Text>
       <Search />
+      <TripsBar />
     </View>
   );
 }
