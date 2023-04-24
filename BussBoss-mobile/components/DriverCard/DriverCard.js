@@ -12,5 +12,6 @@ const styles = StyleSheet.create({
     top: 70,
     left: 35,
     borderRadius: 15,
+    elevation: 20,
   },
 });
