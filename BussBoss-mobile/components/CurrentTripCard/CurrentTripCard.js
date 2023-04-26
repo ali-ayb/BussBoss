@@ -1,4 +1,12 @@
-import { StyleSheet, View, Image, Text } from "react-native";
+import {
+  StyleSheet,
+  View,
+  Image,
+  Text,
+  Button,
+  Alert,
+  TouchableHighlight,
+} from "react-native";
 
 function CurrentTripCard() {
   return (
@@ -14,6 +22,16 @@ function CurrentTripCard() {
       <Text style={styles.trip_time}>10:00 {"<-->"} 10:30</Text>
       <Text style={styles.trip_position}>To Position </Text>
       <Text style={styles.driver_name}>Driver: Driver Name</Text>
+      {/* <TouchableHighlight
+        onPress={() => Alert.alert("Simple Button pressed")}
+        title="Track location "
+        color="#6CC1FF"
+        style={styles.track_btn}></TouchableHighlight>
+      <TouchableHighlight
+        onPress={() => Alert.alert("Simple Button pressed")}
+        title="Finish Trip"
+        color="#0E7BCB"
+        style={styles.finish_btn}></TouchableHighlight> */}
     </View>
   );
 }
@@ -29,8 +47,6 @@ const styles = StyleSheet.create({
     elevation: 20,
   },
   clock_icon: {
-    // height: 40,
-    // width: 50,
     top: 20,
     left: 25,
   },
@@ -55,4 +71,8 @@ const styles = StyleSheet.create({
     left: 200,
     fontSize: 14,
   },
+  track_btn: {
+    borderRadius: 15,
+  },
+  finish_btn: {},
 });

@@ -20,7 +20,10 @@ export default function PassengerMain() {
         }}
       />
       <Text style={styles.choose_driver}>Trips:</Text>
-      <CurrentTripCard />
+      <View style={{ flexDirection: "column", gap: 10 }}>
+        <CurrentTripCard />
+        <CurrentTripCard />
+      </View>
     </View>
   );
 }
