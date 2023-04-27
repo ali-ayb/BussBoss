@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use App\Http\Controllers\ServicesController;
+use Illuminate\Support\Facades\Schema;
 
 class AuthController extends Controller
 {
@@ -53,11 +54,13 @@ class AuthController extends Controller
             'password' => 'required|string|min:6',
         ]);
 
+
         $user = User::create([
             'first_name' => $request->first_name,
             'last_name' => $request->last_name,
             'email' => $request->email,
             'phone' => $request->phone,
+            'user_type' => $request->user_type ?? 'passenger',
             'password' => Hash::make($request->password),
         ]);
 
