@@ -12,7 +12,7 @@ class TripController extends Controller
 
     public function addTrip(Request $request)
     {
-        $user = Auth::user();
+        $user = Auth::id();
         Trip::create([
             'departure_time' => $request->departure_time,
             'arrival_time' => $request->arrival_time,
@@ -21,7 +21,7 @@ class TripController extends Controller
             'destination' => $request->destination,
             'seats_available' => $request->seats_available,
             'min_passengers' => $request->min_passengers,
-            'driver_id' => $user->id
+            'driver_id' => $user
         ]);
         return response()->json([
             "status" => 'trip created successfully',
