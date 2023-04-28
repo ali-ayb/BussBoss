@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('/register', [AuthController::class, "register"]);
 Route::post('/login', [AuthController::class, "login"]);
+Route::get('/get_All_Passengers', [PassengerController::class, "getAllPassengers"]);
 
 Route::group(['middleware' => 'bussboss_authenticate'], function () {
 
