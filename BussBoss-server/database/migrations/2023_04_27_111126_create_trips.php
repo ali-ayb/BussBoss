@@ -23,7 +23,7 @@ return new class extends Migration
             $table->boolean('is_deleted')->default(false);
             $table->unsignedBigInteger('driver_id');
             $table->foreign('driver_id')
-                ->references('id')
+                ->references('driver_id')
                 ->on('drivers_info')
                 ->onDelete('cascade');
             $table->timestamps();
