@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use App\Http\Controllers\ServicesController;
 use App\Models\Drivers_info;
+use App\Models\Passenger_info;
 use Illuminate\Support\Facades\Schema;
 
 class AuthController extends Controller
@@ -64,6 +65,14 @@ class AuthController extends Controller
             'user_type' => $request->user_type ?? 'passenger',
             'password' => Hash::make($request->password),
         ]);
+
+        if ($request->user_type == 'passenger') {
+            Passenger_info::create([
+                'passenger_id' => $user->id,
+                'total_trips' => $request->total_trips,
+                'total_paid' => $request->total_paid,
+            ]);
+        }
 
         if ($request->user_type == 'driver') {
             $driver_info = Drivers_info::create([
