@@ -21,8 +21,8 @@ class PassengerController extends Controller
 
     public function getTotalTrips()
     {
-        $user = Auth::user();
-        $passenger = Passenger_info::where('passenger_id', $user->id)->first();
+        $user = Auth::id();
+        $passenger = Passenger_info::where('passenger_id', $user)->first();
         $total_trips = $passenger->total_trips;
         return response()->json([
             'total_trips ' => $total_trips,
@@ -31,8 +31,8 @@ class PassengerController extends Controller
 
     public function getTotalPaid()
     {
-        $user = Auth::user();
-        $passenger = Passenger_info::where('passenger_id', $user->id)->first();
+        $user = Auth::id();
+        $passenger = Passenger_info::where('passenger_id', $user)->first();
         $total_paid = $passenger->total_paid;
         return response()->json([
             'total_paid ' => $total_paid,
