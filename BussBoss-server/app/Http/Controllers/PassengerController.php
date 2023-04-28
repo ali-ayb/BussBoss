@@ -3,11 +3,24 @@
 namespace App\Http\Controllers;
 
 use App\Models\Passenger_info;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
+use function PHPUnit\Framework\returnSelf;
+
 class PassengerController extends Controller
 {
+    public function getAllPassengers()
+    {
+        $users = User::join('passengers_info', 'users.id', '=', 'passengers_info.passenger_id')
+            ->get();
+
+        return response()->json([
+            'passengers' => $users
+        ]);
+    }
+
     public function getPassengerFullName()
     {
         $user = Auth::user();
