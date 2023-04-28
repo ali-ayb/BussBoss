@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use App\Http\Controllers\ServicesController;
+use App\Models\Drivers_info;
 use Illuminate\Support\Facades\Schema;
 
 class AuthController extends Controller
@@ -63,6 +64,16 @@ class AuthController extends Controller
             'user_type' => $request->user_type ?? 'passenger',
             'password' => Hash::make($request->password),
         ]);
+
+        if ($request->user_type == 'driver') {
+            $driver_info = Drivers_info::create([
+                'driver_id' => $user->id,
+                'license_number' => $request->license_number,
+                'profile_image' => $request->profile_image,
+                'rating' => $request->rating,
+                'is_approved' => $request->is_approved ?? 0,
+            ]);
+        }
 
         $token = Auth::login($user);
         return response()->json([
