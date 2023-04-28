@@ -19,8 +19,8 @@ class Drivers_info extends Model
         'isapproved',
     ];
 
-    public function Trip(): HasMany
-    {
-        return $this->hasMany(Trip::class);
-    }
+    // public function Trip(): HasMany
+    // {
+    //     return $this->hasMany(Trip::class);
+    // }
 }
