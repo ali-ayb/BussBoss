@@ -20,8 +20,8 @@ class Trip extends Model
         'driver_id',
     ];
 
-    public function Drivers_info(): BelongsTo
-    {
-        return $this->belongsTo(Drivers_info::class, 'driver_id');
-    }
+    // public function Drivers_info(): BelongsTo
+    // {
+    //     return $this->belongsTo(Drivers_info::class, 'driver_id');
+    // }
 }
