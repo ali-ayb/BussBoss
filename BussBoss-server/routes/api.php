@@ -25,4 +25,5 @@ Route::group(['middleware' => 'bussboss_authenticate'], function () {
     Route::get('/getPassengerFullName', [PassengerController::class, "getPassengerFullName"]);
     Route::post('/add_trip', [TripController::class, "addTrip"]);
     Route::get('/get_all_trips', [PassengerController::class, "getTotalTrips"]);
+    Route::get('/get_total_paid', [PassengerController::class, "getTotalPaid"]);
 });
