@@ -23,6 +23,7 @@ Route::post('/login', [AuthController::class, "login"]);
 Route::get('/get_all_Passengers', [PassengerController::class, "getAllPassengers"]);
 Route::get('/get_all_drivers', [DriverController::class, "getAllDrivers"]);
 Route::get('/get_drivers_from_destination', [DriverController::class, "getDriversFromDestination"]);
+Route::get('/get_trips_from_driver_id', [TripController::class, "getTripsFromDriverId"]);
 
 Route::group(['middleware' => 'bussboss_authenticate'], function () {
 
