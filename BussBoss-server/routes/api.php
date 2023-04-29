@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DriverController;
 use App\Http\Controllers\PassengerController;
+use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\TripController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -20,6 +21,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('/register', [AuthController::class, "register"]);
 Route::post('/login', [AuthController::class, "login"]);
+
+Route::post('/reserve_trip', [ReservationController::class, "reserveTrip"]);
+
+
 Route::get('/get_all_Passengers', [PassengerController::class, "getAllPassengers"]);
 Route::get('/get_all_drivers', [DriverController::class, "getAllDrivers"]);
 Route::get('/get_drivers_from_destination', [DriverController::class, "getDriversFromDestination"]);
