@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('reservations', function (Blueprint $table) {
             $table->id();
             $table->enum('status', ['ongoing', 'finished', 'canceled'])->default('ongoing');
-            $table->dateTime('reserved_on');
             $table->unsignedBigInteger('trip_id');
             $table->foreign('trip_id')
                 ->references('id')
