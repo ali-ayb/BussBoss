@@ -27,4 +27,19 @@ class TripController extends Controller
             "status" => 'trip created successfully',
         ]);
     }
+
+    public function getTripsFromDriverId(Request $request)
+    {
+        $driver_id = $request->driver_id;
+
+        $trips = Trip::where('driver_id', '=', $driver_id)
+            ->where('status', '=', 'ongoing')
+            ->where('is_deleted', '=', 0)
+            ->select('trips.departure_time', 'trips.arrival_time', 'trips.source', 'trips.destination', 'trips.price')
+            ->get();
+
+        return response()->json([
+            "trips" => $trips,
+        ]);
+    }
 }
