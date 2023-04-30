@@ -34,6 +34,7 @@ Route::get('/get_all_drivers', [DriverController::class, "getAllDrivers"]);
 Route::get('/get_drivers_from_destination', [DriverController::class, "getDriversFromDestination"]);
 Route::get('/get_trips_from_driver_id', [TripController::class, "getTripsFromDriverId"]);
 Route::get('/get_driver_total_trips', [DriverController::class, "getDriverTotalTrips"]);
+Route::get('/get_driver_total_earned', [DriverController::class, "getDriverTotalEarned"]);
 
 
 Route::group(['middleware' => 'bussboss_authenticate'], function () {
