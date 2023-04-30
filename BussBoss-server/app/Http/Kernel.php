@@ -3,6 +3,8 @@
 namespace App\Http;
 
 use App\Http\Middleware\AuthenticateUser;
+use App\Http\Middleware\AuthorizeAdmin;
+use App\Http\Middleware\AuthorizeDriver;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -56,6 +58,8 @@ class Kernel extends HttpKernel
     protected $middlewareAliases = [
         'auth' => \App\Http\Middleware\Authenticate::class,
         'bussboss_authenticate' => AuthenticateUser::class,
+        'driver_authorize' => AuthorizeDriver::class,
+        'admin_authorize' => AuthorizeAdmin::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'auth.session' => \Illuminate\Session\Middleware\AuthenticateSession::class,
         'cache.headers' => \Illuminate\Http\Middleware\SetCacheHeaders::class,
