@@ -26,6 +26,9 @@ Route::post('/reserve_trip', [ReservationController::class, "reserveTrip"]);
 Route::get('/get_passenger_current_reservations', [ReservationController::class, "getPassengerCurrentReservations"]);
 
 
+Route::get('/get_passenger_finished_trips', [TripController::class, "getPassengerFinishedTrips"]);
+
+
 Route::get('/get_all_Passengers', [PassengerController::class, "getAllPassengers"]);
 Route::get('/get_all_drivers', [DriverController::class, "getAllDrivers"]);
 Route::get('/get_drivers_from_destination', [DriverController::class, "getDriversFromDestination"]);
