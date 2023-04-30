@@ -44,6 +44,17 @@ class DriverController extends Controller
         ]);
     }
 
+    public function getDriverTotalEarned()
+    {
+        $driver_id = Auth::id();
+        $total_driver_earned = Trip::where('driver_id', '=', $driver_id)
+            ->sum(Trip::raw('price * passenger_number'));
+
+        return response()->json([
+            'total_driver_earned ' => $total_driver_earned,
+        ]);
+    }
+
     public function getDriversFromDestination(Request $request)
     {
         $destination = $request->destination;
