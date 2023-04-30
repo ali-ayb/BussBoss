@@ -32,7 +32,7 @@ class PassengerController extends Controller
         ]);
     }
 
-    public function getTotalTrips()
+    public function getPassengerTotalTrips()
     {
         $user = Auth::id();
         $passenger = Passenger_info::where('passenger_id', $user)->first();
