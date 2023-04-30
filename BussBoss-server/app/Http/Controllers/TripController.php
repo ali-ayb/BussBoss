@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Reservation;
 use App\Models\Trip;
 use Illuminate\Support\Facades\Auth;
 
@@ -36,6 +37,21 @@ class TripController extends Controller
             ->where('status', '=', 'ongoing')
             ->where('is_deleted', '=', 0)
             ->select('trips.departure_time', 'trips.arrival_time', 'trips.source', 'trips.destination', 'trips.price')
+            ->get();
+
+        return response()->json([
+            "trips" => $trips,
+        ]);
+    }
+
+    public function getPassengerFinishedTrips()
+    {
+        $passenger_id = Auth::id();
+
+        $trips  = Reservation::join('trips', 'reservations.trip_id', '=', 'trips.id')
+            ->where('reservations.passenger_id', $passenger_id)
+            ->where('reservations.status', 'finished')
+            ->select('reservations.*', 'trips.source', 'trips.destination', 'trips.departure_time', 'trips.arrival_time', 'trips.bus_number')
             ->get();
 
         return response()->json([
