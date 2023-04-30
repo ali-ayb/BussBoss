@@ -1,13 +1,7 @@
-import {
-  StyleSheet,
-  View,
-  Image,
-  Text,
-  Button,
-  Alert,
-  TouchableHighlight,
-} from "react-native";
-
+import { StyleSheet, View, Image, Text, TouchableOpacity } from "react-native";
+function onPressLearnMore() {
+  alert("test");
+}
 function CurrentTripCard() {
   return (
     <View style={styles.CurrentTripCard}>
@@ -21,17 +15,15 @@ function CurrentTripCard() {
       />
       <Text style={styles.trip_time}>10:00 {"<-->"} 10:30</Text>
       <Text style={styles.trip_position}>To Position </Text>
+
       <Text style={styles.driver_name}>Driver: Driver Name</Text>
-      {/* <TouchableHighlight
-        onPress={() => Alert.alert("Simple Button pressed")}
-        title="Track location "
-        color="#6CC1FF"
-        style={styles.track_btn}></TouchableHighlight>
-      <TouchableHighlight
-        onPress={() => Alert.alert("Simple Button pressed")}
-        title="Finish Trip"
-        color="#0E7BCB"
-        style={styles.finish_btn}></TouchableHighlight> */}
+
+      <TouchableOpacity style={styles.finish_btn} onPress={onPressLearnMore}>
+        <Text style={styles.finish_btn_text}>Finish Trip</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.track_btn} onPress={onPressLearnMore}>
+        <Text style={styles.track_btn_text}>Finish Trip</Text>
+      </TouchableOpacity>
     </View>
   );
 }
@@ -42,7 +34,7 @@ const styles = StyleSheet.create({
     height: 110,
     width: 335,
     top: 85,
-    left: 35,
+    left: "10%",
     borderRadius: 15,
     elevation: 20,
   },
@@ -74,5 +66,29 @@ const styles = StyleSheet.create({
   track_btn: {
     borderRadius: 15,
   },
-  finish_btn: {},
+  finish_btn: {
+    backgroundColor: "#0E7BCB",
+    borderRadius: 15,
+    padding: 5,
+    left: "73%",
+    top: "-55%",
+    width: 80,
+  },
+  finish_btn_text: {
+    color: "#FFFFFF",
+    left: 5,
+  },
+
+  track_btn: {
+    backgroundColor: "#6CC1FF",
+    borderRadius: 15,
+    padding: 5,
+    left: "47%",
+    top: "-80%",
+    width: 80,
+  },
+  track_btn_text: {
+    color: "#000",
+    left: 5,
+  },
 });
