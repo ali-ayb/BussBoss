@@ -12,7 +12,7 @@ class DriverController extends Controller
 {
     public function getAllDrivers()
     {
-        $drivers = User::join('drivers_info', 'users.id', '=', 'drivers_info.driver_id')
+        $drivers = User::where('user_type', 'driver')->join('drivers_info', 'users.id', '=', 'drivers_info.driver_id')
             ->get();
 
         return response()->json([
