@@ -13,7 +13,7 @@ class PassengerController extends Controller
 {
     public function getAllPassengers()
     {
-        $users = User::join('passengers_info', 'users.id', '=', 'passengers_info.passenger_id')
+        $users = User::where('user_type', 'passenger')->join('passengers_info', 'users.id', '=', 'passengers_info.passenger_id')
             ->get();
 
         return response()->json([
@@ -42,7 +42,7 @@ class PassengerController extends Controller
         ]);
     }
 
-    public function getTotalPaid()
+    public function getPassengerTotalPaid()
     {
         $user = Auth::id();
         $passenger = Passenger_info::where('passenger_id', $user)->first();
