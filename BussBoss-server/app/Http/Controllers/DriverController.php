@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Drivers_info;
 use App\Models\Trip;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -27,6 +28,16 @@ class DriverController extends Controller
         return response()->json([
             'first_name ' => $first_name,
             'last_name ' => $last_name,
+        ]);
+    }
+
+    public function getDriverTotalTrips()
+    {
+        $user = Auth::id();
+        $drivers = Drivers_info::where('drvier_id', $user)->first();
+        $total_trips = $drivers->total_trips;
+        return response()->json([
+            'total_trips ' => $total_trips,
         ]);
     }
 
