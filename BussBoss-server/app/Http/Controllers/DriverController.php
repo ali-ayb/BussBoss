@@ -33,11 +33,14 @@ class DriverController extends Controller
 
     public function getDriverTotalTrips()
     {
-        $user = Auth::id();
-        $drivers = Drivers_info::where('driver_id', $user)->first();
-        $total_trips = $drivers->total_trips;
+        $driver_id = Auth::id();
+        $total_driver_trips = Trip::where('driver_id', '=', $driver_id)->count();
+
+        Drivers_info::where('driver_id', $driver_id)
+            ->update(['total_trips' => $total_driver_trips]);
+
         return response()->json([
-            'total_trips ' => $total_trips,
+            'total_driver_trips ' => $total_driver_trips,
         ]);
     }
 
