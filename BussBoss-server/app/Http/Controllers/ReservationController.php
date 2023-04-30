@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Reservation;
+use App\Models\Trip;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -19,6 +20,9 @@ class ReservationController extends Controller
                 'passenger_id' => $passenger_id
             ]
         );
+
+        Trip::where('id', $trip_id)
+            ->increment('passenger_number');
 
         return response()->json([
             'reservation' => $reservation
