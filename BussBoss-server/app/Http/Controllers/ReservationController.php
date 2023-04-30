@@ -24,4 +24,19 @@ class ReservationController extends Controller
             'reservation' => $reservation
         ]);
     }
+
+    public function getPassengerCurrentReservations()
+    {
+        $passenger_id = Auth::id();
+
+        $currentReservation  = Reservation::join('trips', 'reservations.trip_id', '=', 'trips.id')
+            ->where('reservations.passenger_id', $passenger_id)
+            ->where('reservations.status', 'ongoing')
+            ->select('reservations.*', 'trips.source', 'trips.destination', 'trips.departure_time', 'trips.arrival_time', 'trips.bus_number')
+            ->get();
+
+        return response()->json([
+            "currentReservation" => $currentReservation,
+        ]);
+    }
 }
