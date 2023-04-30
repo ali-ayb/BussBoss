@@ -23,6 +23,7 @@ Route::post('/register', [AuthController::class, "register"]);
 Route::post('/login', [AuthController::class, "login"]);
 
 Route::post('/reserve_trip', [ReservationController::class, "reserveTrip"]);
+Route::get('/get_passenger_current_reservations', [ReservationController::class, "getPassengerCurrentReservations"]);
 
 
 Route::get('/get_all_Passengers', [PassengerController::class, "getAllPassengers"]);
