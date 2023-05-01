@@ -1,12 +1,13 @@
 import { StyleSheet, View } from "react-native";
-import PassengerMain from "./Screens/PassengerPassengerMain";
 import TabStack from "./navigation/TabStack";
+import DriverMain from "./Screens/Driver/DriverMain";
 import OnboardingStack from "./navigation/OnboardingStack";
 import { NavigationContainer } from "@react-navigation/native";
 export default function App() {
   return (
     <NavigationContainer>
-      <TabStack />
+      {/* <TabStack /> */}
+      <DriverMain />
       {/* <OnboardingStack /> */}
     </NavigationContainer>
   );
