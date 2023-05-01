@@ -1,6 +1,6 @@
 import { createStackNavigator } from "@react-navigation/stack";
-import BussSchedule from "../Screens/BussSchedule/BussSchedule";
-import PassengerMain from "../Screens/PassengerMain/PassengerMain";
+import BussSchedule from "../Screens/Passenger/BussSchedule";
+import PassengerMain from "../Screens/Passenger/PassengerMain";
 import { Ionicons } from "@expo/vector-icons";
 
 const Stack = createStackNavigator();
