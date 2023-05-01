@@ -1,6 +1,6 @@
-import PassengerMain from "../Screens/PassengerMain/PassengerMain";
-import PassengerCurrentTrips from "../Screens/PassengerCurrentTrips/PassengerCurrentTrips";
-import PassengerAllTrips from "../Screens/PassengerAllTrips/PassengerAllTrips";
+import PassengerMain from "../Screens/Passenger/PassengerMain";
+import PassengerCurrentTrips from "../Screens/Passenger/PassengerCurrentTrips";
+import PassengerAllTrips from "../Screens/Passenger/PassengerAllTrips";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Text } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
