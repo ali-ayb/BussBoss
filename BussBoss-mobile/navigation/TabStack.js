@@ -4,6 +4,7 @@ import PassengerAllTrips from "../Screens/PassengerAllTrips/PassengerAllTrips";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Text } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
+import { FontAwesome5 } from "@expo/vector-icons";
 
 import { Entypo } from "@expo/vector-icons";
 
@@ -20,7 +21,9 @@ const TabStack = () => {
       />
       <Tabs.Screen
         options={{
-          tabBarIcon: () => <Text>S2</Text>,
+          tabBarIcon: () => (
+            <FontAwesome5 name="map-marked-alt" size={24} color="black" />
+          ),
         }}
         name="PassengerCurrentTrips"
         component={PassengerCurrentTrips}
