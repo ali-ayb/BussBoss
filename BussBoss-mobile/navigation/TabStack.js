@@ -7,6 +7,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { FontAwesome5 } from "@expo/vector-icons";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { Entypo } from "@expo/vector-icons";
+import OnboardingStack from "./OnboardingStack";
 
 const TabStack = () => {
   const Tabs = createBottomTabNavigator();
@@ -40,6 +41,14 @@ const TabStack = () => {
         }}
         name="PassengerAllTrips"
         component={PassengerAllTrips}
+      />
+      <Tabs.Screen
+        name="OnboardingStack"
+        component={OnboardingStack}
+        options={{
+          tabBarButton: () => null,
+          tabBarVisible: false, //hide tab bar on this screen
+        }}
       />
     </Tabs.Navigator>
   );
