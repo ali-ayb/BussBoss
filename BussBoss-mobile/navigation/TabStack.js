@@ -10,34 +10,32 @@ import { NavigationContainer } from "@react-navigation/native";
 const TabStack = () => {
   const Tabs = createBottomTabNavigator();
   return (
-    <NavigationContainer>
-      <Tabs.Navigator screenOptions={{ headerShown: false }}>
-        <Tabs.Screen
-          options={{
-            tabBarIcon: () => (
-              <Text>S1</Text>
-              //   <Ionicons name={"home"} size />
-            ),
-          }}
-          name="PassengerMain"
-          component={PassengerMain}
-        />
-        <Tabs.Screen
-          options={{
-            tabBarIcon: () => <Text>S2</Text>,
-          }}
-          name="PassengerCurrentTrips"
-          component={PassengerCurrentTrips}
-        />
-        <Tabs.Screen
-          options={{
-            tabBarIcon: () => <Text>S3</Text>,
-          }}
-          name="PassengerAllTrips"
-          component={PassengerAllTrips}
-        />
-      </Tabs.Navigator>
-    </NavigationContainer>
+    <Tabs.Navigator screenOptions={{ headerShown: false }}>
+      <Tabs.Screen
+        options={{
+          tabBarIcon: () => (
+            <Text>S1</Text>
+            //   <Ionicons name={"home"} size />
+          ),
+        }}
+        name="PassengerMain"
+        component={PassengerMain}
+      />
+      <Tabs.Screen
+        options={{
+          tabBarIcon: () => <Text>S2</Text>,
+        }}
+        name="PassengerCurrentTrips"
+        component={PassengerCurrentTrips}
+      />
+      <Tabs.Screen
+        options={{
+          tabBarIcon: () => <Text>S3</Text>,
+        }}
+        name="PassengerAllTrips"
+        component={PassengerAllTrips}
+      />
+    </Tabs.Navigator>
   );
 };
 
