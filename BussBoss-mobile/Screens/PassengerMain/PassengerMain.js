@@ -1,11 +1,18 @@
-import { StyleSheet, View, Text } from "react-native";
+import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
 import Background from "../../components/Background/Background";
 import Logo from "../../components/Logo/Logo";
 import Greeting from "../../components/Greeting/Greeting";
 import Search from "../../components/Search/Search";
 import TripsBar from "../../components/TripsBar/TripsBar";
 import DriverCard from "../../components/DriverCard/DriverCard";
+import { useNavigation } from "@react-navigation/native";
+
 export default function PassengerMain() {
+  const navigation = useNavigation();
+
+  const handlePress = () => {
+    navigation.navigate("BussSchedule");
+  };
   return (
     <View style={{ backgroundColor: "#F6F1F1", flex: 1 }}>
       <Background />
@@ -15,8 +22,11 @@ export default function PassengerMain() {
       <Search />
       <TripsBar />
       <Text style={styles.choose_driver}>Choose your driver</Text>
-      <View style={{ flexDirection: "column", gap: 10 }}>
-        <DriverCard />
+      <View style={{ flexDirection: "column", gap: -65 }}>
+        <TouchableOpacity onPress={handlePress}>
+          <DriverCard />
+        </TouchableOpacity>
+
         <DriverCard />
       </View>
     </View>
