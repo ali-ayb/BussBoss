@@ -4,8 +4,8 @@ import PassengerAllTrips from "../Screens/PassengerAllTrips/PassengerAllTrips";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Text } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
-// import Ionicons from "react-native-vector-icons/Ionicons";
-// import Screen2Stack from "./Screen2Stack";
+
+import { Entypo } from "@expo/vector-icons";
 
 const TabStack = () => {
   const Tabs = createBottomTabNavigator();
@@ -13,10 +13,7 @@ const TabStack = () => {
     <Tabs.Navigator screenOptions={{ headerShown: false }}>
       <Tabs.Screen
         options={{
-          tabBarIcon: () => (
-            <Text>S1</Text>
-            //   <Ionicons name={"home"} size />
-          ),
+          tabBarIcon: () => <Entypo name="home" size={24} color="black" />,
         }}
         name="PassengerMain"
         component={PassengerMain}
