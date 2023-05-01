@@ -3,7 +3,7 @@ import Background from "../../components/Background/Background";
 import Logo from "../../components/Logo/Logo";
 import CurrentTripCard from "../../components/CurrentTripCard/CurrentTripCard";
 
-export default function PassengerMain() {
+export default function PassengerCurrentTrips() {
   return (
     <View style={{ backgroundColor: "#F6F1F1", flex: 1 }}>
       <Background />
@@ -19,7 +19,7 @@ export default function PassengerMain() {
           position: "absolute",
         }}
       />
-      <Text style={styles.choose_driver}>Trips:</Text>
+      <Text style={styles.choose_driver}>Reserved Trips:</Text>
       <View style={{ flexDirection: "column", gap: 10 }}>
         <CurrentTripCard />
         <CurrentTripCard />
