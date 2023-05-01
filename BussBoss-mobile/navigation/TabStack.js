@@ -5,7 +5,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Text } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { FontAwesome5 } from "@expo/vector-icons";
-
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { Entypo } from "@expo/vector-icons";
 
 const TabStack = () => {
@@ -30,7 +30,13 @@ const TabStack = () => {
       />
       <Tabs.Screen
         options={{
-          tabBarIcon: () => <Text>S3</Text>,
+          tabBarIcon: () => (
+            <MaterialCommunityIcons
+              name="clipboard-clock-outline"
+              size={24}
+              color="black"
+            />
+          ),
         }}
         name="PassengerAllTrips"
         component={PassengerAllTrips}
