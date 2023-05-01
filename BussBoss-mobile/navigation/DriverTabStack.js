@@ -8,6 +8,9 @@ import { FontAwesome5 } from "@expo/vector-icons";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { Entypo } from "@expo/vector-icons";
 import OnboardingStack from "./OnboardingStack";
+import DriverMain from "../Screens/Driver/DriverMain";
+import AllTrips from "../Screens/Driver//AllTrips";
+import AddTrip from "../Screens/Driver//AddTrip";
 
 const TabStack = () => {
   const Tabs = createBottomTabNavigator();
@@ -17,8 +20,8 @@ const TabStack = () => {
         options={{
           tabBarIcon: () => <Entypo name="home" size={24} color="black" />,
         }}
-        name="PassengerMain"
-        component={PassengerMain}
+        name="DriverMain"
+        component={DriverMain}
       />
       <Tabs.Screen
         options={{
@@ -26,10 +29,12 @@ const TabStack = () => {
             <FontAwesome5 name="map-marked-alt" size={24} color="black" />
           ),
         }}
-        name="PassengerCurrentTrips"
-        component={PassengerCurrentTrips}
+        name="AddTrip"
+        component={AddTrip}
       />
       <Tabs.Screen
+        name="AllTrips"
+        component={AllTrips}
         options={{
           tabBarIcon: () => (
             <MaterialCommunityIcons
@@ -39,8 +44,6 @@ const TabStack = () => {
             />
           ),
         }}
-        name="PassengerAllTrips"
-        component={PassengerAllTrips}
       />
       <Tabs.Screen
         name="OnboardingStack"
