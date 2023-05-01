@@ -22,7 +22,7 @@ export default function PassengerMain() {
       <Search />
       <TripsBar />
       <Text style={styles.choose_driver}>Choose your driver</Text>
-      <View style={{ flexDirection: "column", gap: -65 }}>
+      <View style={{ flexDirection: "column", gap: 10 }}>
         <TouchableOpacity onPress={handlePress}>
           <DriverCard />
         </TouchableOpacity>
