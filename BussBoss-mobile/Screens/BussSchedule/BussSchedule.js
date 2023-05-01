@@ -1,6 +1,7 @@
 import { Image, StyleSheet, Text, View } from "react-native";
 import Background from "../../components/Background/Background";
 import ReserveTripCard from "../../components/ReserveTripCard/ReserveTripCard";
+import { ScrollView } from "react-native-gesture-handler";
 
 export default function BussSchedule() {
   return (
@@ -12,9 +13,16 @@ export default function BussSchedule() {
         source={require("../../assets/Shuttle_bus.png")}
       />
       <Text style={styles.subtitle}>Choose Schedule</Text>
-      <View style={{ flexDirection: "column", gap: 10 }}>
-        <ReserveTripCard isFull={false} />
-        <ReserveTripCard isFull={true} />
+      <View style={{ height: 400, flexGrow: 0, gap: 10, marginTop: 0 }}>
+        <ScrollView contentContainerStyle={{ gap: 10, marginBottom: 500 }}>
+          <ReserveTripCard isFull={false} />
+          <ReserveTripCard isFull={false} />
+          <ReserveTripCard isFull={false} />
+          <ReserveTripCard isFull={false} />
+          <ReserveTripCard isFull={false} />
+          <ReserveTripCard isFull={false} />
+          <ReserveTripCard isFull={true} />
+        </ScrollView>
       </View>
     </View>
   );
@@ -43,8 +51,8 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: "#000",
     fontWeight: "bold",
-    left: "7%",
-    top: "40%",
+    left: "9%",
+    top: "47%",
   },
   main: {
     backgroundColor: "#F6F1F1",
