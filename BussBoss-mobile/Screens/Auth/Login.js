@@ -7,7 +7,6 @@ import {
 } from "react-native";
 import Background from "../../components/Background/Background";
 import CenteredLogo from "../../components/CenteredLogo/CenteredLogo";
-import LoginButton from "../../components/LoginButton/LoginButton";
 
 function login() {
   alert("login");
