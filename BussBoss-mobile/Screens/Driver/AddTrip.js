@@ -1,15 +1,19 @@
 import { StyleSheet, View, Text, TouchableOpacity, Image } from "react-native";
 import Background from "../../components/Background/Background";
 import Logo from "../../components/Logo/Logo";
-import Greeting from "../../components/Greeting/Greeting";
-import Search from "../../components/Search/Search";
-import DriverTripsBar from "../../components/DriverTripBar/DriverTripBar";
-import DriverTripCard from "../../components/DriverTripCard/DriverTripCard";
 import { useNavigation } from "@react-navigation/native";
+import DateTimePicker from "../../components/DateTimePicker/DateTimePicker";
+import { useState } from "react";
 
 export default function DriverMain() {
+  const [dateTime, setDateTime] = useState(null);
+
   function onPressLearnMore() {
-    alert("test");
+    if (dateTime) {
+      alert(dateTime.toString());
+    } else {
+      alert("Please select a date and time");
+    }
   }
 
   return (
@@ -19,6 +23,12 @@ export default function DriverMain() {
       <Image
         source={require("../../assets/Map_Pinpoint.png")}
         style={styles.image}
+      />
+      <View>
+        <Text style={styles.title1}>Departure Time</Text>
+      </View>
+      <DateTimePicker
+        onChange={(event, selectedDate) => setDateTime(selectedDate)}
       />
 
       <TouchableOpacity style={styles.add_trip_btn} onPress={onPressLearnMore}>
