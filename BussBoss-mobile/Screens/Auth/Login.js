@@ -7,9 +7,13 @@ import {
 } from "react-native";
 import Background from "../../components/Background/Background";
 import CenteredLogo from "../../components/CenteredLogo/CenteredLogo";
+import LoginButton from "../../components/LoginButton/LoginButton";
 
-function handlePress() {
-  alert("test");
+function login() {
+  alert("login");
+}
+function register() {
+  alert("register");
 }
 export default function Login() {
   return (
@@ -21,13 +25,17 @@ export default function Login() {
         <TextInput style={styles.TextInput} placeholder="  Phone Number" />
         <TextInput style={styles.TextInput} placeholder="  Password" />
       </View>
-      <TouchableOpacity>
-        <View style={styles.Login_btn} onPress={handlePress}>
-          <Text style={{ fontSize: 24, color: "#FFF", top: 8, left: 125 }}>
-            Login
-          </Text>
-        </View>
+      <TouchableOpacity style={styles.Login_btn} onPress={login}>
+        <Text style={{ fontSize: 24, color: "#FFF", top: 8, left: 125 }}>
+          Login
+        </Text>
       </TouchableOpacity>
+      <Text style={{ fontSize: 17, color: "#000", top: 150, left: 100 }}>
+        Don't have an account?{" "}
+        <Text style={{ fontWeight: "bold" }} onPress={register}>
+          Sign up
+        </Text>
+      </Text>
     </View>
   );
 }
