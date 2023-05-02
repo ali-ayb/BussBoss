@@ -1,39 +1,67 @@
-import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
+import { StyleSheet, View, Text, Image, FlatList } from "react-native";
 import Background from "../../components/Background/Background";
 import Logo from "../../components/Logo/Logo";
-import Greeting from "../../components/Greeting/Greeting";
-import Search from "../../components/Search/Search";
-import DriverTripsBar from "../../components/DriverTripBar/DriverTripBar";
-import DriverTripCard from "../../components/DriverTripCard/DriverTripCard";
-import { useNavigation } from "@react-navigation/native";
+import AllTripsCard from "../../components/AllTripsCard/AllTripsCard";
 
-export default function DriverMain() {
-  function onPressLearnMore() {
-    alert("test");
-  }
+export default function AllTrips() {
+  const data = [1, 2, 3, 4, 5, 6];
+
+  const renderItem = ({ item }) => <AllTripsCard />;
 
   return (
-    <View style={{ backgroundColor: "#F6F1F1", flex: 1 }}>
+    <View style={styles.container}>
       <Background />
       <Logo />
-      <Greeting />
-      <DriverTripsBar />
-      <Text style={styles.title}>Current Trips</Text>
-      <TouchableOpacity style={styles.add_trip_btn} onPress={onPressLearnMore}>
-        <Text style={styles.add_trip_txt}>Add Trip</Text>
-      </TouchableOpacity>
-      <View
-        style={{
-          flexDirection: "column",
-          gap: 10,
-          // backgroundColor: "#000",
-          top: 60,
-        }}>
-        <DriverTripCard />
-        <DriverTripCard />
+      <Image
+        source={require("../../assets/Delivery_Time.png")}
+        style={styles.image}
+      />
+      <Text style={styles.title}>All Trips:</Text>
+      <View style={styles.test}>
+        <FlatList
+          data={data}
+          renderItem={renderItem}
+          keyExtractor={(item) => item.toString()}
+          contentContainerStyle={styles.listContainer}
+          style={styles.list}
+          height={400}
+        />
       </View>
     </View>
   );
 }
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#F6F1F1",
+  },
+  test: {
+    top: 60,
+    height: 400,
+  },
+  image: {
+    top: 120,
+    left: "40%",
+    width: 90,
+    height: 90,
+    zIndex: 2,
+    position: "absolute",
+  },
+  title: {
+    left: 40,
+    top: 340,
+    position: "absolute",
+    zIndex: 2,
+    fontSize: 32,
+    color: "black",
+    fontWeight: "bold",
+  },
+  listContainer: {
+    flexDirection: "column",
+    gap: 10,
+  },
+  list: {
+    flexGrow: 0, // Set the flex property to adjust height
+  },
+});
