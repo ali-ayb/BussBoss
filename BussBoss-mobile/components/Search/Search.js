@@ -1,8 +1,14 @@
 import React from "react";
 import { Text, TextInput } from "react-native";
-function Search() {
+function Search(props) {
+  const { userInput, setUserInput } = props;
+
   return (
     <TextInput
+      value={userInput}
+      onChangeText={(e) => {
+        setUserInput(e);
+      }}
       placeholder="Search"
       placeholderTextColor="#FFF"
       style={{
