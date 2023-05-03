@@ -9,7 +9,7 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { Entypo } from "@expo/vector-icons";
 import OnboardingStack from "./PassengerOnboardingStack";
 
-const TabStack = () => {
+const PassengerTabStack = () => {
   const Tabs = createBottomTabNavigator();
   return (
     <Tabs.Navigator screenOptions={{ headerShown: false }}>
@@ -54,4 +54,4 @@ const TabStack = () => {
   );
 };
 
-export default TabStack;
+export default PassengerTabStack;
