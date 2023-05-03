@@ -28,7 +28,7 @@ Route::group(['middleware' => 'bussboss_authenticate'], function () {
     Route::get('/get_passenger_full_name', [PassengerController::class, "getPassengerFullName"]);
     Route::get('/get_passenger_current_reservations', [ReservationController::class, "getPassengerCurrentReservations"]);
     Route::get('/get_passenger_finished_trips', [TripController::class, "getPassengerFinishedTrips"]);
-    Route::get('/get_drivers_from_destination', [DriverController::class, "getDriversFromDestination"]);
+    Route::post('/get_drivers_from_destination', [DriverController::class, "getDriversFromDestination"]);
     Route::get('/get_trips_from_driver_id', [TripController::class, "getTripsFromDriverId"]);
     Route::get('/get_Passenger_total_paid', [PassengerController::class, "getPassengerTotalPaid"]);
     Route::get('/get_passenger_total_trips', [PassengerController::class, "getPassengerTotalTrips"]);
