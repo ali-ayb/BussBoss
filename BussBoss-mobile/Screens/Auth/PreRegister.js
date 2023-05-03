@@ -7,17 +7,28 @@ import {
 } from "react-native";
 import Background from "../../components/Background/Background";
 import CenteredLogo from "../../components/CenteredLogo/CenteredLogo";
+import { useNavigation } from "@react-navigation/native";
 
 function click() {
   alert("register");
 }
 export default function PreRegister() {
+  const navigation = useNavigation();
+
+  const passenger = () => {
+    navigation.navigate("RegisterPassenger Screen");
+  };
+
+  const driver = () => {
+    navigation.navigate("RegisterDriver Screen");
+  };
+
   return (
     <View style={{ backgroundColor: "#F6F1F1", flex: 1 }}>
       <Background />
       <CenteredLogo />
       <Text style={styles.welcome_title}>What are You?</Text>
-      <TouchableOpacity style={styles.Passenger} onPress={click}>
+      <TouchableOpacity style={styles.Passenger} onPress={passenger}>
         <Text style={{ fontSize: 24, color: "#FFF", top: 12, left: 70 }}>
           Passenger ?
         </Text>
@@ -30,7 +41,7 @@ export default function PreRegister() {
           top: 180,
         }}></View>
       <View style={{ top: 100 }}>
-        <TouchableOpacity style={styles.driver} onPress={click}>
+        <TouchableOpacity style={styles.driver} onPress={driver}>
           <Text style={{ fontSize: 24, color: "#FFF", top: 13, left: 95 }}>
             Driver ?
           </Text>
