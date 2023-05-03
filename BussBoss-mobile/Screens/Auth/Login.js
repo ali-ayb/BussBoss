@@ -7,14 +7,19 @@ import {
 } from "react-native";
 import Background from "../../components/Background/Background";
 import CenteredLogo from "../../components/CenteredLogo/CenteredLogo";
+import { useNavigation } from "@react-navigation/native";
 
-function login() {
-  alert("login");
-}
-function register() {
-  alert("register");
-}
 export default function Login() {
+  const navigation = useNavigation();
+
+  const register = () => {
+    navigation.navigate("Preregister Screen");
+  };
+
+  function login() {
+    alert("login");
+  }
+
   return (
     <View style={{ backgroundColor: "#F6F1F1", flex: 1 }}>
       <Background />
