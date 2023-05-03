@@ -11,7 +11,7 @@ export default function PassengerMain() {
   const navigation = useNavigation();
 
   const handlePress = () => {
-    navigation.navigate("PassengerOnboardingStack");
+    navigation.navigate("BussSchedule");
   };
   return (
     <View style={{ backgroundColor: "#F6F1F1", flex: 1 }}>
