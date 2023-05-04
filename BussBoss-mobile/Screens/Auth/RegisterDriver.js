@@ -18,7 +18,9 @@ export default function RegisterDriver() {
 
   return (
     <View style={{ backgroundColor: "#F6F1F1", flex: 1 }}>
-      <RegisterLogo />
+      <View style={{ top: -60 }}>
+        <RegisterLogo />
+      </View>
 
       <View style={{ gap: 20 }}>
         <TextInput style={styles.first_name} placeholder="  First Name" />
@@ -33,7 +35,7 @@ export default function RegisterDriver() {
             style={{
               flexDirection: "column",
               alignItems: "center",
-              top: 180,
+              top: 160,
               left: -100,
             }}>
             <RadioButton value="first" />
@@ -43,7 +45,7 @@ export default function RegisterDriver() {
             style={{
               flexDirection: "column",
               alignItems: "center",
-              top: 130,
+              top: 110,
               left: 100,
             }}>
             <RadioButton value="second" />
@@ -51,7 +53,7 @@ export default function RegisterDriver() {
           </View>
         </RadioButton.Group>
       </View>
-      <TouchableOpacity style={styles.Login_btn} onPress={login}>
+      <TouchableOpacity style={styles.register_btn} onPress={login}>
         <Text style={{ fontSize: 24, color: "#FFF", top: 8, left: 35 }}>
           Register
         </Text>
@@ -66,7 +68,7 @@ const styles = StyleSheet.create({
     padding: 10,
     width: 150,
     borderRadius: 15,
-    top: 250,
+    top: 230,
     left: 50,
     elevation: 10,
   },
@@ -75,7 +77,7 @@ const styles = StyleSheet.create({
     padding: 10,
     width: 150,
     borderRadius: 15,
-    top: 183,
+    top: 163,
     left: 220,
     elevation: 10,
   },
@@ -84,15 +86,15 @@ const styles = StyleSheet.create({
     padding: 10,
     width: 320,
     borderRadius: 15,
-    top: 185,
+    top: 165,
     left: 50,
     elevation: 10,
   },
-  Login_btn: {
+  register_btn: {
     backgroundColor: "#146C94",
     width: 150,
     height: 50,
-    top: 150,
+    top: 120,
     left: 135,
     borderRadius: 15,
     elevation: 5,
