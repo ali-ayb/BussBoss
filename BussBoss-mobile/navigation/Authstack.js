@@ -12,7 +12,7 @@ const Stack = createStackNavigator();
 
 const AuthStack = () => {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen name="Login Screen" component={Login} />
       <Stack.Screen name="Preregister Screen" component={PreRegister} />
       <Stack.Screen name="RegisterDriver Screen" component={RegisterDriver} />
