@@ -15,10 +15,25 @@ const AuthStack = () => {
     <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen name="Login Screen" component={Login} />
       <Stack.Screen name="Preregister Screen" component={PreRegister} />
-      <Stack.Screen name="RegisterDriver Screen" component={RegisterDriver} />
+      <Stack.Screen
+        name="RegisterDriver Screen"
+        component={RegisterDriver}
+        options={{
+          headerShown: true,
+          title: "Register Driver",
+          headerStyle: { backgroundColor: "#146C94" },
+          headerTintColor: "#fff",
+        }}
+      />
       <Stack.Screen
         name="RegisterPassenger Screen"
         component={RegisterPassenger}
+        options={{
+          headerShown: true,
+          title: "Register Passneger",
+          headerStyle: { backgroundColor: "#146C94" },
+          headerTintColor: "#fff",
+        }}
       />
     </Stack.Navigator>
   );
