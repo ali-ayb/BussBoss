@@ -13,8 +13,8 @@ export default function BussSchedule() {
         source={require("../../assets/Shuttle_bus.png")}
       />
       <Text style={styles.subtitle}>Choose Schedule</Text>
-      <View style={{ height: 400, flexGrow: 0, gap: 10, marginTop: 80 }}>
-        <ScrollView contentContainerStyle={{ gap: 10, marginBottom: 100 }}>
+      <View style={{ height: 400, flexGrow: 0, gap: 10, marginTop: 40 }}>
+        <ScrollView contentContainerStyle={{ gap: 10, marginBottom: 0 }}>
           <ReserveTripCard isFull={false} />
           <ReserveTripCard isFull={false} />
           <ReserveTripCard isFull={false} />
@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
     color: "#000",
     fontWeight: "bold",
     left: "9%",
-    top: "47%",
+    top: "40%",
   },
   main: {
     backgroundColor: "#F6F1F1",
