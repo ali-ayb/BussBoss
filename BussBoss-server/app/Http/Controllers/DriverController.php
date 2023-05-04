@@ -26,8 +26,8 @@ class DriverController extends Controller
         $first_name = $user->first_name;
         $last_name = $user->last_name;
         return response()->json([
-            'first_name ' => $first_name,
-            'last_name ' => $last_name,
+            'first_name' => $first_name,
+            'last_name' => $last_name,
         ]);
     }
 
@@ -40,7 +40,7 @@ class DriverController extends Controller
             ->update(['total_trips' => $total_driver_trips]);
 
         return response()->json([
-            'total_driver_trips ' => $total_driver_trips,
+            'total_driver_trips' => $total_driver_trips,
         ]);
     }
 
@@ -51,7 +51,7 @@ class DriverController extends Controller
             ->sum(Trip::raw('price * passenger_number'));
 
         return response()->json([
-            'total_driver_earned ' => $total_driver_earned,
+            'total_driver_earned' => $total_driver_earned,
         ]);
     }
 
