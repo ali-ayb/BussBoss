@@ -33,11 +33,17 @@ export default function Login() {
 
     try {
       await AsyncStorage.setItem("token", result.authorisation.token);
+      await AsyncStorage.setItem("user_type", result.user.user_type);
     } catch (error) {
       console.log("Error storing token:", error);
     }
 
-    dispatch(login());
+    if (result.status === "success") {
+      dispatch(login());
+    } else {
+      alert("wrong credentials");
+    }
+
     // dispatch(setUserdata(register));
   };
 
@@ -49,7 +55,7 @@ export default function Login() {
       <View style={{ gap: 20 }}>
         <TextInput
           style={styles.TextInput}
-          placeholder="  Phone Number"
+          placeholder="  Your Email"
           onChangeText={(e) => {
             setEmail(e);
           }}
