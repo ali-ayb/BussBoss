@@ -1,14 +1,18 @@
 import { StyleSheet, View, Image, Text } from "react-native";
 import { Rating } from "react-native-ratings";
 
-function DriverCard() {
+function DriverCard(props) {
+  const { id, first_name, last_name } = props;
+
   return (
     <View style={styles.driver_card}>
       <Image
         style={styles.driver_img}
         source={require("../../assets/driver_img.png")}
       />
-      <Text style={styles.driver_name}>Sami Ktiesh</Text>
+      <Text style={styles.driver_name}>
+        {first_name} {last_name}
+      </Text>
       <Text style={styles.trip_date}>When: 19/4 10:30</Text>
       <Text style={styles.trip_source}>Souce: Position1</Text>
       <Text style={styles.driver_Rating}>Rating</Text>
