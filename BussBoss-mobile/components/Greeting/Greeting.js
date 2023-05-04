@@ -1,6 +1,24 @@
 import { StyleSheet, View, Text } from "react-native";
 import UseHttp from "../../hooks/request";
 import { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+
+const retrieveData = async () => {
+  try {
+    const value = await AsyncStorage.getItem("token");
+    if (value !== null) {
+      return value;
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const getToken = async () => {
+  const token = await retrieveData();
+  return token;
+};
 
 export default function PassengerMain() {
   const [first_name, setFirstName] = useState("");
@@ -8,17 +26,16 @@ export default function PassengerMain() {
 
   useEffect(() => {
     const fetchData = async () => {
+      const token = await getToken();
       const result = await UseHttp("get_passenger_full_name", "GET", "", {
-        Authorization:
-          "Bearer " +
-          `eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTkyLjE2OC4xLjQ6ODAwMC9hcGkvbG9naW4iLCJpYXQiOjE2ODMxMTU3MjIsImV4cCI6MTY4MzExOTMyMiwibmJmIjoxNjgzMTE1NzIyLCJqdGkiOiJXT0ZZMlF3cWthS0dLY0ZKIiwic3ViIjoiNCIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.DZgJItU5cxvgoe--POauCetlCB3iQ04U4WSEMXJ405Q`,
+        Authorization: "bearer " + token,
       });
-      // console.log(result.first_name);
       setFirstName(result.first_name);
       setLastName(result.last_name);
     };
     fetchData();
   }, []);
+  // ...
 
   return (
     <Text style={styles.name}>
