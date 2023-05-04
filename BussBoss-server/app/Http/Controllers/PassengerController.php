@@ -38,7 +38,7 @@ class PassengerController extends Controller
         $passenger = Passenger_info::where('passenger_id', $user)->first();
         $total_trips = $passenger->total_trips;
         return response()->json([
-            'total_trips ' => $total_trips,
+            'total_trips' => $total_trips,
         ]);
     }
 
@@ -48,7 +48,7 @@ class PassengerController extends Controller
         $passenger = Passenger_info::where('passenger_id', $user)->first();
         $total_paid = $passenger->total_paid;
         return response()->json([
-            'total_paid ' => $total_paid,
+            'total_paid' => $total_paid,
         ]);
     }
 }
