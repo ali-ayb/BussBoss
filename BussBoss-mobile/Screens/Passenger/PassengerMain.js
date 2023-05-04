@@ -1,4 +1,10 @@
-import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
+import {
+  StyleSheet,
+  View,
+  Text,
+  TouchableOpacity,
+  FlatList,
+} from "react-native";
 import Background from "../../components/Background/Background";
 import Logo from "../../components/Logo/Logo";
 import Greeting from "../../components/Greeting/Greeting";
@@ -11,6 +17,7 @@ import UseHttp from "../../hooks/request";
 
 export default function PassengerMain() {
   const [destination, setDestination] = useState("");
+  const [drivers, setDrivers] = useState([]);
   const formData = new FormData();
 
   useEffect(() => {
@@ -23,19 +30,34 @@ export default function PassengerMain() {
         {
           Authorization:
             "Bearer " +
-            `eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTkyLjE2OC4xLjQ6ODAwMC9hcGkvbG9naW4iLCJpYXQiOjE2ODMxNDM3NzIsImV4cCI6MTY4MzE0NzM3MiwibmJmIjoxNjgzMTQzNzcyLCJqdGkiOiIzRkw2TG9mNlU1Z0p5aVZOIiwic3ViIjoiNCIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.rhAN3q4ST2fFrZtfT4Qa0ylaqigMaAgVGwPdb2YV3SU`,
+            `eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTkyLjE2OC4xLjQ6ODAwMC9hcGkvbG9naW4iLCJpYXQiOjE2ODMxNTYzODUsImV4cCI6MTY4MzE1OTk4NSwibmJmIjoxNjgzMTU2Mzg1LCJqdGkiOiJzdEFBdEJoSFh2NUdmOFhxIiwic3ViIjoiNCIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.ReaUc-69FJ8vxSWmdUWiz9QWgXUlmfOWLeOegT4j_mE`,
         }
       );
-      console.log(result);
+      setDrivers(result);
     };
     fetchData();
   }, [destination]);
+  console.log(drivers);
 
   const navigation = useNavigation();
 
   const handlePress = () => {
     navigation.navigate("BussSchedule");
   };
+
+  const renderItem = ({ item }) => {
+    return (
+      <DriverCard
+        id={item.id}
+        first_name={item.first_name}
+        last_name={item.last_name}
+      />
+    );
+    // <TouchableOpacity onPress={handlePress}>
+    //   <DriverCard driver={item} />
+    // </TouchableOpacity>
+  };
+
   return (
     <View style={{ backgroundColor: "#F6F1F1", flex: 1 }}>
       <Background />
@@ -46,11 +68,11 @@ export default function PassengerMain() {
       <TripsBar />
       <Text style={styles.choose_driver}>Choose your driver</Text>
       <View style={{ flexDirection: "column", gap: 10 }}>
-        <TouchableOpacity onPress={handlePress}>
-          <DriverCard />
-        </TouchableOpacity>
-
-        <DriverCard />
+        <FlatList
+          data={drivers}
+          renderItem={renderItem}
+          keyExtractor={(item) => item.id}
+        />
       </View>
     </View>
   );
