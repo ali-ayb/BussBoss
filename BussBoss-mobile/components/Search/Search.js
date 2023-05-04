@@ -22,6 +22,7 @@ function Search(props) {
         borderColor: "#FFF",
         borderRadius: 5,
         paddingHorizontal: 10,
+        color: "#FFF",
       }}
     />
   );
