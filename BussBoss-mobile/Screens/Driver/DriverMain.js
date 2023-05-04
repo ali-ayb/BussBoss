@@ -11,7 +11,11 @@ export default function DriverMain() {
   function onPressLearnMore() {
     alert("test");
   }
+  const navigation = useNavigation();
 
+  const handlePress = () => {
+    navigation.navigate("AddTrip");
+  };
   return (
     <View style={{ backgroundColor: "#F6F1F1", flex: 1 }}>
       <Background />
@@ -19,7 +23,7 @@ export default function DriverMain() {
       <Greeting />
       <DriverTripsBar />
       <Text style={styles.title}>Current Trips</Text>
-      <TouchableOpacity style={styles.add_trip_btn} onPress={onPressLearnMore}>
+      <TouchableOpacity style={styles.add_trip_btn} onPress={handlePress}>
         <Text style={styles.add_trip_txt}>Add Trip</Text>
       </TouchableOpacity>
       <View
