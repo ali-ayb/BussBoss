@@ -1,17 +1,32 @@
 import { useEffect, useState } from "react";
 import { StyleSheet, View, Text } from "react-native";
 import UseHttp from "../../hooks/request";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 function TripsBar() {
+  const retrieveData = async () => {
+    try {
+      const value = await AsyncStorage.getItem("token");
+      if (value !== null) {
+        return value;
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const getToken = async () => {
+    const token = await retrieveData();
+    return token;
+  };
   const [total_paid, setTotalPaid] = useState("");
   const [total_trips, setTotalTrips] = useState("");
 
   useEffect(() => {
     const fetchData = async () => {
+      const token = await getToken();
       const result = await UseHttp("get_Passenger_total_paid", "GET", "", {
-        Authorization:
-          "Bearer " +
-          `eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTkyLjE2OC4xLjQ6ODAwMC9hcGkvbG9naW4iLCJpYXQiOjE2ODMxNTEyMjIsImV4cCI6MTY4MzE1NDgyMiwibmJmIjoxNjgzMTUxMjIyLCJqdGkiOiJCSU9uaWtqODkzSnVsWDk0Iiwic3ViIjoiNCIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.0YURYcYxZtJMsxK_CeNrOq0Rm8TWit74mQALbAucisM`,
+        Authorization: "bearer " + token,
       });
       setTotalPaid(result.total_paid);
     };
@@ -20,10 +35,9 @@ function TripsBar() {
 
   useEffect(() => {
     const fetchData = async () => {
+      const token = await getToken();
       const result = await UseHttp("get_passenger_total_trips", "GET", "", {
-        Authorization:
-          "Bearer " +
-          `eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTkyLjE2OC4xLjQ6ODAwMC9hcGkvbG9naW4iLCJpYXQiOjE2ODMxNTEyMjIsImV4cCI6MTY4MzE1NDgyMiwibmJmIjoxNjgzMTUxMjIyLCJqdGkiOiJCSU9uaWtqODkzSnVsWDk0Iiwic3ViIjoiNCIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.0YURYcYxZtJMsxK_CeNrOq0Rm8TWit74mQALbAucisM`,
+        Authorization: "bearer " + token,
       });
       setTotalTrips(result.total_trips);
     };
