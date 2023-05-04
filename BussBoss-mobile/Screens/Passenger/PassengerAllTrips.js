@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#F6F1F1",
   },
   test: {
-    top: 40,
+    top: 80,
     height: 400,
   },
   image: {

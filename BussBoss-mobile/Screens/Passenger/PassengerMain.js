@@ -14,48 +14,51 @@ import DriverCard from "../../components/DriverCard/DriverCard";
 import { useNavigation } from "@react-navigation/native";
 import { useEffect, useState } from "react";
 import UseHttp from "../../hooks/request";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function PassengerMain() {
   const [destination, setDestination] = useState("");
   const [drivers, setDrivers] = useState([]);
   const formData = new FormData();
+  const retrieveData = async () => {
+    try {
+      const value = await AsyncStorage.getItem("token");
+      if (value !== null) {
+        return value;
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const getToken = async () => {
+    const token = await retrieveData();
+    return token;
+  };
 
   useEffect(() => {
     const fetchData = async () => {
       formData.append("destination", destination);
+      const token = await getToken();
       const result = await UseHttp(
         "get_drivers_from_destination",
         "POST",
         formData,
         {
-          Authorization:
-            "Bearer " +
-            `eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTkyLjE2OC4xLjQ6ODAwMC9hcGkvbG9naW4iLCJpYXQiOjE2ODMxNTYzODUsImV4cCI6MTY4MzE1OTk4NSwibmJmIjoxNjgzMTU2Mzg1LCJqdGkiOiJzdEFBdEJoSFh2NUdmOFhxIiwic3ViIjoiNCIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.ReaUc-69FJ8vxSWmdUWiz9QWgXUlmfOWLeOegT4j_mE`,
+          Authorization: "Bearer " + token,
         }
       );
-      setDrivers(result);
+      setDrivers(result.drivers);
     };
     fetchData();
   }, [destination]);
+
   console.log(drivers);
 
   const navigation = useNavigation();
 
   const handlePress = () => {
     navigation.navigate("BussSchedule");
-  };
-
-  const renderItem = ({ item }) => {
-    return (
-      <DriverCard
-        id={item.id}
-        first_name={item.first_name}
-        last_name={item.last_name}
-      />
-    );
-    // <TouchableOpacity onPress={handlePress}>
-    //   <DriverCard driver={item} />
-    // </TouchableOpacity>
   };
 
   return (
@@ -67,11 +70,17 @@ export default function PassengerMain() {
       <Search userInput={destination} setUserInput={setDestination} />
       <TripsBar />
       <Text style={styles.choose_driver}>Choose your driver</Text>
-      <View style={{ flexDirection: "column", gap: 10 }}>
+      <View style={{ height: 500, gap: 10 }}>
         <FlatList
           data={drivers}
-          renderItem={renderItem}
-          keyExtractor={(item) => item.id}
+          renderItem={({ item }) => (
+            <TouchableOpacity onPress={handlePress}>
+              <DriverCard item={item} />
+            </TouchableOpacity>
+          )}
+          keyExtractor={(item, index) => index.toString()}
+          contentContainerStyle={{ gap: 10 }}
+          height={500}
         />
       </View>
     </View>
