@@ -8,17 +8,38 @@ import {
 import Background from "../../components/Background/Background";
 import CenteredLogo from "../../components/CenteredLogo/CenteredLogo";
 import { useNavigation } from "@react-navigation/native";
+import UseHttp from "../../hooks/request";
+import { useDispatch } from "react-redux";
+import { login, setUserData } from "../../redux/slices/authSlice";
+import { useState } from "react";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function Login() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const formData = new FormData();
   const navigation = useNavigation();
 
   const register = () => {
     navigation.navigate("Preregister Screen");
   };
 
-  function login() {
-    alert("login");
-  }
+  const dispatch = useDispatch();
+
+  const handleLogin = async () => {
+    formData.append("email", email);
+    formData.append("password", password);
+    const result = await UseHttp("login", "POST", formData);
+
+    try {
+      await AsyncStorage.setItem("token", result.authorisation.token);
+    } catch (error) {
+      console.log("Error storing token:", error);
+    }
+
+    dispatch(login());
+    // dispatch(setUserdata(register));
+  };
 
   return (
     <View style={{ backgroundColor: "#F6F1F1", flex: 1 }}>
@@ -26,10 +47,22 @@ export default function Login() {
       <CenteredLogo />
       <Text style={styles.welcome_title}>Welcome Back.</Text>
       <View style={{ gap: 20 }}>
-        <TextInput style={styles.TextInput} placeholder="  Phone Number" />
-        <TextInput style={styles.TextInput} placeholder="  Password" />
+        <TextInput
+          style={styles.TextInput}
+          placeholder="  Phone Number"
+          onChangeText={(e) => {
+            setEmail(e);
+          }}
+        />
+        <TextInput
+          style={styles.TextInput}
+          placeholder="  Password"
+          onChangeText={(e) => {
+            setPassword(e);
+          }}
+        />
       </View>
-      <TouchableOpacity style={styles.Login_btn} onPress={login}>
+      <TouchableOpacity style={styles.Login_btn} onPress={handleLogin}>
         <Text style={{ fontSize: 24, color: "#FFF", top: 8, left: 125 }}>
           Login
         </Text>
