@@ -132,7 +132,7 @@ td {
   vertical-align: middle;
 }
 tr:hover {
-  background-color: #1363df;
+  background-color: #6cc1ff;
 }
 
 .content {
@@ -140,8 +140,8 @@ tr:hover {
 }
 
 .content-title {
-  font-size: 64px;
-  margin-left: 45vw;
+  font-size: 46px;
+  margin-left: 25vw;
   margin-top: 20vh;
 }
 
