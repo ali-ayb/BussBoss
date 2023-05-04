@@ -1,12 +1,12 @@
 import { StyleSheet, View, Text, Image, FlatList } from "react-native";
 import Background from "../../components/Background/Background";
 import Logo from "../../components/Logo/Logo";
-import AllTripsCard from "../../components/AllTripsCard/AllTripsCard";
+import DriverAllTripsCard from "../../components/DriverAllTripsCard/DriverAllTripsCard";
 
 export default function AllTrips() {
   const data = [1, 2, 3, 4, 5, 6];
 
-  const renderItem = ({ item }) => <AllTripsCard />;
+  const renderItem = ({ item }) => <DriverAllTripsCard />;
 
   return (
     <View style={styles.container}>
