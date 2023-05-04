@@ -7,7 +7,7 @@ function logo() {
       source={require("../../assets/RegisterLogo.png")}
       style={{
         marginLeft: 100,
-        top: 140,
+        top: 100,
         position: "absolute",
         zIndex: 2,
       }}
