@@ -1,6 +1,6 @@
 import PassengerMain from "../Screens/Passenger/PassengerMain";
 import PassengerCurrentTrips from "../Screens/Passenger/PassengerCurrentTrips";
-import PassengerAllTrips from "../Screens/Passenger/PassengerAllTrips";
+import DriverAllTrips from "../Screens/Driver/AllTrips";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Text } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
@@ -21,15 +21,7 @@ const DriverTabStack = () => {
         name="DriverMain"
         component={DriverMain}
       />
-      <Tabs.Screen
-        options={{
-          tabBarIcon: () => (
-            <FontAwesome5 name="map-marked-alt" size={24} color="black" />
-          ),
-        }}
-        name="PassengerCurrentTrips"
-        component={PassengerCurrentTrips}
-      />
+
       <Tabs.Screen
         options={{
           tabBarIcon: () => (
@@ -40,8 +32,8 @@ const DriverTabStack = () => {
             />
           ),
         }}
-        name="PassengerAllTrips"
-        component={PassengerAllTrips}
+        name="DriverAllTrips"
+        component={DriverAllTrips}
       />
       <Tabs.Screen
         name="OnboardingStack"
