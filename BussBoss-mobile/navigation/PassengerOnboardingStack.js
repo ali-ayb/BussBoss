@@ -9,17 +9,18 @@ const Stack = createStackNavigator();
 const PassengerOnboardingStack = ({ navigation }) => {
   return (
     <Stack.Navigator
-    // screenOptions={{
-    //   headerShown: true,
-    //   headerLeft: () => (
-    //     <Ionicons
-    //       name="arrow-back"
-    //       size={32}
-    //       color="black"
-    //       onPress={() => navigation.goBack()}
-    //     />
-    //   ),
-    // }}
+      screenOptions={{ headerShown: false }}
+      // screenOptions={{
+      //   headerShown: true,
+      //   headerLeft: () => (
+      //     <Ionicons
+      //       name="arrow-back"
+      //       size={32}
+      //       color="black"
+      //       onPress={() => navigation.goBack()}
+      //     />
+      //   ),
+      // }}
     >
       <Stack.Screen name="Passenger" component={PassengerTabStack} />
       <Stack.Screen name="BussSchedule" component={BussSchedule} />
