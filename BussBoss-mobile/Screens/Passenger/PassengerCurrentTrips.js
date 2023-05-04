@@ -1,9 +1,46 @@
-import { StyleSheet, View, Text, Image } from "react-native";
+import { StyleSheet, View, Text, Image, FlatList } from "react-native";
 import Background from "../../components/Background/Background";
 import Logo from "../../components/Logo/Logo";
 import CurrentTripCard from "../../components/CurrentTripCard/CurrentTripCard";
+import { useEffect, useState } from "react";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import UseHttp from "../../hooks/request";
 
 export default function PassengerCurrentTrips() {
+  const [currentReservations, setCurrentReservations] = useState([]);
+
+  const retrieveData = async () => {
+    try {
+      const value = await AsyncStorage.getItem("token");
+      if (value !== null) {
+        return value;
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const getToken = async () => {
+    const token = await retrieveData();
+    return token;
+  };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const token = await getToken();
+      const result = await UseHttp(
+        "get_passenger_current_reservations",
+        "GET",
+        "",
+        {
+          Authorization: "bearer " + token,
+        }
+      );
+      setCurrentReservations(result.currentReservation);
+    };
+    fetchData();
+  }, []);
+
   return (
     <View style={{ backgroundColor: "#F6F1F1", flex: 1 }}>
       <Background />
@@ -19,10 +56,15 @@ export default function PassengerCurrentTrips() {
           position: "absolute",
         }}
       />
-      <Text style={styles.choose_driver}>Reserved Trips:</Text>
-      <View style={{ flexDirection: "column", gap: 10 }}>
-        <CurrentTripCard />
-        <CurrentTripCard />
+      <Text style={styles.title}>Reserved Trips:</Text>
+      <View style={styles.container}>
+        <FlatList
+          data={currentReservations}
+          renderItem={({ item }) => <CurrentTripCard item={item} />}
+          keyExtractor={(item, index) => index.toString()}
+          contentContainerStyle={{ gap: 10 }}
+          height={500}
+        />
       </View>
     </View>
   );
@@ -32,7 +74,11 @@ const styles = StyleSheet.create({
   main: {
     backgroundColor: "#F6F1F1",
   },
-  choose_driver: {
+  container: {
+    top: 60,
+    height: 400,
+  },
+  title: {
     left: 40,
     top: 340,
     position: "absolute",
