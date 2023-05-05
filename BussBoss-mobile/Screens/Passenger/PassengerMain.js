@@ -4,6 +4,7 @@ import {
   Text,
   TouchableOpacity,
   FlatList,
+  ScrollView,
 } from "react-native";
 import Background from "../../components/Background/Background";
 import Logo from "../../components/Logo/Logo";
@@ -20,6 +21,7 @@ export default function PassengerMain() {
   const [destination, setDestination] = useState("");
   const [drivers, setDrivers] = useState([]);
   const formData = new FormData();
+
   const retrieveData = async () => {
     try {
       const value = await AsyncStorage.getItem("token");
@@ -69,8 +71,8 @@ export default function PassengerMain() {
       <Text style={styles.search_title}>Where are you heading?</Text>
       <Search userInput={destination} setUserInput={setDestination} />
       <TripsBar />
-      <Text style={styles.choose_driver}>Choose your driver</Text>
-      <View style={{ height: 500, gap: 10 }}>
+      <Text style={styles.title}>Choose your driver</Text>
+      <View style={{ height: 400, top: 80 }}>
         <FlatList
           data={drivers}
           renderItem={({ item }) => (
@@ -79,8 +81,8 @@ export default function PassengerMain() {
             </TouchableOpacity>
           )}
           keyExtractor={(item, index) => index.toString()}
-          contentContainerStyle={{ gap: 10 }}
-          height={500}
+          contentContainerStyle={{ gap: 10, top: 0 }}
+          style={styles.list}
         />
       </View>
     </View>
@@ -100,7 +102,7 @@ const styles = StyleSheet.create({
     color: "white",
     fontWeight: "bold",
   },
-  choose_driver: {
+  title: {
     left: 40,
     top: 380,
     position: "absolute",
@@ -108,5 +110,8 @@ const styles = StyleSheet.create({
     fontSize: 18,
     color: "black",
     fontWeight: "bold",
+  },
+  list: {
+    flexGrow: 0, // Set the flex property to adjust height
   },
 });
