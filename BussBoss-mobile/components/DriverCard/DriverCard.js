@@ -1,8 +1,12 @@
 import { StyleSheet, View, Image, Text } from "react-native";
 import { Rating } from "react-native-ratings";
 
-function DriverCard(props) {
-  const { id, first_name, last_name } = props;
+function DriverCard({ item }) {
+  const first_name = item.first_name;
+  const last_name = item.last_name;
+  const departure_time = new Date(item.departure_time);
+  const source = item.source;
+  const rating = item.rating;
 
   return (
     <View style={styles.driver_card}>
@@ -13,16 +17,22 @@ function DriverCard(props) {
       <Text style={styles.driver_name}>
         {first_name} {last_name}
       </Text>
-      <Text style={styles.trip_date}>When: 19/4 10:30</Text>
-      <Text style={styles.trip_source}>Souce: Position1</Text>
+      <Text style={styles.trip_date}>
+        When: {departure_time.getMonth()}/{departure_time.getDay()}{" "}
+        {departure_time.getHours()}
+        {":"}
+        {departure_time.getMinutes()}
+      </Text>
+      <Text style={styles.trip_source}>Souce: {source}</Text>
       <Text style={styles.driver_Rating}>Rating</Text>
       <Rating
         type="custom"
         ratingColor="#146C94"
         ratingCount={5}
+        startingValue={rating}
         imageSize={30}
         ratingBackgroundColor="#D9D9D9"
-        tintColor="#FFF"
+        tintColor="#fff"
         readonly="true"
         onFinishRating={this.ratingCompleted}
         style={{ paddingVertical: 10, top: -70, left: 25 }}
@@ -56,17 +66,20 @@ const styles = StyleSheet.create({
     left: 125,
     fontSize: 14,
     color: "#C2C2C2",
+    fontWeight: "bold",
   },
   trip_source: {
     top: -70,
     left: 125,
     fontSize: 14,
     color: "#C2C2C2",
+    fontWeight: "bold",
   },
   driver_Rating: {
     top: -70,
     left: 125,
     fontSize: 14,
     color: "#C2C2C2",
+    fontWeight: "bold",
   },
 });
