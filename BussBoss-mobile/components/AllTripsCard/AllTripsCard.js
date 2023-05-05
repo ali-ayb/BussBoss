@@ -3,11 +3,19 @@ import { Rating } from "react-native-ratings";
 function onPressLearnMore() {
   alert("test");
 }
-function AllTripsCard() {
+function AllTripsCard({ item }) {
+  const destination = item.destination;
+  const source = item.source;
+  const first_name = item.first_name;
+  const last_name = item.last_name;
+  const departure_time = new Date(item.departure_time);
+  const arrival_time = new Date(item.arrival_time);
   return (
     <View style={styles.AllTripsCard}>
       {/* <Text style={styles.driver_name}>Driver: Driver Name</Text> */}
-      <Text style={styles.driver_name}>Driver: Driver Name</Text>
+      <Text style={styles.driver_name}>
+        Driver: {first_name} {last_name}
+      </Text>
       <Image
         style={styles.calender_icon}
         source={require("../../assets/calender.png")}
@@ -20,9 +28,17 @@ function AllTripsCard() {
         style={styles.pin_icon}
         source={require("../../assets/pin_icon.png")}
       />
-      <Text style={styles.trip_time}>10:00 {"<-->"} 10:30</Text>
-      <Text style={styles.trip_position}>From {"<-->"} To Position </Text>
-      <Text style={styles.date}>20/4/2023</Text>
+      <Text style={styles.trip_time}>
+        {departure_time.getHours()}:{departure_time.getMinutes()} {"<-->"}
+        {arrival_time.getHours()}:{arrival_time.getMinutes()}
+      </Text>
+      <Text style={styles.trip_position}>
+        {source} {"<-->"} {destination}
+      </Text>
+      <Text style={styles.date}>
+        {departure_time.getDay()}/{departure_time.getMonth()}/
+        {departure_time.getFullYear()}
+      </Text>
       <Text style={styles.rating}>Rating</Text>
       <Rating
         type="custom"
