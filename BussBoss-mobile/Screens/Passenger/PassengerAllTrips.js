@@ -7,36 +7,34 @@ export default function PassengerCurrentTrips() {
   const data = [1, 2, 3, 4, 5, 6];
 
   const renderItem = ({ item }) => <AllTripsCard />;
-
-  return (
-    <View style={styles.container}>
-      <Background />
-      <Logo />
-      <Image
-        source={require("../../assets/Delivery_Time.png")}
-        style={styles.image}
-      />
-      <Text style={styles.choose_driver}>All Trips:</Text>
-      <View style={styles.cards_container}>
-        <FlatList
-          data={data}
-          renderItem={renderItem}
-          keyExtractor={(item) => item.toString()}
-          contentContainerStyle={styles.listContainer}
-          style={styles.list}
+  const header = () => {
+    return (
+      <View style={styles.container}>
+        <Background />
+        <Logo />
+        <Image
+          source={require("../../assets/Delivery_Time.png")}
+          style={styles.image}
         />
+        <Text style={styles.choose_driver}>All Trips:</Text>
       </View>
-    </View>
+    );
+  };
+  return (
+    <FlatList
+      data={data}
+      ListHeaderComponent={header}
+      renderItem={renderItem}
+      keyExtractor={(item) => item.toString()}
+      contentContainerStyle={styles.listContainer}
+      style={styles.list}
+    />
   );
 }
-
 const styles = StyleSheet.create({
   container: {
     backgroundColor: "#F6F1F1",
-  },
-  cards_container: {
-    top: 80,
-    height: 400,
+    marginBottom: 50,
   },
   image: {
     top: 120,
