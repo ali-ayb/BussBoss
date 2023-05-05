@@ -47,6 +47,7 @@ const styles = StyleSheet.create({
     left: "10%",
     borderRadius: 15,
     elevation: 20,
+    marginBottom: 50,
   },
   rating: {
     fontSize: 16,
