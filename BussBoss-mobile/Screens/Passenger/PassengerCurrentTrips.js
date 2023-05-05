@@ -5,25 +5,10 @@ import CurrentTripCard from "../../components/CurrentTripCard/CurrentTripCard";
 import { useEffect, useState } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import UseHttp from "../../hooks/request";
+import { getToken } from "../../auth/auth";
 
 export default function PassengerCurrentTrips() {
   const [currentReservations, setCurrentReservations] = useState([]);
-
-  const retrieveData = async () => {
-    try {
-      const value = await AsyncStorage.getItem("token");
-      if (value !== null) {
-        return value;
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const getToken = async () => {
-    const token = await retrieveData();
-    return token;
-  };
 
   useEffect(() => {
     const fetchData = async () => {
