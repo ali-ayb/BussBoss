@@ -41,42 +41,40 @@ export default function PassengerCurrentTrips() {
     fetchData();
   }, []);
 
-  return (
-    <View style={{ backgroundColor: "#F6F1F1", flex: 1 }}>
-      <Background />
-      <Logo />
-      <Image
-        source={require("../../assets/map_marker.png")}
-        style={{
-          top: 120,
-          left: "40%",
-          width: 90,
-          height: 90,
-          zIndex: 2,
-          position: "absolute",
-        }}
-      />
-      <Text style={styles.title}>Reserved Trips:</Text>
-      <View style={styles.container}>
-        <FlatList
-          data={currentReservations}
-          renderItem={({ item }) => <CurrentTripCard item={item} />}
-          keyExtractor={(item, index) => index.toString()}
-          contentContainerStyle={{ gap: 10 }}
-          height={500}
+  const header = () => {
+    return (
+      <View style={{ backgroundColor: "#F6F1F1", marginBottom: 50 }}>
+        <Background />
+        <Logo />
+        <Image
+          source={require("../../assets/map_marker.png")}
+          style={{
+            top: 120,
+            left: "40%",
+            width: 90,
+            height: 90,
+            zIndex: 2,
+            position: "absolute",
+          }}
         />
+        <Text style={styles.title}>Reserved Trips:</Text>
       </View>
-    </View>
+    );
+  };
+  return (
+    <FlatList
+      ListHeaderComponent={header}
+      data={currentReservations}
+      renderItem={({ item }) => <CurrentTripCard item={item} />}
+      keyExtractor={(item, index) => index.toString()}
+      contentContainerStyle={{ gap: 10 }}
+    />
   );
 }
 
 const styles = StyleSheet.create({
   main: {
     backgroundColor: "#F6F1F1",
-  },
-  container: {
-    top: 60,
-    height: 400,
   },
   title: {
     left: 40,
