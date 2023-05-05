@@ -49,9 +49,10 @@ class TripController extends Controller
         $passenger_id = Auth::id();
 
         $trips  = Reservation::join('trips', 'reservations.trip_id', '=', 'trips.id')
+            ->join('users', 'trips.driver_id', '=', 'users.id')
             ->where('reservations.passenger_id', $passenger_id)
             ->where('reservations.status', 'finished')
-            ->select('reservations.*', 'trips.source', 'trips.destination', 'trips.departure_time', 'trips.arrival_time', 'trips.bus_number')
+            ->select('reservations.*', 'trips.source', 'trips.destination', 'trips.departure_time', 'trips.arrival_time', 'trips.bus_number', 'users.first_name', 'users.last_name')
             ->get();
 
         return response()->json([
