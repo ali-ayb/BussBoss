@@ -3,7 +3,6 @@ import Background from "../../components/Background/Background";
 import Logo from "../../components/Logo/Logo";
 import CurrentTripCard from "../../components/CurrentTripCard/CurrentTripCard";
 import { useEffect, useState } from "react";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 import UseHttp from "../../hooks/request";
 import { getToken } from "../../auth/auth";
 

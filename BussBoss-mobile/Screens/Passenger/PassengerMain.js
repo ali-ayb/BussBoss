@@ -14,7 +14,6 @@ import DriverCard from "../../components/DriverCard/DriverCard";
 import { useNavigation } from "@react-navigation/native";
 import { useEffect, useState } from "react";
 import UseHttp from "../../hooks/request";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 import { getToken } from "../../auth/auth";
 
 export default function PassengerMain() {
