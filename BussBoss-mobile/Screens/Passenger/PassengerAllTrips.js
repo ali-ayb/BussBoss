@@ -17,14 +17,13 @@ export default function PassengerCurrentTrips() {
         style={styles.image}
       />
       <Text style={styles.choose_driver}>All Trips:</Text>
-      <View style={styles.test}>
+      <View style={styles.cards_container}>
         <FlatList
           data={data}
           renderItem={renderItem}
           keyExtractor={(item) => item.toString()}
           contentContainerStyle={styles.listContainer}
           style={styles.list}
-          height={400}
         />
       </View>
     </View>
@@ -33,10 +32,9 @@ export default function PassengerCurrentTrips() {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     backgroundColor: "#F6F1F1",
   },
-  test: {
+  cards_container: {
     top: 80,
     height: 400,
   },
@@ -62,6 +60,6 @@ const styles = StyleSheet.create({
     gap: 10,
   },
   list: {
-    flexGrow: 0, // Set the flex property to adjust height
+    flexGrow: 0,
   },
 });
