@@ -4,7 +4,6 @@ import {
   Text,
   TouchableOpacity,
   FlatList,
-  ScrollView,
 } from "react-native";
 import Background from "../../components/Background/Background";
 import Logo from "../../components/Logo/Logo";
