@@ -2,11 +2,24 @@ import { StyleSheet, View, Text, Image, FlatList } from "react-native";
 import Background from "../../components/Background/Background";
 import Logo from "../../components/Logo/Logo";
 import AllTripsCard from "../../components/AllTripsCard/AllTripsCard";
+import { getToken } from "../../auth/auth";
+import { useEffect, useState } from "react";
+import UseHttp from "../../hooks/request";
 
 export default function PassengerCurrentTrips() {
-  const data = [1, 2, 3, 4, 5, 6];
+  const [allTrips, setallTrips] = useState([]);
 
-  const renderItem = ({ item }) => <AllTripsCard />;
+  useEffect(() => {
+    const fetchData = async () => {
+      const token = await getToken();
+      const result = await UseHttp("get_passenger_finished_trips", "GET", "", {
+        Authorization: "bearer " + token,
+      });
+      setallTrips(result.trips);
+    };
+    fetchData();
+  }, []);
+
   const header = () => {
     return (
       <View style={styles.container}>
@@ -22,9 +35,9 @@ export default function PassengerCurrentTrips() {
   };
   return (
     <FlatList
-      data={data}
+      data={allTrips}
       ListHeaderComponent={header}
-      renderItem={renderItem}
+      renderItem={({ item }) => <AllTripsCard item={item} />}
       keyExtractor={(item) => item.toString()}
       contentContainerStyle={styles.listContainer}
       style={styles.list}
@@ -34,7 +47,7 @@ export default function PassengerCurrentTrips() {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: "#F6F1F1",
-    marginBottom: 50,
+    marginBottom: 80,
   },
   image: {
     top: 120,
@@ -55,7 +68,7 @@ const styles = StyleSheet.create({
   },
   listContainer: {
     flexDirection: "column",
-    gap: 10,
+    gap: -30,
   },
   list: {
     flexGrow: 0,
