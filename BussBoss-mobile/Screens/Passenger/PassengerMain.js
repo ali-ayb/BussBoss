@@ -15,27 +15,12 @@ import { useNavigation } from "@react-navigation/native";
 import { useEffect, useState } from "react";
 import UseHttp from "../../hooks/request";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { getToken } from "../../auth/auth";
 
 export default function PassengerMain() {
   const [destination, setDestination] = useState("");
   const [drivers, setDrivers] = useState([]);
   const formData = new FormData();
-
-  const retrieveData = async () => {
-    try {
-      const value = await AsyncStorage.getItem("token");
-      if (value !== null) {
-        return value;
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const getToken = async () => {
-    const token = await retrieveData();
-    return token;
-  };
 
   useEffect(() => {
     const fetchData = async () => {
