@@ -49,6 +49,7 @@ const styles = StyleSheet.create({
     left: "10%",
     borderRadius: 15,
     elevation: 20,
+    marginBottom: 50,
   },
   clock_icon: {
     top: 20,
@@ -74,7 +75,7 @@ const styles = StyleSheet.create({
   },
   driver_name: {
     top: -90,
-    left: 200,
+    left: 180,
     fontSize: 16,
     fontWeight: "bold",
   },
