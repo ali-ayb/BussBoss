@@ -8,6 +8,7 @@ function AllTripsCard({ item }) {
   const source = item.source;
   const first_name = item.first_name;
   const last_name = item.last_name;
+  const rating = item.rating;
   const departure_time = new Date(item.departure_time);
   const arrival_time = new Date(item.arrival_time);
   return (
@@ -45,6 +46,7 @@ function AllTripsCard({ item }) {
         ratingColor="#146C94"
         ratingCount={5}
         imageSize={30}
+        startingValue={rating}
         ratingBackgroundColor="#D9D9D9"
         tintColor="#FFF"
         readonly="true"
