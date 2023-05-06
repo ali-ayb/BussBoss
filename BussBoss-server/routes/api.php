@@ -33,6 +33,7 @@ Route::group(['middleware' => 'bussboss_authenticate'], function () {
     Route::get('/get_Passenger_total_paid', [PassengerController::class, "getPassengerTotalPaid"]);
     Route::get('/get_passenger_total_trips', [PassengerController::class, "getPassengerTotalTrips"]);
     Route::post('/finish_reservation', [ReservationController::class, "finishReservation"]);
+    Route::post('/cancel_reservation', [ReservationController::class, "cancelReservation"]);
 
     Route::group(['middleware' => 'driver_authorize'], function () {
         Route::get('/get_driver_total_trips', [DriverController::class, "getDriverTotalTrips"]);
