@@ -44,6 +44,21 @@ class ReservationController extends Controller
         ]);
     }
 
+    public function cancelReservation(Request $request)
+    {
+        $reservation_id = $request->reservation_id;
+        $passenger_id = Auth::id();
+
+        $action = Reservation::where('id', $reservation_id)
+            ->where('passenger_id', $passenger_id)
+            ->update(['status' => 'canceled']);
+
+
+        return response()->json([
+            "result" => $action,
+        ]);
+    }
+
     public function getPassengerCurrentReservations()
     {
         $passenger_id = Auth::id();
