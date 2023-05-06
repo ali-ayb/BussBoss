@@ -27,7 +27,7 @@ export default function PassengerCurrentTrips() {
 
   const header = () => {
     return (
-      <View style={{ backgroundColor: "#F6F1F1", marginBottom: 50 }}>
+      <View style={styles.main}>
         <Background />
         <Logo />
         <Image
@@ -51,7 +51,8 @@ export default function PassengerCurrentTrips() {
       data={currentReservations}
       renderItem={({ item }) => <CurrentTripCard item={item} />}
       keyExtractor={(item, index) => index.toString()}
-      contentContainerStyle={{ gap: 10 }}
+      contentContainerStyle={{ gap: -30 }}
+      style={styles.list}
     />
   );
 }
@@ -59,6 +60,7 @@ export default function PassengerCurrentTrips() {
 const styles = StyleSheet.create({
   main: {
     backgroundColor: "#F6F1F1",
+    marginBottom: 80,
   },
   title: {
     left: 40,
@@ -68,5 +70,8 @@ const styles = StyleSheet.create({
     fontSize: 32,
     color: "black",
     fontWeight: "bold",
+  },
+  list: {
+    flexGrow: 0,
   },
 });

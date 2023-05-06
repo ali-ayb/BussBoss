@@ -67,7 +67,6 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   listContainer: {
-    flexDirection: "column",
     gap: -30,
   },
   list: {

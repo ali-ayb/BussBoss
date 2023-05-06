@@ -38,8 +38,6 @@ export default function PassengerMain() {
     fetchData();
   }, [destination]);
 
-  console.log(drivers);
-
   const navigation = useNavigation();
 
   const handlePress = () => {
