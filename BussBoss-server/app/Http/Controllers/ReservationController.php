@@ -29,8 +29,19 @@ class ReservationController extends Controller
         ]);
     }
 
-    public function finishReservarion()
+    public function finishReservation(Request $request)
     {
+        $reservation_id = $request->reservation_id;
+        $passenger_id = Auth::id();
+
+        $action = Reservation::where('id', $reservation_id)
+            ->where('passenger_id', $passenger_id)
+            ->update(['status' => 'finished']);
+
+
+        return response()->json([
+            "result" => $action,
+        ]);
     }
 
     public function getPassengerCurrentReservations()
