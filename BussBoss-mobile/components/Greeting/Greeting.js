@@ -36,9 +36,11 @@ export default function PassengerMain() {
     fetchData();
   }, []);
   // ...
-
+  const profile = () => {
+    alert("my profile");
+  };
   return (
-    <Text style={styles.name}>
+    <Text style={styles.name} onPress={profile}>
       Hello,{"\n"}
       {first_name} {last_name}
     </Text>
