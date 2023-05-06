@@ -50,6 +50,7 @@ const styles = StyleSheet.create({
     left: 35,
     borderRadius: 15,
     elevation: 20,
+    marginBottom: 30,
   },
   driver_img: {
     top: 25,

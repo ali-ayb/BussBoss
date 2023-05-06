@@ -49,6 +49,7 @@ export default function PassengerMain() {
       <Background />
       <Logo />
       <Greeting />
+
       <Text style={styles.search_title}>Where are you heading?</Text>
       <Search userInput={destination} setUserInput={setDestination} />
       <TripsBar />
@@ -62,7 +63,7 @@ export default function PassengerMain() {
             </TouchableOpacity>
           )}
           keyExtractor={(item, index) => index.toString()}
-          contentContainerStyle={{ gap: 10, top: 0 }}
+          contentContainerStyle={{ gap: 0, top: 0 }}
           style={styles.list}
         />
       </View>
