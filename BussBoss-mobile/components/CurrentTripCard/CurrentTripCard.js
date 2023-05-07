@@ -19,6 +19,7 @@ function CurrentTripCard({ item, refreshData }) {
   const first_name = item.first_name;
   const last_name = item.last_name;
   const reservation_id = item.id;
+  const driver_id = item.driver_id;
   const departure_time = new Date(item.departure_time);
   const arrival_time = new Date(item.arrival_time);
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -54,6 +55,12 @@ function CurrentTripCard({ item, refreshData }) {
     formData.append("reservation_id", reservation_id);
     const token = await getToken();
     const result = await UseHttp("finish_reservation", "POST", formData, {
+      Authorization: "Bearer " + token,
+    });
+    formData.append("rating", rating);
+    formData.append("driver_id", driver_id);
+
+    const result2 = await UseHttp("add_rating", "POST", formData, {
       Authorization: "Bearer " + token,
     });
     setIsModalVisible(false);
