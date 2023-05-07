@@ -1,8 +1,33 @@
 import { StyleSheet, View, Image, Text, TouchableOpacity } from "react-native";
-function onPressLearnMore() {
-  alert("test");
-}
-function ReserveTripCard(props) {
+import { getToken } from "../../auth/auth";
+import Toast from "react-native-root-toast";
+import UseHttp from "../../hooks/request";
+
+function ReserveTripCard({ item }) {
+  const destination = item.destination;
+  const source = item.source;
+  const price = item.price;
+  const departure_time = new Date(item.departure_time);
+  const arrival_time = new Date(item.arrival_time);
+  isFull = false;
+  const formData = new FormData();
+
+  const reserveTrip = async (id) => {
+    Toast.show("  Some Thing went Wrong ", {
+      duration: Toast.durations.LONG,
+      position: Toast.positions.TOP, // Change the position to BOTTOM
+      backgroundColor: "#00FF00", //
+    });
+    // const token = await getToken();
+    // formData.append("trip_id", id);
+    // const result = await UseHttp("reserve_trip", "POST", formData, {
+    //   Authorization: "bearer " + token,
+    // });
+    // if (result.status === true) {
+    //   alert("here");
+    // }
+  };
+
   return (
     <View style={styles.CurrentTripCard}>
       <Image
@@ -13,18 +38,22 @@ function ReserveTripCard(props) {
         style={styles.pin_icon}
         source={require("../../assets/pin_icon.png")}
       />
-      <Text style={styles.trip_time}>10:00 {"<-->"} 10:30</Text>
-      <Text style={styles.trip_position}>From {"<-->"} To Position </Text>
-      <Text style={styles.price}>1.0$</Text>
-      <TouchableOpacity style={styles.finish_btn} onPress={onPressLearnMore}>
+      <Text style={styles.trip_time}>
+        {departure_time.getHours()}:{departure_time.getMinutes()} {"<-->"}
+        {arrival_time.getHours()}:{arrival_time.getMinutes()}
+      </Text>
+      <Text style={styles.trip_position}>
+        {source} {"<-->"} {destination}{" "}
+      </Text>
+      <Text style={styles.price}>{price}$</Text>
+      <TouchableOpacity
+        style={styles.finish_btn}
+        onPress={() => {
+          reserveTrip(item.id);
+        }}>
         <Text style={styles.Select_btn_text}>Select</Text>
       </TouchableOpacity>
-      {props.isFull ? (
-        <Text style={styles.full}>(Full Trip)</Text>
-      ) : (
-        <Text></Text>
-      )}
-      {/* <Text style={styles.full}>{"(Full Trip)"}</Text> */}
+      {isFull ? <Text style={styles.full}>(Full Trip)</Text> : <></>}
     </View>
   );
 }
@@ -37,6 +66,7 @@ const styles = StyleSheet.create({
     top: 85,
     left: "10%",
     borderRadius: 15,
+    marginBottom: 130,
     elevation: 20,
   },
   full: {
@@ -68,9 +98,6 @@ const styles = StyleSheet.create({
     left: 260,
     fontSize: 14,
   },
-  track_btn: {
-    borderRadius: 15,
-  },
   finish_btn: {
     backgroundColor: "#0E7BCB",
     borderRadius: 15,
@@ -82,18 +109,5 @@ const styles = StyleSheet.create({
   Select_btn_text: {
     color: "#FFFFFF",
     left: "25%",
-  },
-
-  track_btn: {
-    backgroundColor: "#6CC1FF",
-    borderRadius: 15,
-    padding: 5,
-    left: "47%",
-    top: "-80%",
-    width: 80,
-  },
-  track_btn_text: {
-    color: "#000",
-    left: 5,
   },
 });
