@@ -2,6 +2,7 @@ import { StyleSheet, View, Image, Text, TouchableOpacity } from "react-native";
 import { getToken } from "../../auth/auth";
 import Toast from "react-native-root-toast";
 import UseHttp from "../../hooks/request";
+import { useNavigation } from "@react-navigation/native";
 
 function ReserveTripCard({ item }) {
   const destination = item.destination;
@@ -11,13 +12,20 @@ function ReserveTripCard({ item }) {
   const arrival_time = new Date(item.arrival_time);
   isFull = false;
   const formData = new FormData();
+  const navigation = useNavigation();
 
   const reserveTrip = async (id) => {
-    Toast.show("  Some Thing went Wrong ", {
+    Toast.show("Trip Reserved sucessfully ", {
       duration: Toast.durations.LONG,
-      position: Toast.positions.TOP, // Change the position to BOTTOM
-      backgroundColor: "#00FF00", //
+      position: Toast.positions.TOP,
+      backgroundColor: "#6CC1FF",
+      textStyle: { fontSize: 16, color: "white", fontWeight: "bold" },
+      animation: true,
+      hideOnPress: true,
+      containerStyle: { top: 170, alignItems: "center", borderRadius: 15 },
     });
+    navigation.navigate("Passenger");
+
     // const token = await getToken();
     // formData.append("trip_id", id);
     // const result = await UseHttp("reserve_trip", "POST", formData, {
