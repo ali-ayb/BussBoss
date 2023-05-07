@@ -10,7 +10,7 @@ function ReserveTripCard({ item }) {
   const price = item.price;
   const departure_time = new Date(item.departure_time);
   const arrival_time = new Date(item.arrival_time);
-  isFull = false;
+  // const isFull = false;
   const formData = new FormData();
   const navigation = useNavigation();
 
@@ -55,11 +55,12 @@ function ReserveTripCard({ item }) {
       <TouchableOpacity
         style={styles.finish_btn}
         onPress={() => {
-          reserveTrip(item.id);
+          // reserveTrip(item.id);
+          console.log(item.id);
         }}>
         <Text style={styles.Select_btn_text}>Select</Text>
       </TouchableOpacity>
-      {isFull ? <Text style={styles.full}>(Full Trip)</Text> : <></>}
+      {/* {isFull ? <Text style={styles.full}>(Full Trip)</Text> : <></>} */}
     </View>
   );
 }
@@ -69,10 +70,10 @@ const styles = StyleSheet.create({
     backgroundColor: "#FFF",
     height: 110,
     width: 335,
-    top: 85,
+    top: 0,
     left: "10%",
     borderRadius: 15,
-    marginBottom: 130,
+    marginBottom: 15,
     elevation: 20,
   },
   full: {

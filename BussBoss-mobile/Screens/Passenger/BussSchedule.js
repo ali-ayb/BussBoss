@@ -44,7 +44,7 @@ export default function BussSchedule({ route }) {
       data={Schedule}
       renderItem={({ item }) => <ReserveTripCard item={item} />}
       keyExtractor={(item, index) => index.toString()}
-      contentContainerStyle={{ gap: -110 }}
+      contentContainerStyle={{ flex: 1 }}
       style={styles.list}
     />
   );
@@ -82,5 +82,6 @@ const styles = StyleSheet.create({
   },
   list: {
     flexGrow: 0,
+    height: "100%",
   },
 });
