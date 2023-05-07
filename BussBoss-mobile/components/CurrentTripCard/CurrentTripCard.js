@@ -11,10 +11,19 @@ import {
   Button,
 } from "react-native";
 import { Rating } from "react-native-ratings";
+import { getToken } from "../../auth/auth";
+import UseHttp from "../../hooks/request";
 
-function CurrentTripCard({ item }) {
+function CurrentTripCard({ item, refreshData }) {
+  const destination = item.destination;
+  const first_name = item.first_name;
+  const last_name = item.last_name;
+  const reservation_id = item.id;
+  const departure_time = new Date(item.departure_time);
+  const arrival_time = new Date(item.arrival_time);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [rating, setRating] = useState(0);
+  const formData = new FormData();
 
   const navigation = useNavigation();
 
@@ -22,8 +31,14 @@ function CurrentTripCard({ item }) {
     navigation.navigate("map");
   };
 
-  const Cancel = () => {
-    alert("trip cancel");
+  const Cancel = async () => {
+    formData.append("reservation_id", reservation_id);
+    const token = await getToken();
+    const result = await UseHttp("cancel_reservation", "POST", formData, {
+      Authorization: "Bearer " + token,
+    });
+    setIsModalVisible(false);
+    refreshData();
   };
 
   const closeModal = () => {
@@ -34,15 +49,15 @@ function CurrentTripCard({ item }) {
     setIsModalVisible(true);
   };
 
-  const destination = item.destination;
-  const first_name = item.first_name;
-  const last_name = item.last_name;
-  const departure_time = new Date(item.departure_time);
-  const arrival_time = new Date(item.arrival_time);
-
-  const handleRatingCompleted = (rating) => {
+  const handleRatingCompleted = async (rating) => {
     setRating(rating);
+    formData.append("reservation_id", reservation_id);
+    const token = await getToken();
+    const result = await UseHttp("finish_reservation", "POST", formData, {
+      Authorization: "Bearer " + token,
+    });
     setIsModalVisible(false);
+    refreshData();
   };
 
   return (

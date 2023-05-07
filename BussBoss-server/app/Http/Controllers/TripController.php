@@ -33,10 +33,10 @@ class TripController extends Controller
     {
         $driver_id = $request->driver_id;
 
-        $trips = Trip::where('driver_id', '=', $driver_id)
+        $trips = Trip::select('trips.id', 'trips.departure_time', 'trips.arrival_time', 'trips.source', 'trips.destination', 'trips.price')
+            ->where('driver_id', '=', $driver_id)
             ->where('status', '=', 'ongoing')
             ->where('is_deleted', '=', 0)
-            ->select('trips.id', 'trips.departure_time', 'trips.arrival_time', 'trips.source', 'trips.destination', 'trips.price')
             ->get();
 
         return response()->json([
