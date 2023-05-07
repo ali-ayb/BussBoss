@@ -12,7 +12,16 @@ const PassengerOnboardingStack = ({ navigation }) => {
     <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen name="Passenger" component={PassengerTabStack} />
       <Stack.Screen name="BussSchedule" component={BussSchedule} />
-      <Stack.Screen name="map" component={map} />
+      <Stack.Screen
+        options={{
+          headerShown: true,
+          title: "Current Reservations",
+          headerStyle: { backgroundColor: "#146C94" },
+          headerTintColor: "#fff",
+        }}
+        name="map"
+        component={map}
+      />
     </Stack.Navigator>
   );
 };
