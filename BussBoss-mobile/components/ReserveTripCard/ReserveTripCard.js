@@ -15,25 +15,23 @@ function ReserveTripCard({ item }) {
   const navigation = useNavigation();
 
   const reserveTrip = async (id) => {
-    Toast.show("Trip Reserved sucessfully ", {
-      duration: Toast.durations.LONG,
-      position: Toast.positions.TOP,
-      backgroundColor: "#6CC1FF",
-      textStyle: { fontSize: 16, color: "white", fontWeight: "bold" },
-      animation: true,
-      hideOnPress: true,
-      containerStyle: { top: 170, alignItems: "center", borderRadius: 15 },
+    const token = await getToken();
+    formData.append("trip_id", id);
+    const result = await UseHttp("reserve_trip", "POST", formData, {
+      Authorization: "bearer " + token,
     });
-    navigation.navigate("Passenger");
-
-    // const token = await getToken();
-    // formData.append("trip_id", id);
-    // const result = await UseHttp("reserve_trip", "POST", formData, {
-    //   Authorization: "bearer " + token,
-    // });
-    // if (result.status === true) {
-    //   alert("here");
-    // }
+    if (result.status === true) {
+      Toast.show("Trip Reserved sucessfully ", {
+        duration: Toast.durations.LONG,
+        position: Toast.positions.TOP,
+        backgroundColor: "#6CC1FF",
+        textStyle: { fontSize: 16, color: "white", fontWeight: "bold" },
+        animation: true,
+        hideOnPress: true,
+        containerStyle: { top: 170, alignItems: "center", borderRadius: 15 },
+      });
+      navigation.navigate("Passenger");
+    }
   };
 
   return (
