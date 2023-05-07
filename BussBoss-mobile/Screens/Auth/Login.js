@@ -15,11 +15,10 @@ import { useState } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function Login() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("Ali@gmail.com");
+  const [password, setPassword] = useState("code123");
   const formData = new FormData();
   const navigation = useNavigation();
-
   const register = () => {
     navigation.navigate("Preregister Screen");
   };
