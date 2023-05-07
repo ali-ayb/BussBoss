@@ -5,14 +5,15 @@ import { getToken } from "../../auth/auth";
 import UseHttp from "../../hooks/request";
 import { useEffect, useState } from "react";
 
-export default function BussSchedule() {
+export default function BussSchedule({ route }) {
   const [Schedule, setSchedule] = useState([]);
+  const { driver_id } = route.params;
 
   useEffect(() => {
     const fetchData = async () => {
       const token = await getToken();
       const result = await UseHttp(
-        "get_trips_from_driver_id?driver_id=5",
+        `get_trips_from_driver_id?driver_id=${driver_id}`,
         "GET",
         "",
         {
