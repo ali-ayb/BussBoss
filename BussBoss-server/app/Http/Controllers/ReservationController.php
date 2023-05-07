@@ -25,7 +25,8 @@ class ReservationController extends Controller
             ->increment('passenger_number');
 
         return response()->json([
-            'reservation' => $reservation
+            'reservation' => $reservation,
+            'status' => true
         ]);
     }
 
