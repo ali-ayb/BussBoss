@@ -9,20 +9,21 @@ import { getToken } from "../../auth/auth";
 export default function PassengerCurrentTrips() {
   const [currentReservations, setCurrentReservations] = useState([]);
 
+  const refreshData = async () => {
+    const token = await getToken();
+    const result = await UseHttp(
+      "get_passenger_current_reservations",
+      "GET",
+      "",
+      {
+        Authorization: "bearer " + token,
+      }
+    );
+    setCurrentReservations(result.currentReservation);
+  };
+
   useEffect(() => {
-    const fetchData = async () => {
-      const token = await getToken();
-      const result = await UseHttp(
-        "get_passenger_current_reservations",
-        "GET",
-        "",
-        {
-          Authorization: "bearer " + token,
-        }
-      );
-      setCurrentReservations(result.currentReservation);
-    };
-    fetchData();
+    refreshData();
   }, []);
 
   const header = () => {
@@ -49,7 +50,9 @@ export default function PassengerCurrentTrips() {
     <FlatList
       ListHeaderComponent={header}
       data={currentReservations}
-      renderItem={({ item }) => <CurrentTripCard item={item} />}
+      renderItem={({ item }) => (
+        <CurrentTripCard item={item} refreshData={refreshData} />
+      )}
       keyExtractor={(item, index) => index.toString()}
       contentContainerStyle={{ gap: -30 }}
       style={styles.list}

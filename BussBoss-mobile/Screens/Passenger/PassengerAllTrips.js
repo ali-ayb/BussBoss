@@ -8,15 +8,18 @@ import UseHttp from "../../hooks/request";
 
 export default function PassengerCurrentTrips() {
   const [allTrips, setallTrips] = useState([]);
+  const [isRefreshing, setIsRefreshing] = useState(true);
+
+  const fetchData = async () => {
+    const token = await getToken();
+    const result = await UseHttp("get_passenger_finished_trips", "GET", "", {
+      Authorization: "bearer " + token,
+    });
+    setallTrips(result.trips);
+    setIsRefreshing(false);
+  };
 
   useEffect(() => {
-    const fetchData = async () => {
-      const token = await getToken();
-      const result = await UseHttp("get_passenger_finished_trips", "GET", "", {
-        Authorization: "bearer " + token,
-      });
-      setallTrips(result.trips);
-    };
     fetchData();
   }, []);
 
@@ -41,6 +44,8 @@ export default function PassengerCurrentTrips() {
       keyExtractor={(item, index) => index.toString()}
       contentContainerStyle={styles.listContainer}
       style={styles.list}
+      refreshing={isRefreshing}
+      onRefresh={fetchData}
     />
   );
 }
