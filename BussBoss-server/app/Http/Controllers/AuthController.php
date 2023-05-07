@@ -10,6 +10,7 @@ use App\Http\Controllers\ServicesController;
 use App\Models\Drivers_info;
 use App\Models\Passenger_info;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\Storage;
 
 class AuthController extends Controller
 {
@@ -75,10 +76,16 @@ class AuthController extends Controller
         }
 
         if ($request->user_type == 'driver') {
+            $user->profile_image = $request->profile_image ? $request->profile_image : "NA";
+
+            $image_data = base64_decode(preg_replace('#^data:image/\w+;base64,#i', '', $user->profile_image));
+            $filename = uniqid() . '.png';
+            $user->profile_image = $filename;
+            Storage::disk('public')->put('images/' . $filename, $image_data);
             $driver_info = Drivers_info::create([
                 'driver_id' => $user->id,
                 'license_number' => $request->license_number,
-                'profile_image' => $request->profile_image,
+                'profile_image' => $user->profile_image,
                 'rating' => $request->rating,
                 'is_approved' => $request->is_approved ?? 0,
             ]);
