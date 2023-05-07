@@ -1,30 +1,51 @@
-import { Image, StyleSheet, Text, View } from "react-native";
+import { Image, StyleSheet, Text, View, FlatList } from "react-native";
 import Background from "../../components/Background/Background";
 import ReserveTripCard from "../../components/ReserveTripCard/ReserveTripCard";
-import { ScrollView } from "react-native-gesture-handler";
+import { getToken } from "../../auth/auth";
+import UseHttp from "../../hooks/request";
+import { useEffect, useState } from "react";
 
 export default function BussSchedule() {
-  return (
-    <View style={{ backgroundColor: "#F6F1F1", flex: 1 }}>
-      <Background />
-      <Text style={styles.title}>Bus Schedule</Text>
-      <Image
-        style={styles.buss_image}
-        source={require("../../assets/Shuttle_bus.png")}
-      />
-      <Text style={styles.subtitle}>Choose Schedule</Text>
-      <View style={{ height: 400, flexGrow: 0, gap: 10, marginTop: 40 }}>
-        <ScrollView contentContainerStyle={{ gap: 10, marginBottom: 0 }}>
-          <ReserveTripCard isFull={false} />
-          <ReserveTripCard isFull={false} />
-          <ReserveTripCard isFull={false} />
-          <ReserveTripCard isFull={false} />
-          <ReserveTripCard isFull={false} />
-          <ReserveTripCard isFull={false} />
-          <ReserveTripCard isFull={true} />
-        </ScrollView>
+  const [Schedule, setSchedule] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const token = await getToken();
+      const result = await UseHttp(
+        "get_trips_from_driver_id?driver_id=5",
+        "GET",
+        "",
+        {
+          Authorization: "bearer " + token,
+        }
+      );
+      setSchedule(result.trips);
+    };
+    fetchData();
+  }, []);
+
+  const header = () => {
+    return (
+      <View style={styles.main}>
+        <Background />
+        <Text style={styles.title}>Bus Schedule</Text>
+        <Image
+          style={styles.buss_image}
+          source={require("../../assets/Shuttle_bus.png")}
+        />
+        <Text style={styles.subtitle}>Choose Schedule</Text>
       </View>
-    </View>
+    );
+  };
+  return (
+    <FlatList
+      ListHeaderComponent={header}
+      data={Schedule}
+      renderItem={({ item }) => <ReserveTripCard item={item} />}
+      keyExtractor={(item, index) => index.toString()}
+      contentContainerStyle={{ gap: -110 }}
+      style={styles.list}
+    />
   );
 }
 const styles = StyleSheet.create({
@@ -35,6 +56,10 @@ const styles = StyleSheet.create({
     height: 130,
     zIndex: 2,
     position: "absolute",
+  },
+  main: {
+    backgroundColor: "#F6F1F1",
+    marginBottom: 80,
   },
   title: {
     position: "absolute",
@@ -52,9 +77,9 @@ const styles = StyleSheet.create({
     color: "#000",
     fontWeight: "bold",
     left: "9%",
-    top: "40%",
+    top: "100%",
   },
-  main: {
-    backgroundColor: "#F6F1F1",
+  list: {
+    flexGrow: 0,
   },
 });
