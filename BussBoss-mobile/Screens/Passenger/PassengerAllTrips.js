@@ -38,7 +38,7 @@ export default function PassengerCurrentTrips() {
       data={allTrips}
       ListHeaderComponent={header}
       renderItem={({ item }) => <AllTripsCard item={item} />}
-      keyExtractor={(item) => item.toString()}
+      keyExtractor={(item, index) => index.toString()}
       contentContainerStyle={styles.listContainer}
       style={styles.list}
     />
