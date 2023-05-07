@@ -41,8 +41,10 @@ export default function PassengerMain() {
 
   const navigation = useNavigation();
 
-  const handlePress = () => {
-    navigation.navigate("BussSchedule");
+  const handlePress = (driver_id) => {
+    console.log(driver_id); // add this line
+
+    navigation.navigate("BussSchedule", { driver_id });
   };
 
   return (
@@ -59,7 +61,9 @@ export default function PassengerMain() {
         <FlatList
           data={drivers}
           renderItem={({ item }) => (
-            <TouchableHighlight onPress={handlePress} underlayColor="#F6F1F1">
+            <TouchableHighlight
+              onPress={() => handlePress(item.driver_id)}
+              underlayColor="#F6F1F1">
               <DriverCard item={item} />
             </TouchableHighlight>
           )}
