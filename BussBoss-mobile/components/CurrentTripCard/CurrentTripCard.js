@@ -1,11 +1,17 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useNavigation } from "@react-navigation/native";
 import { useEffect } from "react";
 import { StyleSheet, View, Image, Text, TouchableOpacity } from "react-native";
 
-function onPressLearnMore() {
-  alert("test");
-}
 function CurrentTripCard({ item }) {
+  const navigation = useNavigation();
+
+  const openMap = () => {
+    navigation.navigate("map");
+  };
+  const onPressLearnMore = () => {
+    alert("map");
+  };
   const destination = item.destination;
   const first_name = item.first_name;
   const last_name = item.last_name;
@@ -34,7 +40,7 @@ function CurrentTripCard({ item }) {
       <TouchableOpacity style={styles.finish_btn} onPress={onPressLearnMore}>
         <Text style={styles.finish_btn_text}>Finish Trip</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.track_btn} onPress={onPressLearnMore}>
+      <TouchableOpacity style={styles.track_btn} onPress={openMap}>
         <Text style={styles.track_btn_text}>Track Bus</Text>
       </TouchableOpacity>
     </View>
