@@ -4,6 +4,7 @@ import {
   Text,
   TouchableOpacity,
   FlatList,
+  TouchableHighlight,
 } from "react-native";
 import Background from "../../components/Background/Background";
 import Logo from "../../components/Logo/Logo";
@@ -58,9 +59,9 @@ export default function PassengerMain() {
         <FlatList
           data={drivers}
           renderItem={({ item }) => (
-            <TouchableOpacity onPress={handlePress}>
+            <TouchableHighlight onPress={handlePress} underlayColor="#F6F1F1">
               <DriverCard item={item} />
-            </TouchableOpacity>
+            </TouchableHighlight>
           )}
           keyExtractor={(item, index) => index.toString()}
           contentContainerStyle={{ gap: 0, top: 0 }}
