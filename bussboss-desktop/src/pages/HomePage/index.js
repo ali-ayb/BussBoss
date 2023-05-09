@@ -1,8 +1,6 @@
 import Adminheader from "../../components/admin_header";
 import AdminSidebar from "../../components/admin_sidebar";
 import UsersTable from "../../components/users_table";
-import UseHttp from "../../hooks/http-hook";
-import { useEffect, useState } from "react";
 
 const HomePage = () => {
   return (
