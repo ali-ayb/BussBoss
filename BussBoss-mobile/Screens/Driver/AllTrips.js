@@ -2,43 +2,58 @@ import { StyleSheet, View, Text, Image, FlatList } from "react-native";
 import Background from "../../components/Background/Background";
 import Logo from "../../components/Logo/Logo";
 import DriverAllTripsCard from "../../components/DriverAllTripsCard/DriverAllTripsCard";
+import { getToken } from "../../auth/auth";
+import { useEffect, useState } from "react";
+import UseHttp from "../../hooks/request";
 
 export default function AllTrips() {
-  const data = [1, 2, 3, 4, 5, 6];
+  const [allTrips, setallTrips] = useState([]);
+  const [isRefreshing, setIsRefreshing] = useState(true);
 
-  const renderItem = ({ item }) => <DriverAllTripsCard />;
+  const fetchData = async () => {
+    const token = await getToken();
+    const result = await UseHttp("get_driver_finished_trips", "GET", "", {
+      Authorization: "bearer " + token,
+    });
+    setallTrips(result.trips);
+    setIsRefreshing(false);
+  };
 
-  return (
-    <View style={styles.container}>
-      <Background />
-      <Logo />
-      <Image
-        source={require("../../assets/Delivery_Time.png")}
-        style={styles.image}
-      />
-      <Text style={styles.title}>All Trips:</Text>
-      <View style={styles.test}>
-        <FlatList
-          data={data}
-          renderItem={renderItem}
-          keyExtractor={(item) => item.toString()}
-          contentContainerStyle={styles.listContainer}
-          style={styles.list}
-          height={400}
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const header = () => {
+    return (
+      <View style={styles.container}>
+        <Background />
+        <Logo />
+        <Image
+          source={require("../../assets/Delivery_Time.png")}
+          style={styles.image}
         />
+        <Text style={styles.title}>All Trips:</Text>
       </View>
-    </View>
+    );
+  };
+  return (
+    <FlatList
+      data={allTrips}
+      ListHeaderComponent={header}
+      renderItem={({ item }) => <DriverAllTripsCard item={item} />}
+      keyExtractor={(item, index) => index.toString()}
+      contentContainerStyle={styles.listContainer}
+      style={styles.list}
+      refreshing={isRefreshing}
+      onRefresh={fetchData}
+    />
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     backgroundColor: "#F6F1F1",
-  },
-  test: {
-    top: 60,
-    height: 400,
+    marginBottom: 80,
   },
   image: {
     top: 120,
@@ -58,8 +73,9 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   listContainer: {
-    flexDirection: "column",
-    gap: 10,
+    listContainer: {
+      gap: -30,
+    },
   },
   list: {
     flexGrow: 0, // Set the flex property to adjust height
