@@ -59,4 +59,33 @@ class TripController extends Controller
             "trips" => $trips,
         ]);
     }
+
+    public function getDriverFinishedTrips()
+    {
+        $driver_id = Auth::id();
+
+        $trips  = Trip::where('trips.driver_id', $driver_id)
+            ->where('trips.status', '=', 'finished')
+            ->join('drivers_info', 'trips.driver_id', '=', 'drivers_info.driver_id')
+            ->select('trips.*', 'drivers_info.rating')
+            ->get();
+
+        return response()->json([
+            "trips" => $trips,
+        ]);
+    }
+    public function getDriverCurrentTrips()
+    {
+        $driver_id = Auth::id();
+
+        $trips  = Trip::where('trips.driver_id', $driver_id)
+            ->where('trips.status', '=', 'ongoing')
+            ->join('drivers_info', 'trips.driver_id', '=', 'drivers_info.driver_id')
+            ->select('trips.*')
+            ->get();
+
+        return response()->json([
+            "trips" => $trips,
+        ]);
+    }
 }
