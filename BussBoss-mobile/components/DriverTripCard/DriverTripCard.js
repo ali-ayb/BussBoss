@@ -1,13 +1,18 @@
-import { useNavigation } from "@react-navigation/native";
 import { StyleSheet, View, Image, Text, TouchableOpacity } from "react-native";
-function onPressLearnMore() {
-  alert("test");
-}
-function DriverTripCard(props) {
+
+function DriverTripCard({ item, refreshData }) {
+  const destination = item.destination;
+  const source = item.source;
+  const passenger_number = item.passenger_number;
+  const seats_available = item.seats_available;
+  const reservation_id = item.id;
+  const driver_id = item.driver_id;
+  const departure_time = new Date(item.departure_time);
+  const arrival_time = new Date(item.arrival_time);
+  const formData = new FormData();
   function onPressLearnMore() {
     alert("test");
   }
-
   return (
     <View style={styles.CurrentTripCard}>
       <Image
@@ -18,9 +23,16 @@ function DriverTripCard(props) {
         style={styles.pin_icon}
         source={require("../../assets/pin_icon.png")}
       />
-      <Text style={styles.trip_time}>10:00 {"<-->"} 10:30</Text>
-      <Text style={styles.trip_position}>From {"<-->"} To Position </Text>
-      <Text style={styles.passenger_number}>Passenger: 5/14</Text>
+      <Text style={styles.trip_time}>
+        {departure_time.getHours()}:{departure_time.getMinutes()} {"<-->"}
+        {arrival_time.getHours()}:{arrival_time.getMinutes()}
+      </Text>
+      <Text style={styles.trip_position}>
+        {source} {"<-->"} {destination}
+      </Text>
+      <Text style={styles.passenger_number}>
+        Passenger: {passenger_number}/{seats_available}
+      </Text>
       <TouchableOpacity style={styles.finish_btn} onPress={onPressLearnMore}>
         <Text style={styles.cancel_btn_text}>Cancel</Text>
       </TouchableOpacity>
@@ -37,6 +49,7 @@ const styles = StyleSheet.create({
     left: "10%",
     borderRadius: 15,
     elevation: 20,
+    marginBottom: 30,
   },
   full: {
     top: -60,
