@@ -1,4 +1,10 @@
-import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
+import {
+  StyleSheet,
+  View,
+  Text,
+  TouchableOpacity,
+  FlatList,
+} from "react-native";
 import Background from "../../components/Background/Background";
 import Logo from "../../components/Logo/Logo";
 import Greeting from "../../components/Greeting/Greeting";
@@ -6,43 +12,69 @@ import Search from "../../components/Search/Search";
 import DriverTripsBar from "../../components/DriverTripBar/DriverTripBar";
 import DriverTripCard from "../../components/DriverTripCard/DriverTripCard";
 import { useNavigation } from "@react-navigation/native";
+import { useEffect, useState } from "react";
+import { getToken } from "../../auth/auth";
+import UseHttp from "../../hooks/request";
 
 export default function DriverMain() {
-  function onPressLearnMore() {
-    alert("test");
-  }
+  const [current_trips, setCurrentTrips] = useState([]);
+
+  const refreshData = async () => {
+    const token = await getToken();
+    const result = await UseHttp("get_driver_current_trips", "GET", "", {
+      Authorization: "bearer " + token,
+    });
+    setCurrentTrips(result.trips);
+  };
+
+  useEffect(() => {
+    refreshData();
+  }, []);
+
   const navigation = useNavigation();
 
   const handlePress = () => {
     navigation.navigate("AddTrip");
   };
-  return (
-    <View style={{ backgroundColor: "#F6F1F1", flex: 1 }}>
-      <Background />
-      <Logo />
-      <Greeting />
-      <DriverTripsBar />
-      <Text style={styles.title}>Current Trips</Text>
-      <TouchableOpacity style={styles.add_trip_btn} onPress={handlePress}>
-        <Text style={styles.add_trip_txt}>Add Trip</Text>
-      </TouchableOpacity>
-      <View
-        style={{
-          flexDirection: "column",
-          gap: 10,
-          // backgroundColor: "#000",
-          top: 60,
-        }}>
-        <DriverTripCard />
-        <DriverTripCard />
+  const header = () => {
+    return (
+      <View style={styles.main}>
+        <Background />
+        <Logo />
+        <Greeting />
+        <DriverTripsBar />
+        <Text style={styles.title}>Current Trips</Text>
+        <TouchableOpacity style={styles.add_trip_btn} onPress={handlePress}>
+          <Text style={styles.add_trip_txt}>Add Trip</Text>
+        </TouchableOpacity>
+        <View
+          style={{
+            flexDirection: "column",
+            gap: 10,
+            // backgroundColor: "#000",
+            top: 60,
+          }}></View>
       </View>
-    </View>
+    );
+  };
+
+  return (
+    <FlatList
+      ListHeaderComponent={header}
+      data={current_trips}
+      renderItem={({ item }) => (
+        <DriverTripCard item={item} refreshData={refreshData} />
+      )}
+      keyExtractor={(item, index) => index.toString()}
+      contentContainerStyle={{ gap: -10 }}
+      style={styles.list}
+    />
   );
 }
-
 const styles = StyleSheet.create({
   main: {
     backgroundColor: "#F6F1F1",
+    marginBottom: 70,
   },
   add_trip_btn: {
     backgroundColor: "#146C94",
