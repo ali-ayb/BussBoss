@@ -1,12 +1,10 @@
 import { SafeAreaView } from "react-native-safe-area-context";
 import MapView from "react-native-maps";
 import { Marker } from "react-native-maps";
-import { Platform, StatusBar, StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 import Constants from "expo-constants";
 import MapViewDirections from "react-native-maps-directions";
 import { useEffect, useState } from "react";
-import Geolocation from "react-native-geolocation-service";
-import { PermissionsAndroid } from "react-native";
 import * as geoLocation from "expo-location";
 
 export default function BussSchedule() {
@@ -18,7 +16,6 @@ export default function BussSchedule() {
     latitude: 33.490736,
     longitude: 35.366315,
   });
-
   const getLocation = async () => {
     let { status } = await geoLocation.requestForegroundPermissionsAsync();
     if (status !== "granted") {
@@ -32,14 +29,12 @@ export default function BussSchedule() {
     });
   };
   getLocation();
-  console.log(myLocation);
   const [duration, setDuration] = useState(null);
   const [modified_duration, setModifiedDuration] = useState(null);
 
   const onReady = (result) => {
     setDuration(result.duration);
   };
-  // console.log(duration);
 
   useEffect(() => {
     if (duration !== null && modified_duration === null) {
@@ -66,7 +61,7 @@ export default function BussSchedule() {
           destination={myLocation}
           apikey={Constants.manifest.extra.googleApiKey}
           strokeWidth={3}
-          strokeColor={"#1B2126"}
+          strokeColor={"#146C94"}
           onReady={onReady}
         />
 
@@ -84,15 +79,11 @@ export default function BussSchedule() {
 const styles = StyleSheet.create({
   mainView: {
     backgroundColor: "#146C94",
-    // paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
     flex: 1,
-    // alignItems: "center",
-    // height: "100%",
   },
   mapView: {
     flex: 1,
     height: "100%",
-    // width: "100%",
   },
   arrival_time: {
     height: 50,
