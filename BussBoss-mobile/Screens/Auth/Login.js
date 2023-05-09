@@ -4,6 +4,7 @@ import {
   Text,
   TouchableOpacity,
   TextInput,
+  ScrollView,
 } from "react-native";
 import Background from "../../components/Background/Background";
 import CenteredLogo from "../../components/CenteredLogo/CenteredLogo";
@@ -47,7 +48,7 @@ export default function Login() {
   };
 
   return (
-    <View style={{ backgroundColor: "#F6F1F1", flex: 1 }}>
+    <ScrollView style={{ backgroundColor: "#F6F1F1" }}>
       <Background />
       <CenteredLogo />
       <Text style={styles.welcome_title}>Welcome Back.</Text>
@@ -62,6 +63,7 @@ export default function Login() {
         <TextInput
           style={styles.TextInput}
           placeholder="  Password"
+          secureTextEntry={true}
           onChangeText={(e) => {
             setPassword(e);
           }}
@@ -72,13 +74,20 @@ export default function Login() {
           Login
         </Text>
       </TouchableOpacity>
-      <Text style={{ fontSize: 17, color: "#000", top: 150, left: 100 }}>
+      <Text
+        style={{
+          fontSize: 17,
+          color: "#000",
+          top: 150,
+          left: 100,
+          marginBottom: 400,
+        }}>
         Don't have an account?{" "}
         <Text style={{ fontWeight: "bold" }} onPress={register}>
           Sign up
         </Text>
       </Text>
-    </View>
+    </ScrollView>
   );
 }
 
@@ -86,8 +95,8 @@ const styles = StyleSheet.create({
   welcome_title: {
     fontSize: 32,
     fontWeight: "bold",
-    justifyContent: "center",
-    alignContent: "center",
+    // justifyContent: "center",
+    // alignContent: "center",
     left: 110,
   },
   TextInput: {
