@@ -42,8 +42,6 @@ export default function PassengerMain() {
   const navigation = useNavigation();
 
   const handlePress = (driver_id) => {
-    console.log(driver_id); // add this line
-
     navigation.navigate("BussSchedule", { driver_id });
   };
 
