@@ -22,6 +22,10 @@ use Illuminate\Support\Facades\Route;
 Route::post('/register', [AuthController::class, "register"]);
 Route::post('/login', [AuthController::class, "login"]);
 
+
+Route::get('/get_all_Passengers', [PassengerController::class, "getAllPassengers"]);
+Route::get('/get_all_drivers', [DriverController::class, "getAllDrivers"]);
+
 Route::group(['middleware' => 'bussboss_authenticate'], function () {
 
     Route::post('/reserve_trip', [ReservationController::class, "reserveTrip"]);
@@ -41,10 +45,11 @@ Route::group(['middleware' => 'bussboss_authenticate'], function () {
         Route::get('/get_driver_total_earned', [DriverController::class, "getDriverTotalEarned"]);
         Route::get('/get_driver_full_name', [DriverController::class, "getDriverFullName"]);
         Route::post('/add_trip', [TripController::class, "addTrip"]);
+        Route::get('/get_driver_finished_trips', [TripController::class, "getDriverFinishedTrips"]);
+        Route::get('/get_driver_current_trips', [TripController::class, "getDriverCurrentTrips"]);
     });
 
-    Route::group(['middleware' => 'admin_authorize'], function () {
-        Route::get('/get_all_Passengers', [PassengerController::class, "getAllPassengers"]);
-        Route::get('/get_all_drivers', [DriverController::class, "getAllDrivers"]);
-    });
+    // Route::group(['middleware' => 'admin_authorize'], function () {
+
+    // });
 });

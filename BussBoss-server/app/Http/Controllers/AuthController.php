@@ -76,16 +76,17 @@ class AuthController extends Controller
         }
 
         if ($request->user_type == 'driver') {
-            $user->profile_image = $request->profile_image ? $request->profile_image : "NA";
+            // $user->profile_image = $request->profile_image ? $request->profile_image : "NA";
 
-            $image_data = base64_decode(preg_replace('#^data:image/\w+;base64,#i', '', $user->profile_image));
-            $filename = uniqid() . '.png';
-            $user->profile_image = $filename;
-            Storage::disk('public')->put('images/' . $filename, $image_data);
+            // if ($request->hasFile('profile_image')) {
+            //     $imagePath = $request->file('profile_image')->store('public/images');
+            //     $user->profile_image = basename($imagePath);
+            // }
+
             $driver_info = Drivers_info::create([
                 'driver_id' => $user->id,
                 'license_number' => $request->license_number,
-                'profile_image' => $user->profile_image,
+                'profile_image' => $request->profile_image,
                 'rating' => $request->rating,
                 'is_approved' => $request->is_approved ?? 0,
             ]);
