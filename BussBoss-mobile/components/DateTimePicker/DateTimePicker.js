@@ -1,99 +1,151 @@
 import React, { useState } from "react";
-import { View, TextInput, Button, Platform } from "react-native";
+import {
+  View,
+  Button,
+  Platform,
+  TouchableOpacity,
+  Text,
+  StyleSheet,
+} from "react-native";
 import DateTimePicker from "@react-native-community/datetimepicker";
 
-export default function DateTimeInput() {
+const MyDateTimePicker = () => {
   const [date, setDate] = useState(new Date());
-  const [show, setShow] = useState(false);
+  const [time, setTime] = useState(new Date());
+  const [date2, setDate2] = useState(new Date());
+  const [time2, setTime2] = useState(new Date());
+  const [showDatePicker, setShowDatePicker] = useState(false);
+  const [showTimePicker, setShowTimePicker] = useState(false);
 
-  const onChange = (event, selectedDate) => {
+  const onDateChange = (event, selectedDate) => {
     const currentDate = selectedDate || date;
-    setShow(Platform.OS === "ios");
+    setShowDatePicker(Platform.OS === "ios");
     setDate(currentDate);
+    setShowDatePicker(false);
   };
 
-  const showDatePicker = () => {
-    setShow(true);
+  const onTimeChange = (event, selectedTime) => {
+    const currentTime = selectedTime || time;
+    setShowTimePicker(Platform.OS === "ios");
+    setTime(currentTime);
+    setShowTimePicker(false);
+  };
+
+  const onDate2Change = (event, selectedDate) => {
+    const currentDate = selectedDate || date2;
+    setShowDatePicker(Platform.OS === "ios");
+    setDate2(currentDate);
+    setShowDatePicker(false);
+  };
+
+  const onTime2Change = (event, selectedTime) => {
+    const currentTime = selectedTime || time2;
+    setShowTimePicker(Platform.OS === "ios");
+    setTime2(currentTime);
+    setShowTimePicker(false);
+  };
+
+  const showDateTimePicker = (picker) => {
+    if (picker === "date") {
+      setShowDatePicker(true);
+    } else if (picker === "time") {
+      setShowTimePicker(true);
+    }
   };
 
   return (
     <View>
-      <TextInput value={date.toString()} editable={false} />
-      <Button title="Select Date" onPress={showDatePicker} />
-      {show && (
-        <DateTimePicker
-          value={date}
-          mode="datetime"
-          is24Hour={true}
-          display="default"
-          onChange={onChange}
-        />
-      )}
+      <TouchableOpacity
+        onPress={() => showDateTimePicker("time")}
+        style={styles.time}>
+        <Text style={{ color: "#FFF" }}>Time</Text>
+        {showTimePicker && (
+          <DateTimePicker
+            value={time}
+            mode="time"
+            display="default"
+            onChange={onTimeChange}
+          />
+        )}
+      </TouchableOpacity>
+      <TouchableOpacity
+        onPress={() => showDateTimePicker("date")}
+        style={styles.date}>
+        <Text style={{ color: "#FFF" }}>Date</Text>
+        {showDatePicker && (
+          <DateTimePicker
+            value={date}
+            mode="date"
+            display="default"
+            onChange={onDateChange}
+          />
+        )}
+      </TouchableOpacity>
+      <Text style={styles.selectedValue}>
+        {` ${date.toDateString()}`}
+        {` ${time.toLocaleTimeString()}`}
+      </Text>
+
+      <TouchableOpacity
+        onPress={() => showDateTimePicker("time")}
+        style={styles.time}>
+        <Text style={{ color: "#FFF" }}>Time</Text>
+        {showTimePicker && (
+          <DateTimePicker
+            value={time2}
+            mode="time"
+            display="default"
+            onChange={onTime2Change}
+          />
+        )}
+      </TouchableOpacity>
+      <TouchableOpacity
+        onPress={() => showDateTimePicker("date")}
+        style={styles.date}>
+        <Text style={{ color: "#FFF" }}>Date</Text>
+        {showDatePicker && (
+          <DateTimePicker
+            value={date2}
+            mode="date"
+            display="default"
+            onChange={onDate2Change}
+          />
+        )}
+      </TouchableOpacity>
+      <Text style={styles.selectedValue}>
+        {` ${date2.toDateString()}`}
+        {` ${time2.toLocaleTimeString()}`}
+      </Text>
     </View>
   );
-}
+};
 
-// import { StatusBar } from "expo-status-bar";
-// import react, { useState } from "react";
-// import { StyleSheet, Text, View, Button, Platform } from "react-native";
-// import DateTimePicker from "@react-native-community/datetimepicker";
+const styles = StyleSheet.create({
+  date: {
+    backgroundColor: "#19A7CE",
+    width: 50,
+    padding: 10,
+    left: 290,
+    top: -30,
+  },
+  time: {
+    backgroundColor: "#19A7CE",
+    width: 50,
+    padding: 10,
+    left: 350,
+    top: 8,
+  },
+  selectedValue: {
+    backgroundColor: "#D9D9D9",
+    padding: 5,
+    width: 220,
+    marginTop: 10,
+    fontSize: 16,
+    fontWeight: "bold",
+    color: "#000",
+    top: -70,
+    left: 50,
+  },
+});
 
-// export default function DateTime() {
-//   const [date, setDate] = useState(new Date());
-//   const [mode, setMode] = useState("date");
-//   const [show, setShow] = useState(false);
-//   const [text, setText] = useState("Empty");
-
-//   const onChange = (event, selectedDate) => {
-//     const currentDate = selectedDate || date;
-//     setShow(Platform.OS === "ios");
-//     setDate(currentDate);
-
-//     let tempDate = new Date(currentDate);
-//     let fDate =
-//       tempDate.getDate() +
-//       "/" +
-//       (tempDate.getMonth() + 1) +
-//       "/" +
-//       tempDate.getFullYear();
-//     let fTime =
-//       "Hours" + tempDate.getHours() + "| Minutes" + tempDate.getMinutes();
-//     setText(fDate + "\n" + fTime);
-//   };
-
-//   const showMode = (currentMode) => {
-//     setShow(true);
-//     setMode(currentMode);
-//   };
-//   return (
-//     <View style={styles.container}>
-//       <Text>{text}</Text>
-//       <View style={{ margin: 20 }}>
-//         <Button title="DatePicker" onPress={() => showMode("date")} />
-//       </View>
-//       <View style={{ margin: 20 }}>
-//         <Button title="TimePicker" onPress={() => showMode("time")} />
-//       </View>
-//       {show && (
-//         <DateTimePicker
-//           testID="dateTimePicker"
-//           value={new Date()}
-//           mode="datetime"
-//           is24Hour={true}
-//           display="default"
-//           onChange={(event, selectedDate) => setDateTime(selectedDate)}
-//         />
-//       )}
-//       <StatusBar style="auto" />
-//     </View>
-//   );
-// }
-
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     backgroundColor: "#fff",
-//     alignItems: "center",
-//     justifyContent: "center",
-//   },
-// });
+export default MyDateTimePicker;
