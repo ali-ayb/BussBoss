@@ -29,10 +29,10 @@ export default function RegisterPassenger() {
       <View style={{ gap: 20 }}>
         <TextInput style={styles.first_name} placeholder="  First Name" />
         <TextInput style={styles.last_name} placeholder="  Last Name" />
-        <TextInput style={styles.TextInput} placeholder="  Phone Number" />
+        <TextInput style={styles.TextInput} placeholder="  Email" />
         <TextInput style={styles.TextInput} placeholder="  Password" />
-        <TextInput style={styles.TextInput} placeholder="  Birth Date" />
-        <RadioButton.Group onValueChange={setValue} value={value}>
+        {/* <TextInput style={styles.TextInput} placeholder="  Birth Date" /> */}
+        {/* <RadioButton.Group onValueChange={setValue} value={value}>
           <View
             style={{
               flexDirection: "column",
@@ -53,7 +53,7 @@ export default function RegisterPassenger() {
             <RadioButton value="second" />
             <Text>Female</Text>
           </View>
-        </RadioButton.Group>
+        </RadioButton.Group> */}
       </View>
       <TouchableOpacity style={styles.register_btn} onPress={login}>
         <Text style={{ fontSize: 24, color: "#FFF", top: 8, left: 35 }}>
@@ -79,7 +79,7 @@ const styles = StyleSheet.create({
     padding: 10,
     width: 150,
     borderRadius: 15,
-    top: 155,
+    top: 152,
     left: 220,
     elevation: 10,
   },
@@ -96,7 +96,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#146C94",
     width: 150,
     height: 50,
-    top: 120,
+    top: 200,
     left: 135,
     borderRadius: 15,
     elevation: 5,
