@@ -2,7 +2,7 @@ import { StyleSheet, View, Text, TouchableOpacity, Image } from "react-native";
 import Background from "../../components/Background/Background";
 import Logo from "../../components/Logo/Logo";
 import { useNavigation } from "@react-navigation/native";
-import DateTimePicker from "../../components/DateTimePicker/DateTimePicker";
+import MyDateTimePicker from "../../components/DateTimePicker/DateTimePicker";
 import { useState } from "react";
 
 export default function DriverMain() {
@@ -25,12 +25,15 @@ export default function DriverMain() {
         style={styles.image}
       />
       <View>
-        <Text style={styles.title1}>Departure Time</Text>
+        <Text style={styles.title1}>Departure Time:</Text>
       </View>
-      <DateTimePicker
+
+      <MyDateTimePicker
         onChange={(event, selectedDate) => setDateTime(selectedDate)}
       />
-
+      <View>
+        <Text style={styles.title2}>Arrival Time:</Text>
+      </View>
       <TouchableOpacity style={styles.add_trip_btn} onPress={onPressLearnMore}>
         <Text style={styles.add_trip_txt}>Add Trip</Text>
       </TouchableOpacity>
@@ -46,5 +49,30 @@ const styles = StyleSheet.create({
     height: 110,
     zIndex: 2,
     position: "absolute",
+  },
+  title1: {
+    fontWeight: "bold",
+    fontSize: 18,
+    left: 60,
+  },
+  title2: {
+    fontWeight: "bold",
+    fontSize: 18,
+    left: 60,
+    top: -140,
+  },
+  add_trip_txt: {
+    fontWeight: "bold",
+    fontSize: 18,
+    color: "#FFF",
+    left: 7,
+  },
+  add_trip_btn: {
+    backgroundColor: "#146C94",
+    width: 100,
+    padding: 10,
+    borderRadius: 15,
+    left: 150,
+    top: 80,
   },
 });
