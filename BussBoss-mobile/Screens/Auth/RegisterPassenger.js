@@ -31,29 +31,6 @@ export default function RegisterPassenger() {
         <TextInput style={styles.last_name} placeholder="  Last Name" />
         <TextInput style={styles.TextInput} placeholder="  Email" />
         <TextInput style={styles.TextInput} placeholder="  Password" />
-        {/* <TextInput style={styles.TextInput} placeholder="  Birth Date" /> */}
-        {/* <RadioButton.Group onValueChange={setValue} value={value}>
-          <View
-            style={{
-              flexDirection: "column",
-              alignItems: "center",
-              top: 160,
-              left: -100,
-            }}>
-            <RadioButton value="first" />
-            <Text>Male</Text>
-          </View>
-          <View
-            style={{
-              flexDirection: "column",
-              alignItems: "center",
-              top: 110,
-              left: 100,
-            }}>
-            <RadioButton value="second" />
-            <Text>Female</Text>
-          </View>
-        </RadioButton.Group> */}
       </View>
       <TouchableOpacity style={styles.register_btn} onPress={login}>
         <Text style={{ fontSize: 24, color: "#FFF", top: 8, left: 35 }}>

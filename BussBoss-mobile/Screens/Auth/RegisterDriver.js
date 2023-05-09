@@ -129,13 +129,6 @@ export default function RegisterDriver() {
             setPassword(e);
           }}
         />
-        {/* <TextInput
-          style={styles.birth}
-          placeholder="  Birth Date"
-          onChangeText={(e) => {
-            setEmail(e);
-          }}
-        /> */}
         <TextInput
           style={styles.licence}
           placeholder="  Licence Number"
