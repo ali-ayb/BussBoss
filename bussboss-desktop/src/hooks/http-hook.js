@@ -1,23 +1,22 @@
-
-const UseHttp =  async (url, method = "GET", body = "", header = {}) => {
-    let data;
-    const URL = "http://127.0.0.1:8000/api/v1/";
-    try {
-        const Response = await fetch(URL+url,{
-            method : method,
-            headers: header,
-            body: !!body ? body : null  
-        }) || null;
-        data = await Response.json();
-        if (!Response.ok){
-          throw new Error(data.message)
-        }
-    } catch (err) {
-
-      console.log(err.message);
+const UseHttp = async (url, method = "GET", body = "", header = {}) => {
+  let data;
+  const URL = "http://192.168.1.4:8000/api/";
+  try {
+    const Response =
+      (await fetch(URL + url, {
+        method: method,
+        headers: header,
+        body: !!body ? body : null,
+      })) || null;
+    data = await Response.json();
+    if (!Response.ok) {
+      throw new Error(data.message);
     }
-    
-    return data;
-  };
+  } catch (err) {
+    console.log(err.message);
+  }
+
+  return data;
+};
 
 export default UseHttp;
