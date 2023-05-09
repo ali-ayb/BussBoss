@@ -1,13 +1,17 @@
 import { StyleSheet, View, Image, Text, TouchableOpacity } from "react-native";
 import { Rating } from "react-native-ratings";
-function onPressLearnMore() {
-  alert("test");
-}
-function AllTripsCard() {
+
+function AllTripsCard({ item }) {
+  const destination = item.destination;
+  const source = item.source;
+  const trip_id = item.id;
+  const rating = item.rating;
+  const departure_time = new Date(item.departure_time);
+  const arrival_time = new Date(item.arrival_time);
   return (
     <View style={styles.AllTripsCard}>
       {/* <Text style={styles.driver_name}>Driver: Driver Name</Text> */}
-      <Text style={styles.driver_name}>Trip: Trip Number</Text>
+      <Text style={styles.driver_name}>Trip Number: {trip_id}</Text>
       <Image
         style={styles.calender_icon}
         source={require("../../assets/calender.png")}
@@ -20,11 +24,17 @@ function AllTripsCard() {
         style={styles.pin_icon}
         source={require("../../assets/pin_icon.png")}
       />
-      <Text style={styles.trip_time}>10:00 {"<-->"} 10:30</Text>
-      <Text style={styles.trip_position}>
-        From Position {"<-->"} To Position{" "}
+      <Text style={styles.trip_time}>
+        {departure_time.getHours()}:{departure_time.getMinutes()} {"<-->"}
+        {arrival_time.getHours()}:{arrival_time.getMinutes()}
       </Text>
-      <Text style={styles.date}>20/4/2023</Text>
+      <Text style={styles.trip_position}>
+        {source} {"<-->"} {destination}
+      </Text>
+      <Text style={styles.date}>
+        {departure_time.getDay()}/{departure_time.getMonth()}/
+        {departure_time.getFullYear()}
+      </Text>
       <Text style={styles.rating}>Average Rating</Text>
       <Rating
         type="custom"
@@ -32,6 +42,7 @@ function AllTripsCard() {
         ratingCount={5}
         imageSize={30}
         ratingBackgroundColor="#D9D9D9"
+        startingValue={rating}
         tintColor="#FFF"
         readonly="true"
         onFinishRating={this.ratingCompleted}
@@ -46,10 +57,10 @@ const styles = StyleSheet.create({
     backgroundColor: "#FFF",
     height: 140,
     width: 335,
-    top: 0,
     left: "10%",
     borderRadius: 15,
     elevation: 20,
+    marginBottom: 50,
   },
   rating: {
     fontSize: 16,
@@ -73,10 +84,9 @@ const styles = StyleSheet.create({
     fontSize: 14,
   },
   trip_position: {
-    top: -67,
+    top: -65,
     left: 60,
     fontSize: 14,
-    fontWeight: "bold",
   },
   driver_name: {
     top: 10,
