@@ -3,14 +3,13 @@ import MapView from "react-native-maps";
 import { Marker } from "react-native-maps";
 import { Platform, StatusBar, StyleSheet, Text, View } from "react-native";
 import Constants from "expo-constants";
-// import * as geoLocation from "expo-location";
 import MapViewDirections from "react-native-maps-directions";
 import { useEffect, useState } from "react";
+import Geolocation from "react-native-geolocation-service";
+import { PermissionsAndroid } from "react-native";
+import * as geoLocation from "expo-location";
 
 export default function BussSchedule() {
-  const [duration, setDuration] = useState(null);
-  const [modified_duration, setModifiedDuration] = useState(null);
-
   const [myLocation, setMyLocation] = useState({
     latitude: 33.450736,
     longitude: 35.396315,
@@ -20,10 +19,27 @@ export default function BussSchedule() {
     longitude: 35.366315,
   });
 
+  const getLocation = async () => {
+    let { status } = await geoLocation.requestForegroundPermissionsAsync();
+    if (status !== "granted") {
+      alert("Permission to access location was denied");
+      return;
+    }
+    let getLocation = await geoLocation.getCurrentPositionAsync({});
+    setMyLocation({
+      latitude: getLocation.coords.latitude,
+      longitude: getLocation.coords.longitude,
+    });
+  };
+  getLocation();
+  console.log(myLocation);
+  const [duration, setDuration] = useState(null);
+  const [modified_duration, setModifiedDuration] = useState(null);
+
   const onReady = (result) => {
     setDuration(result.duration);
   };
-  console.log(duration);
+  // console.log(duration);
 
   useEffect(() => {
     if (duration !== null && modified_duration === null) {
@@ -54,7 +70,7 @@ export default function BussSchedule() {
           onReady={onReady}
         />
 
-        <Marker coordinate={userLocation} title={"Picker Location"} />
+        <Marker coordinate={userLocation} title={"Bus Location"} />
       </MapView>
       <View style={styles.arrival_time}>
         <Text
