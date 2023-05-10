@@ -25,40 +25,6 @@ export default function RegisterDriver() {
   const [license_number, setLicenseNumber] = useState("F515F");
   const [profile, setProfile] = useState("");
 
-  const formData = new FormData();
-
-  const handleRegister = async () => {
-    const formData = new FormData();
-    formData.append("first_name", first_name);
-    formData.append("last_name", last_name);
-    formData.append("email", email);
-    formData.append("phone", phone);
-    formData.append("password", password);
-    formData.append("license_number", license_number);
-    formData.append("user_type", "driver");
-    formData.append("profile_image", profile);
-    formData.append("rating", 5);
-
-    try {
-      const response = await axios.post(
-        "http://192.168.1.4:8000/api/register",
-        formData,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-            "Access-Control-Allow-Origin": "*",
-            "Access-Control-Allow-Headers": "*",
-            "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE",
-            "Access-Control-Allow-Credentials": true,
-          },
-        }
-      );
-
-      console.log(response.data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
   const handleChoosePhoto = async () => {
     const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
     if (status !== "granted") {
@@ -83,15 +49,33 @@ export default function RegisterDriver() {
           to: filePath,
         });
 
-        setProfile({
-          uri: filePath,
-          type: "image/jpeg, image/png",
-          name: fileName,
-        });
+        setProfile(filePath);
       } catch (error) {
         console.error(error);
       }
     }
+  };
+
+  const handleRegister = async () => {
+    const formData = new FormData();
+    formData.append("first_name", first_name);
+    formData.append("last_name", last_name);
+    formData.append("email", email);
+    formData.append("phone", phone);
+    formData.append("password", password);
+    formData.append("license_number", license_number);
+    formData.append("user_type", "driver");
+    formData.append("profile_image", {
+      name: "img/jpeg",
+      type: "image/jpeg",
+      uri: profile,
+    });
+
+    formData.append("rating", 5);
+
+    const result = await UseHttp("register", "POST", formData, {
+      "Content-Type": "multipart/form-data",
+    });
   };
 
   return (
