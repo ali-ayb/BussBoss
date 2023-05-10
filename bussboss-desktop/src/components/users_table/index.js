@@ -1,9 +1,8 @@
-import Tr from "../admin/tablerows";
+import Tr from "../passengers/passengers";
 import UseHttp from "../../hooks/http-hook";
 import { useEffect, useState } from "react";
 
 const UsersTable = () => {
-  // const token = localStorage.getItem("token");
   const [data, setData] = useState("");
   useEffect(() => {
     const sendRequest = async () => {

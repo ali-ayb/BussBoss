@@ -1,4 +1,4 @@
-import Tr from "../admin/tablerows";
+import Tr from "../Drviers/Drivers";
 import UseHttp from "../../hooks/http-hook";
 import { useEffect, useState } from "react";
 
