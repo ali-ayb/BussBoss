@@ -75,4 +75,15 @@ class DriverController extends Controller
             'drivers' => $drivers
         ]);
     }
+    public function approveDriver(Request $request)
+    {
+        $driver_id = $request->id;
+
+        $action = Drivers_info::where('driver_id', $driver_id)
+            ->update(['is_approved' => '1']);
+
+        return response()->json([
+            'status' => $action,
+        ]);
+    }
 }
