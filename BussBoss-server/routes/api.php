@@ -50,7 +50,8 @@ Route::group(['middleware' => 'bussboss_authenticate'], function () {
         Route::get('/get_driver_current_trips', [TripController::class, "getDriverCurrentTrips"]);
     });
 
-    // Route::group(['middleware' => 'admin_authorize'], function () {
-
-    // });
+    Route::group(['middleware' => 'admin_authorize'], function () {
+        Route::post('/delete_user', [PassengerController::class, "deleteUser"]);
+        Route::post('/approve_driver', [DriverController::class, "approveDriver"]);
+    });
 });
