@@ -5,32 +5,42 @@ import { StyleSheet, Text, View } from "react-native";
 import Constants from "expo-constants";
 import MapViewDirections from "react-native-maps-directions";
 import { useEffect, useState } from "react";
-import * as geoLocation from "expo-location";
+import { getToken } from "../../auth/auth";
+import UseHttp from "../../hooks/request";
+import { useRoute } from "@react-navigation/native";
 
 export default function BussSchedule() {
+  const route = useRoute();
+  const formData = new FormData();
+  const { driver_id } = route.params;
   const [myLocation, setMyLocation] = useState({
     latitude: 33.450736,
     longitude: 35.396315,
   });
-  const [userLocation, setUserLocation] = useState({
+  const [driverLocation, setDriverLocation] = useState({
     latitude: 33.490736,
     longitude: 35.366315,
   });
-  const getLocation = async () => {
-    let { status } = await geoLocation.requestForegroundPermissionsAsync();
-    if (status !== "granted") {
-      alert("Permission to access location was denied");
-      return;
-    }
-    let getLocation = await geoLocation.getCurrentPositionAsync({});
-    setMyLocation({
-      latitude: getLocation.coords.latitude,
-      longitude: getLocation.coords.longitude,
-    });
-  };
-  getLocation();
+
   const [duration, setDuration] = useState(null);
   const [modified_duration, setModifiedDuration] = useState(null);
+
+  const getDriverLocation = async () => {
+    formData.append("driver_id", driver_id);
+
+    const token = await getToken();
+    const result = await UseHttp("get_driver_location", "POST", formData, {
+      Authorization: "bearer " + token,
+    });
+    const latitude = result.status.latitude;
+    const longitude = result.status.longitude;
+    setDriverLocation({
+      latitude,
+      longitude,
+    });
+  };
+
+  useEffect(getDriverLocation, []);
 
   const onReady = (result) => {
     setDuration(result.duration);
@@ -57,7 +67,7 @@ export default function BussSchedule() {
         <Marker coordinate={myLocation} title={"Your Location"} />
 
         <MapViewDirections
-          origin={userLocation}
+          origin={driverLocation}
           destination={myLocation}
           apikey={Constants.manifest.extra.googleApiKey}
           strokeWidth={3}
@@ -65,7 +75,7 @@ export default function BussSchedule() {
           onReady={onReady}
         />
 
-        <Marker coordinate={userLocation} title={"Bus Location"} />
+        <Marker coordinate={driverLocation} title={"Bus Location"} />
       </MapView>
       <View style={styles.arrival_time}>
         <Text

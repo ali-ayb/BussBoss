@@ -29,7 +29,7 @@ function CurrentTripCard({ item, refreshData }) {
   const navigation = useNavigation();
 
   const openMap = () => {
-    navigation.navigate("map");
+    navigation.navigate("map", { driver_id: driver_id });
   };
 
   const Cancel = async () => {
