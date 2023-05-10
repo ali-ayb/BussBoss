@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import {
   View,
-  Button,
   Platform,
   TouchableOpacity,
   Text,
@@ -10,38 +9,40 @@ import {
 import DateTimePicker from "@react-native-community/datetimepicker";
 
 const MyDateTimePicker = () => {
-  const [date, setDate] = useState(new Date());
-  const [time, setTime] = useState(new Date());
-  const [date2, setDate2] = useState(new Date());
-  const [time2, setTime2] = useState(new Date());
+  const [departureDate, setDepartureDate] = useState(new Date());
+  const [departuretime, setDepartureTime] = useState(new Date());
+  const [arrivalDate, setArrivalDate] = useState(new Date());
+  const [arrivalTime, setArrivalTime] = useState(new Date());
   const [showDatePicker, setShowDatePicker] = useState(false);
   const [showTimePicker, setShowTimePicker] = useState(false);
 
-  const onDateChange = (event, selectedDate) => {
-    const currentDate = selectedDate || date;
+  // console.log(time.getHours());
+
+  const onDepartureDateChange = (event, selectedDate) => {
+    const currentDate = selectedDate || departureDate;
     setShowDatePicker(Platform.OS === "ios");
-    setDate(currentDate);
+    setDepartureDate(currentDate);
     setShowDatePicker(false);
   };
 
-  const onTimeChange = (event, selectedTime) => {
-    const currentTime = selectedTime || time;
+  const onDepartureTimeChange = (event, selectedTime) => {
+    const currentTime = selectedTime || departuretime;
     setShowTimePicker(Platform.OS === "ios");
-    setTime(currentTime);
+    setDepartureTime(currentTime);
     setShowTimePicker(false);
   };
 
-  const onDate2Change = (event, selectedDate) => {
-    const currentDate = selectedDate || date2;
+  const onArrivalDateChange = (event, selectedDate) => {
+    const currentDate = selectedDate || arrivalDate;
     setShowDatePicker(Platform.OS === "ios");
-    setDate2(currentDate);
+    setArrivalDate(currentDate);
     setShowDatePicker(false);
   };
 
-  const onTime2Change = (event, selectedTime) => {
-    const currentTime = selectedTime || time2;
+  const onArrivalTimeChange = (event, selectedTime) => {
+    const currentTime = selectedTime || arrivalTime;
     setShowTimePicker(Platform.OS === "ios");
-    setTime2(currentTime);
+    setArrivalTime(currentTime);
     setShowTimePicker(false);
   };
 
@@ -61,10 +62,10 @@ const MyDateTimePicker = () => {
         <Text style={{ color: "#FFF" }}>Time</Text>
         {showTimePicker && (
           <DateTimePicker
-            value={time}
+            value={departuretime}
             mode="time"
             display="default"
-            onChange={onTimeChange}
+            onChange={onDepartureTimeChange}
           />
         )}
       </TouchableOpacity>
@@ -74,16 +75,16 @@ const MyDateTimePicker = () => {
         <Text style={{ color: "#FFF" }}>Date</Text>
         {showDatePicker && (
           <DateTimePicker
-            value={date}
+            value={departureDate}
             mode="date"
             display="default"
-            onChange={onDateChange}
+            onChange={onDepartureDateChange}
           />
         )}
       </TouchableOpacity>
       <Text style={styles.selectedValue}>
-        {` ${date.toDateString()}`}
-        {` ${time.toLocaleTimeString()}`}
+        {` ${departureDate.toDateString()}`}
+        {` ${departuretime.toLocaleTimeString()}`}
       </Text>
 
       <TouchableOpacity
@@ -92,10 +93,10 @@ const MyDateTimePicker = () => {
         <Text style={{ color: "#FFF" }}>Time</Text>
         {showTimePicker && (
           <DateTimePicker
-            value={time2}
+            value={arrivalTime}
             mode="time"
             display="default"
-            onChange={onTime2Change}
+            onChange={onArrivalTimeChange}
           />
         )}
       </TouchableOpacity>
@@ -105,16 +106,16 @@ const MyDateTimePicker = () => {
         <Text style={{ color: "#FFF" }}>Date</Text>
         {showDatePicker && (
           <DateTimePicker
-            value={date2}
+            value={arrivalDate}
             mode="date"
             display="default"
-            onChange={onDate2Change}
+            onChange={onArrivalDateChange}
           />
         )}
       </TouchableOpacity>
       <Text style={styles.selectedValue}>
-        {` ${date2.toDateString()}`}
-        {` ${time2.toLocaleTimeString()}`}
+        {` ${arrivalDate.toDateString()}`}
+        {` ${arrivalTime.toLocaleTimeString()}`}
       </Text>
     </View>
   );
@@ -126,25 +127,31 @@ const styles = StyleSheet.create({
     width: 50,
     padding: 10,
     left: 290,
-    top: -30,
+    top: -50,
+    borderRadius: 15,
+    elevation: 15,
   },
   time: {
     backgroundColor: "#19A7CE",
     width: 50,
     padding: 10,
     left: 350,
-    top: 8,
+    top: -13,
+    borderRadius: 15,
+    elevation: 15,
   },
   selectedValue: {
-    backgroundColor: "#D9D9D9",
+    backgroundColor: "#FFF",
     padding: 5,
     width: 220,
-    marginTop: 10,
+    marginTop: 5,
     fontSize: 16,
     fontWeight: "bold",
     color: "#000",
-    top: -70,
+    top: -90,
     left: 50,
+    elevation: 20,
+    borderRadius: 15,
   },
 });
 
