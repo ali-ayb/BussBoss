@@ -55,8 +55,8 @@ function ReserveTripCard({ item }) {
       <TouchableOpacity
         style={styles.finish_btn}
         onPress={() => {
-          // reserveTrip(item.id);
-          console.log(item.id);
+          reserveTrip(item.id);
+          // console.log(item.id);
         }}>
         <Text style={styles.Select_btn_text}>Select</Text>
       </TouchableOpacity>

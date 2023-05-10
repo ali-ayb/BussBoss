@@ -16,7 +16,7 @@ import { useState } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function Login() {
-  const [email, setEmail] = useState("Ali@gmail.com");
+  const [email, setEmail] = useState("ali@gmail.com");
   const [password, setPassword] = useState("code123");
   const formData = new FormData();
   const navigation = useNavigation();
@@ -55,7 +55,7 @@ export default function Login() {
       <View style={{ gap: 20 }}>
         <TextInput
           style={styles.TextInput}
-          placeholder="  Your Email"
+          placeholder="  Email"
           onChangeText={(e) => {
             setEmail(e);
           }}

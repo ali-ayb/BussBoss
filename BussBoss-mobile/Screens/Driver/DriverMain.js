@@ -15,9 +15,28 @@ import { useNavigation } from "@react-navigation/native";
 import { useEffect, useState } from "react";
 import { getToken } from "../../auth/auth";
 import UseHttp from "../../hooks/request";
+import * as geoLocation from "expo-location";
 
 export default function DriverMain() {
+  const formData = new FormData();
   const [current_trips, setCurrentTrips] = useState([]);
+  const getDrvierLocation = async () => {
+    let { status } = await geoLocation.requestForegroundPermissionsAsync();
+    if (status !== "granted") {
+      alert("Permission to access location was denied");
+      return;
+    }
+    let getLocation = await geoLocation.getCurrentPositionAsync({});
+    const latitude = getLocation.coords.latitude;
+    const longitude = getLocation.coords.longitude;
+    formData.append("latitude", latitude);
+    formData.append("longitude", longitude);
+    const token = await getToken();
+    const result = await UseHttp("add_driver_location", "POST", formData, {
+      Authorization: "Bearer " + token,
+    });
+  };
+  setInterval(getDrvierLocation, 10000);
 
   const refreshData = async () => {
     const token = await getToken();
