@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Drivers_info;
+use App\Models\Location;
 use App\Models\Trip;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -75,6 +76,7 @@ class DriverController extends Controller
             'drivers' => $drivers
         ]);
     }
+
     public function approveDriver(Request $request)
     {
         $driver_id = $request->id;
@@ -84,6 +86,42 @@ class DriverController extends Controller
 
         return response()->json([
             'status' => $action,
+        ]);
+    }
+
+    public function addLocation(Request $request)
+    {
+        $driver_id = Auth::id();
+        $latitude = $request->latitude;
+        $longitude = $request->longitude;
+
+        $location = Location::where('driver_id', $driver_id)->first();
+
+        if ($location) {
+            $location->latitude = $latitude;
+            $location->longitude = $longitude;
+            $location->save();
+        } else {
+            $location = new Location();
+            $location->driver_id = $driver_id;
+            $location->latitude = $latitude;
+            $location->longitude = $longitude;
+            $location->save();
+        }
+
+
+        return response()->json([
+            'status' => $location,
+        ]);
+    }
+
+    public function getDriverLocation(Request $request)
+    {
+        $driver_id =  $request->driver_id;
+
+        $location = Location::where('driver_id', $driver_id)->first();
+        return response()->json([
+            'status' => $location,
         ]);
     }
 }
