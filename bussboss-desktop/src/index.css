@@ -134,7 +134,9 @@ td {
 tr:hover {
   background-color: #6cc1ff;
 }
-
+tr:hover .approve_btn {
+  background-color: #146c94;
+}
 .content {
   display: inline-block;
 }
@@ -269,4 +271,19 @@ a {
   padding-bottom: 8px;
   border-radius: 15px;
   color: #fff;
+  flex: 1;
+}
+
+.approve_btn {
+  background-color: #6cc1ff;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  border-radius: 15px;
+  color: #fff;
+  flex: 1;
+}
+
+.btn_container {
+  display: flex;
+  justify-content: center;
 }
