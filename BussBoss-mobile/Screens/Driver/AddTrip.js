@@ -1,12 +1,21 @@
-import { StyleSheet, View, Text, TouchableOpacity, Image } from "react-native";
+import {
+  StyleSheet,
+  View,
+  Text,
+  TouchableOpacity,
+  Image,
+  TextInput,
+  ScrollView,
+} from "react-native";
+import { Picker } from "@react-native-picker/picker";
 import Background from "../../components/Background/Background";
 import Logo from "../../components/Logo/Logo";
-import { useNavigation } from "@react-navigation/native";
 import MyDateTimePicker from "../../components/DateTimePicker/DateTimePicker";
 import { useState } from "react";
 
 export default function DriverMain() {
   const [dateTime, setDateTime] = useState(null);
+  const [selectedValue, setSelectedValue] = useState("default");
 
   function onPressLearnMore() {
     if (dateTime) {
@@ -17,7 +26,7 @@ export default function DriverMain() {
   }
 
   return (
-    <View style={{ backgroundColor: "#F6F1F1", flex: 1 }}>
+    <ScrollView style={{ backgroundColor: "#F6F1F1", flex: 1 }}>
       <Background />
       <Logo />
       <Image
@@ -34,10 +43,30 @@ export default function DriverMain() {
       <View>
         <Text style={styles.title2}>Arrival Time:</Text>
       </View>
+
+      <Picker
+        style={styles.source}
+        selectedValue={selectedValue}
+        onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}>
+        <Picker.Item label="Source" value="Source" />
+        <Picker.Item label="Nabatieh" value="Nabatieh" />
+        <Picker.Item label="Beirut" value="Beirut" />
+        <Picker.Item label="Jonieh" value="Jonieh" />
+      </Picker>
+
+      <Picker
+        style={styles.destination}
+        selectedValue={selectedValue}
+        onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}>
+        <Picker.Item label="Destination" value="Destination" />
+        <Picker.Item label="Nabatieh" value="Nabatieh" />
+        <Picker.Item label="Beirut" value="Beirut" />
+        <Picker.Item label="Jonieh" value="Jonieh" />
+      </Picker>
       <TouchableOpacity style={styles.add_trip_btn} onPress={onPressLearnMore}>
         <Text style={styles.add_trip_txt}>Add Trip</Text>
       </TouchableOpacity>
-    </View>
+    </ScrollView>
   );
 }
 
@@ -54,13 +83,15 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     fontSize: 18,
     left: 60,
+    top: -20,
   },
   title2: {
     fontWeight: "bold",
     fontSize: 18,
     left: 60,
-    top: -140,
+    top: -155,
   },
+
   add_trip_txt: {
     fontWeight: "bold",
     fontSize: 18,
@@ -73,6 +104,30 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 15,
     left: 150,
-    top: 80,
+    top: 0,
+    marginBottom: 200,
+  },
+  TextInput: {
+    backgroundColor: "#FFF",
+    padding: 10,
+    width: 250,
+    borderRadius: 15,
+    top: -75,
+    left: 50,
+    elevation: 10,
+  },
+  source: {
+    backgroundColor: "#FFF",
+    top: -80,
+    width: 250,
+    left: 60,
+    borderRadius: 15,
+  },
+  destination: {
+    backgroundColor: "#FFF",
+    top: -50,
+    width: 250,
+    left: 60,
+    borderRadius: 15,
   },
 });
