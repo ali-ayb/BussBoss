@@ -13,7 +13,9 @@ class PassengerController extends Controller
 {
     public function getAllPassengers()
     {
-        $users = User::where('user_type', 'passenger')->join('passengers_info', 'users.id', '=', 'passengers_info.passenger_id')
+        $users = User::where('user_type', 'passenger')
+            ->where('is_deleted', '=', '0')
+            ->join('passengers_info', 'users.id', '=', 'passengers_info.passenger_id')
             ->get();
 
         return response()->json([
@@ -49,6 +51,19 @@ class PassengerController extends Controller
         $total_paid = $passenger->total_paid;
         return response()->json([
             'total_paid' => $total_paid,
+        ]);
+    }
+
+
+    public function deleteUser(Request $request)
+    {
+        $passenger_id = $request->id;
+
+        $action = User::where('id', $passenger_id)
+            ->update(['is_deleted' => '1']);
+
+        return response()->json([
+            'status' => $action,
         ]);
     }
 }
