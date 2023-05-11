@@ -70,11 +70,15 @@
 > Using the wireframes and mockups as a guide, we implemented the BussBoss app with the following features:
 
 ### User Screens (Mobile)
-| Login screen  | Register screen | Landing screen | Loading screen |
+| Login screen  | PreRegister screen | Passenger Register | Driver Register |
 | ---| ---| ---| ---|
-| ![Landing](https://placehold.co/900x1600) | ![fsdaf](https://placehold.co/900x1600) | ![fsdaf](https://placehold.co/900x1600) | ![fsdaf](https://placehold.co/900x1600) |
-| Home screen  | Menu Screen | Order Screen | Checkout Screen |
-| ![Landing](https://placehold.co/900x1600) | ![fsdaf](https://placehold.co/900x1600) | ![fsdaf](https://placehold.co/900x1600) | ![fsdaf](https://placehold.co/900x1600) |
+| ![Landing](./readme/screens/login.png) | ![fsdaf](./readme/screens/PreRegister.jpg) | ![fsdaf](./readme/screens/PassengerRegister.jpg) | ![fsdaf](./readme/screens/DriverRegister.jpg)|
+| Passenger Main  | Buss Schedule | Current Trips  | Finish Trip |
+| ![Landing](./readme/screens/PassengerMain.jpg) | ![fsdaf](./readme/screens/busSchedule.jpg) | ![fsdaf](./readme/screens/CurrentTrips.jpg) | ![fsdaf](./readme/screens/FinishTrip.jpg)|
+| All Trips  | Track Bus | Add Trip  | Driver All Trips |
+| ![Landing](./readme/screens/Alltrips.jpg) | ![fsdaf](./readme/screens/map.jpg) | ![fsdaf](./readme/screens/AddTrip.jpg) | ![fsdaf](./readme/screens/DriverAllTrip.jpg)|
+|Driver Main | 
+| ![Landing](./readme/screens/DriverMain.jpg) | 
 
 ### Admin Screens (Web)
 | Login screen  | Register screen |  Landing screen |
