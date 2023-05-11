@@ -46,9 +46,21 @@
 | ![Landing](./readme/wireframes/Admin_passengers.svg) | ![fsdaf](./readme/wireframes/Admin_drivers.svg) |
 
 ### Mockups
-| Home screen  | Menu Screen | Order Screen |
-| ---| ---| ---|
-| ![Landing](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) |
+| Login screen  | PreRegister screen |  Passenger Register | Driver Register |
+| ---| ---| ---| ---|
+| ![Landing](./readme/mockups/login.svg) | ![fsdaf](./readme/mockups/PreRegister.svg) | ![fsdaf](./readme/mockups/PassengerRegister.svg) | ![fsdaf](./readme/mockups/DriverRegister.svg)|
+
+| Passenger Main  | Bus Schedule |  Current Trips | All Trips |
+| ---| ---| ---| ---|
+| ![Landing](./readme/mockups/PassengerMain.svg) | ![fsdaf](./readme/mockups/BussSchedule.svg) | ![fsdaf](./readme/mockups/CurrentTrips.svg) |![fsdaf](./readme/mockups/AllTrips.svg)|
+
+| Driver Main  | Add Trip |  All Trips | 
+| ---| ---| ---| 
+| ![Landing](./readme/mockups/DriverMain.svg) | ![fsdaf](./readme/mockups/AddTrip.svg) | ![fsdaf](./readme/mockups/DriverAllTrips.svg) | 
+
+| Admin Passengers  | Admin Drivers | 
+| ---| ---|
+| ![Landing](./readme/wireframes/Admin_passengers.svg) | ![fsdaf](./readme/wireframes/Admin_drivers.svg) |
 
 <br><br>
 
