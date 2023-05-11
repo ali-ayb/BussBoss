@@ -29,7 +29,7 @@
 > We designed BussBoss using wireframes and mockups, iterating on the design until we reached the ideal layout for easy navigation and a seamless user experience.
 
 ### Wireframes
-| Login screen  | Register screen |  Landing screen |
+| Login screen  | PreRegister screen |  Passenger Register | Driver Register |
 | ---| ---| ---|
 | ![Landing](./readme/wireframes/login.svg) | ![fsdaf](./readme/wireframes/login2.svg) | ![fsdaf](./readme/wireframes/login.svg) |
 
