@@ -41,6 +41,10 @@
 | ---| ---| ---| 
 | ![Landing](./readme/wireframes/DriverMain.svg) | ![fsdaf](./readme/wireframes/AddTrip.svg) | ![fsdaf](./readme/wireframes/DriverAllTrips.svg) | 
 
+| Admin Passengers  | Admin Drivers | 
+| ---| ---|
+| ![Landing](./readme/wireframes/Admin_passengers.svg) | ![fsdaf](./readme/wireframes/Admin_drivers.svg) |
+
 ### Mockups
 | Home screen  | Menu Screen | Order Screen |
 | ---| ---| ---|
