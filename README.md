@@ -37,6 +37,10 @@
 | ---| ---| ---| ---|
 | ![Landing](./readme/wireframes/PassengerMain.svg) | ![fsdaf](./readme/wireframes/busSchedule.svg) | ![fsdaf](./readme/wireframes/CurrentTrips.svg) | ![fsdaf](./readme/wireframes/AllTrips.svg)|
 
+| Driver Main  | Add Trip |  All Trips | 
+| ---| ---| ---| 
+| ![Landing](./readme/wireframes/DriverMain.svg) | ![fsdaf](./readme/wireframes/AddTrip.svg) | ![fsdaf](./readme/wireframes/DriverAllTrips.svg) | 
+
 ### Mockups
 | Home screen  | Menu Screen | Order Screen |
 | ---| ---| ---|
