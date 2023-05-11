@@ -31,7 +31,7 @@
 ### Wireframes
 | Login screen  | Register screen |  Landing screen |
 | ---| ---| ---|
-| ![Landing](./readme/wireframes/login.svg) | ![fsdaf](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) |
+| ![Landing](./readme/wireframes/login.svg) | ![fsdaf](./readme/wireframes/login2.svg) | ![fsdaf](./readme/demo/1440x1024.png) |
 
 ### Mockups
 | Home screen  | Menu Screen | Order Screen |
