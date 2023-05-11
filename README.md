@@ -35,7 +35,7 @@
 
 | Passenger Main  | Bus Schedule |  Current Trips | All Trips |
 | ---| ---| ---| ---|
-| ![Landing](./readme/wireframes/login.svg) | ![fsdaf](./readme/wireframes/PreRegister.svg) | ![fsdaf](./readme/wireframes/PassengerRegister.svg) | ![fsdaf](./readme/wireframes/DriverRegister.svg)|
+| ![Landing](./readme/wireframes/PassengerMain.svg) | ![fsdaf](./readme/wireframes/busSchedule.svg) | ![fsdaf](./readme/wireframes/CurrentTrips.svg) | ![fsdaf](./readme/wireframes/AllTrips.svg)|
 
 ### Mockups
 | Home screen  | Menu Screen | Order Screen |
