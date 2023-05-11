@@ -24,7 +24,8 @@ Route::post('/login', [AuthController::class, "login"]);
 Route::post('/logout', [AuthController::class, "logout"]);
 
 
-
+Route::get('/get_all_Passengers', [PassengerController::class, "getAllPassengers"]);
+Route::get('/get_all_drivers', [DriverController::class, "getAllDrivers"]);
 
 Route::group(['middleware' => 'bussboss_authenticate'], function () {
 
@@ -54,7 +55,5 @@ Route::group(['middleware' => 'bussboss_authenticate'], function () {
     Route::group(['middleware' => 'admin_authorize'], function () {
         Route::post('/delete_user', [PassengerController::class, "deleteUser"]);
         Route::post('/approve_driver', [DriverController::class, "approveDriver"]);
-        Route::get('/get_all_Passengers', [PassengerController::class, "getAllPassengers"]);
-        Route::get('/get_all_drivers', [DriverController::class, "getAllDrivers"]);
     });
 });
