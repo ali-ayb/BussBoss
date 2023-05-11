@@ -17,7 +17,7 @@ export default function BussSchedule({ route }) {
         "GET",
         "",
         {
-          Authorization: "bearer " + token,
+          Authorization: "Bearer " + token,
         }
       );
       setSchedule(result.trips);
