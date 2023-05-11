@@ -31,7 +31,7 @@
 ### Wireframes
 | Login screen  | PreRegister screen |  Passenger Register | Driver Register |
 | ---| ---| ---| ---|
-| ![Landing](./readme/wireframes/login.svg) | ![fsdaf](./readme/wireframes/login2.svg) | ![fsdaf](./readme/wireframes/login.svg) | ![fsdaf](./readme/wireframes/login.svg)|
+| ![Landing](./readme/wireframes/login.svg) | ![fsdaf](./readme/wireframes/PreRegister.svg) | ![fsdaf](./readme/wireframes/PassengerRegister.svg) | ![fsdaf](./readme/wireframes/DriverRegister.svg)|
 
 ### Mockups
 | Home screen  | Menu Screen | Order Screen |
