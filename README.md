@@ -1,8 +1,9 @@
-<img src="./readme/title1.svg"/>
+<img src="(https://github.com/Ali-Ayb/BussBoss/assets/113881551/233b7219-c8f5-44da-9761-9df6a795d87c)"/>
 
 <br><br>
 
-<!-- project philosophy -->
+<!-- project philosophy -->![title1]
+
 <img src="./readme/title2.svg"/>
 
 > A mobile app for ordering coffee on-the-go, making it easier for coffee lovers to get their favorite beverages without waiting in line.
