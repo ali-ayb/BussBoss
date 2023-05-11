@@ -81,11 +81,10 @@
 | ![Landing](./readme/screens/DriverMain.jpg) | 
 
 ### Admin Screens (Web)
-| Login screen  | Register screen |  Landing screen |
+| Login screen  | Passengers screen |  Drivers screen |
 | ---| ---| ---|
-| ![Landing](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) |
-| Home screen  | Menu Screen | Order Screen |
-| ![Landing](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) |
+| ![Landing](./readme/screens/image1.png) | ![fsdaf](./readme/screens/image2.png) | ![fsdaf](./readme/screens/image3.png) |
+
 
 <br><br>
 
