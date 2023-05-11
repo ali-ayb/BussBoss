@@ -60,7 +60,7 @@
 
 | Admin Passengers  | Admin Drivers | 
 | ---| ---|
-| ![Landing](./readme/wireframes/Admin_passengers.svg) | ![fsdaf](./readme/wireframes/Admin_drivers.svg) |
+| ![Landing](./readme/mockups/adminPassengers.svg) | ![fsdaf](./readme/mockups/adminDriver.svg) |
 
 <br><br>
 
