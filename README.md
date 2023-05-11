@@ -5,21 +5,28 @@
 <!-- project philosophy -->
 <img src="./readme/title2.svg"/>
 
-> A mobile app for ordering coffee on-the-go, making it easier for coffee lovers to get their favorite beverages without waiting in line.
->
-> Coffee Express aims to streamline the coffee-ordering process by providing a user-friendly platform for customers to place orders and pick up their coffee at their convenience. We believe in enhancing the coffee experience by saving time and ensuring customer satisfaction.
+> A mobile app that optimizes bus routes in Lebanon by organizing the bus's movement, reducing wait times, and improving transportation services. 
 
 ### User Stories
-- As a user, I want to browse the menu, so I can find my favorite coffee drinks.
-- As a user, I want to customize my order, so I can add or remove ingredients according to my preferences.
-- As a user, I want to pay for my order through the app, so I can avoid waiting in line at the store.
+- As a new user, I want to be able to register for an account so that I can access the app's features and functionalities.
+- As a user, I want to be able to log in to my account using my email and password so that I can access my personalized data.
+- As a passenger, I want to be able to search for available trips and reserve a seat on a particular bus, so that I can plan my travel in advance.
+- As a passenger, I want to be able to view all my current reserved trips, so that I dont forgot my trips.
+- As a passenger, I want to be able to view all my finished trips, so that I have records my trips.
+- As a passenger, I want to be able to track the live location of the bus driver, so that I can estimate the arrival time and prepare for my trip.
+- As a bus driver, I want to be able to add a trip, so that passengers can reserve.
+- As a bus driver, I want to be able to view all my current trips, so that I dont be late.
+- As a bus driver, I want to be able to view all my finished trips, so that I have records my trips.
+- As an admin, I want to be able to view real-time information about both the users, so that I can monitor the system's performance.
+- As an admin, I want to be able to approve registered drivers, so that unofficial driver cant work.
+- As an admin, I want to be able to delete users, so that I ensure that the app services are working without problems
 
 <br><br>
 
 <!-- Prototyping -->
 <img src="./readme/title3.svg"/>
 
-> We designed Coffee Express using wireframes and mockups, iterating on the design until we reached the ideal layout for easy navigation and a seamless user experience.
+> We designed BussBoss using wireframes and mockups, iterating on the design until we reached the ideal layout for easy navigation and a seamless user experience.
 
 ### Wireframes
 | Login screen  | Register screen |  Landing screen |
