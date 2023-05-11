@@ -101,32 +101,134 @@
 <!-- How to run -->
 <img src="./readme/title6.svg"/>
 
-> To set up Coffee Express locally, follow these steps:
+> To set up BussBoss locally, follow these steps:
 
 ### Prerequisites
+- Install NPM from: [NPM](https://nodejs.org/en/download)
 
+- Install composer from: [Composer](https://getcomposer.org/download)
+
+- Database server: Any Apache HTTP Server, MariaDB database server, recommended [XAMPP](https://www.apachefriends.org)
 This is an example of how to list things you need to use the software and how to install them.
-* npm
-  ```sh
-  npm install npm@latest -g
-  ```
 
-### Installation
 
-_Below is an example of how you can instruct your audience on installing and setting up your app. This template doesn't rely on any external dependencies or services._
+## Installation
 
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
+### First, Cloning and Installing Packages
+
+_Below are the steps to follow to run the project_
+ 
+1. Clone the repo
    ```sh
-   git clone https://github.com/your_username_/Project-Name.git
+   git clone https://github.com/Ali-Ayb/BussBoss.git
    ```
-3. Install NPM packages
+2. Install NPM packages for admin by opening terminal in `BussBoss-desktop` and run
    ```sh
    npm install
    ```
-4. Enter your API in `config.js`
-   ```js
-   const API_KEY = 'ENTER YOUR API';
+3. Install NPM packages for user react native by opening terminal in `BussBoss-mobile` and run
+   ```sh
+   npm install
+   ```
+4. Install Composer packages  for server   by opening terminal in `BussBoss-server` and run
+   ```sh
+   composer install
+   ```
+   Or if error occurs  
+    ```sh
+   composer update
    ```
 
-Now, you should be able to run Coffee Express locally and explore its features.
+### Second, let's start the server  
+
+In `BussBoss-server`:
+
+1. Copy `.env.example` file and rename it `.env` you can run
+   ```sh
+   cp .env.example .env
+   ```
+2. Open your `.env` file and change the database name (DB_DATABASE) to whatever you need or to `bussboss_db`, username (DB_USERNAME) and password (DB_PASSWORD) field correspond to your configuration if you configured them.
+
+3. Run the following command for larval ,JWT and Data Base  (you must have your XAMPP server running)
+   ```sh
+      php artisan key:generate
+   ```
+   ```sh
+      php artisan jwt:secret
+   ```
+   ```sh
+      php artisan migrate
+   ```
+   ```sh
+      php artisan storage:link
+   ```
+   ```sh
+      php artisan serve --host <YOUR_LOCAL_IPv4@> --port 8000
+   ```
+   you can get your IPV4@ by running 
+
+   on windows 
+
+   ```sh
+      ipconfig
+   ```
+   on linux
+
+   ```sh
+      ifconfig 
+   ```
+   
+### Now the Admin part
+
+Go to `BussBoss-desktop`:
+
+1. IN `\src\hooks\http-hook.js` change IP to you IPV4@ or server IP@
+
+   ```js
+   URL = "SERVER_IP@/api/ony";
+   ```
+2. In The Terminal Run 
+
+   ```sh
+     npm start
+   ```
+   ### Finally for User Application 
+
+In `BussBoss-mobile` :
+
+1. Copy "or Create" `.env.example` file and rename it `.env` you can run
+   ```sh
+   cp .env.example .env
+   ```
+2. Add Server IP@ /Link
+   ```js
+      BASE_URL=<SERVER_IP>/api/ony
+   ```
+3. Add Your API Google Maps Key, You can follow [Maps JavaScript API](https://developers.google.com/maps/documentation/javascript/get-api-key) to learn how to get one
+
+   ```js
+      GOOGLE_MAPS_APIKEY=<YOUR_KEY>
+   ```
+6. In `\hooks\request.js` change IP to you IPV4@ or server IP@
+   ```js 
+      const URL = "SERVER_IP@/api/ony";
+   ```
+
+7. In The Terminal Run 
+
+   ```sh
+     npx expo start
+   ```
+<br> 
+
+> - ### _Congratulations, The App Must be Working Now._
+
+<br> <br> 
+
+> ## Note
+- Some Installation may be different on different OS.
+- The app was never tested on an ios devises .
+
+<br> <br> <br> 
+
+>  # _Enjoy your tour and give me comment 🎉._
