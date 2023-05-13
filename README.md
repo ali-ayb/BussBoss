@@ -77,8 +77,10 @@
 | ![Landing](./readme/screens/PassengerMain.jpg) | ![fsdaf](./readme/screens/busSchedule.jpg) | ![fsdaf](./readme/screens/CurrentTrips.jpg) | ![fsdaf](./readme/screens/FinishTrip.jpg)|
 | All Trips  | Track Bus | Add Trip  | Driver All Trips |
 | ![Landing](./readme/screens/Alltrips.jpg) | ![fsdaf](./readme/screens/map.jpg) | ![fsdaf](./readme/screens/AddTrip.jpg) | ![fsdaf](./readme/screens/DriverAllTrip.jpg)|
-|Driver Main | 
-| ![Landing](./readme/screens/DriverMain.jpg) | 
+|Driver Main | Search | Reserve Trip | Finsih Trip|
+| ![Landing](./readme/screens/DriverMain.jpg) | ![Landing](./readme/gifs/Animation1.gif) | ![Landing](./readme/gifs/Animation2.gif) | ![Landing](./readme/gifs/Animation3.gif)|
+| Track Driver|
+|![Landing](./readme/gifs/Animation4.gif)|
 
 ### Admin Screens (Web)
 | Login screen  | Passengers screen |  Drivers screen |
