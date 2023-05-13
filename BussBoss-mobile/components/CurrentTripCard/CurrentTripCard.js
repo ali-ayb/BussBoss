@@ -19,6 +19,7 @@ function CurrentTripCard({ item, refreshData }) {
   const first_name = item.first_name;
   const last_name = item.last_name;
   const reservation_id = item.id;
+  const trip_id = item.trip_id;
   const driver_id = item.driver_id;
   const departure_time = new Date(item.departure_time);
   const arrival_time = new Date(item.arrival_time);
@@ -59,6 +60,7 @@ function CurrentTripCard({ item, refreshData }) {
     });
     formData.append("rating", rating);
     formData.append("driver_id", driver_id);
+    formData.append("trip_id", trip_id);
 
     const result2 = await UseHttp("add_rating", "POST", formData, {
       Authorization: "Bearer " + token,

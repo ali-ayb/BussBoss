@@ -14,33 +14,33 @@ export default function BussSchedule() {
   const formData = new FormData();
   const { driver_id } = route.params;
   const [myLocation, setMyLocation] = useState({
-    latitude: 33.450736,
-    longitude: 35.396315,
+    latitude: 33.448099,
+    longitude: 35.398279,
   });
   const [driverLocation, setDriverLocation] = useState({
-    latitude: 33.490736,
-    longitude: 35.366315,
+    latitude: 33.377696,
+    longitude: 35.481078,
   });
 
   const [duration, setDuration] = useState(null);
   const [modified_duration, setModifiedDuration] = useState(null);
 
-  const getDriverLocation = async () => {
-    formData.append("driver_id", driver_id);
+  // const getDriverLocation = async () => {
+  //   formData.append("driver_id", driver_id);
 
-    const token = await getToken();
-    const result = await UseHttp("get_driver_location", "POST", formData, {
-      Authorization: "bearer " + token,
-    });
-    const latitude = result.status.latitude;
-    const longitude = result.status.longitude;
-    setDriverLocation({
-      latitude,
-      longitude,
-    });
-  };
+  //   const token = await getToken();
+  //   const result = await UseHttp("get_driver_location", "POST", formData, {
+  //     Authorization: "bearer " + token,
+  //   });
+  //   const latitude = result.status.latitude;
+  //   const longitude = result.status.longitude;
+  //   setDriverLocation({
+  //     latitude,
+  //     longitude,
+  //   });
+  // };
 
-  useEffect(getDriverLocation, []);
+  // useEffect(getDriverLocation, []);
 
   const onReady = (result) => {
     setDuration(result.duration);

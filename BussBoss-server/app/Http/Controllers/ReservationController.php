@@ -52,6 +52,10 @@ class ReservationController extends Controller
     {
         $rating = $request->rating;
         $driver_id = $request->driver_id;
+        $trip_id = $request->trip_id;
+
+        $action = Reservation::where('trip_id', $trip_id)
+            ->update((['rating' => $rating]));
 
         $reservation = DriverRating::create(
             [
