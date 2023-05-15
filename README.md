@@ -233,4 +233,4 @@ The app was never tested on an ios devices .
 
 <br> <br>
 
-Enjoy your tour and give me a comment 🎉
+Enjoy your tour and please provide me with feedback. 🎉
