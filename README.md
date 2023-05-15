@@ -223,14 +223,14 @@ In `BussBoss-mobile` :
    ```
 <br> 
 
-> - ### _Congratulations, The App Must be Working Now._
+Congratulations, The App Must be Working Now.
 
 <br> <br> 
 
-> ## Note
-- Some Installation may be different on different OS.
-- The app was never tested on an ios devises .
 
-<br> <br> <br> 
+Some Installation may be different on different OS.
+The app was never tested on an ios devices .
 
->  # _Enjoy your tour and give me comment 🎉._
+<br> <br>
+
+Enjoy your tour and give me a comment 🎉
