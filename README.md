@@ -45,31 +45,11 @@
 | ------------------------------------------------- | --------------------------------------------- | ---------------------------------------------- | ------------------------------------------ |
 | ![Landing](./readme/wireframes/PassengerMain.svg) | ![fsdaf](./readme/wireframes/busSchedule.svg) | ![fsdaf](./readme/wireframes/CurrentTrips.svg) | ![fsdaf](./readme/wireframes/AllTrips.svg) |
 
-| Driver Main                                    | Add Trip                                  | All Trips                                        |
-| ---------------------------------------------- | ----------------------------------------- | ------------------------------------------------ |
-| ![Landing](./readme/wireframes/DriverMain.svg) | ![fsdaf](./readme/wireframes/AddTrip.svg) | ![fsdaf](./readme/wireframes/DriverAllTrips.svg) |
-
-| Admin Passengers                                     | Admin Drivers                                   |
-| ---------------------------------------------------- | ----------------------------------------------- |
-| ![Landing](./readme/wireframes/Admin_passengers.svg) | ![fsdaf](./readme/wireframes/Admin_drivers.svg) |
-
 ### Mockups
-
-| Login screen                           | PreRegister screen                         | Passenger Register                               | Driver Register                               |
-| -------------------------------------- | ------------------------------------------ | ------------------------------------------------ | --------------------------------------------- |
-| ![Landing](./readme/mockups/login.svg) | ![fsdaf](./readme/mockups/PreRegister.svg) | ![fsdaf](./readme/mockups/PassengerRegister.svg) | ![fsdaf](./readme/mockups/DriverRegister.svg) |
 
 | Passenger Main                                 | Bus Schedule                                | Current Trips                               | All Trips                               |
 | ---------------------------------------------- | ------------------------------------------- | ------------------------------------------- | --------------------------------------- |
 | ![Landing](./readme/mockups/PassengerMain.svg) | ![fsdaf](./readme/mockups/BussSchedule.svg) | ![fsdaf](./readme/mockups/CurrentTrips.svg) | ![fsdaf](./readme/mockups/AllTrips.svg) |
-
-| Driver Main                                 | Add Trip                               | All Trips                                     |
-| ------------------------------------------- | -------------------------------------- | --------------------------------------------- |
-| ![Landing](./readme/mockups/DriverMain.svg) | ![fsdaf](./readme/mockups/AddTrip.svg) | ![fsdaf](./readme/mockups/DriverAllTrips.svg) |
-
-| Admin Passengers                                 | Admin Drivers                              |
-| ------------------------------------------------ | ------------------------------------------ |
-| ![Landing](./readme/mockups/adminPassengers.svg) | ![fsdaf](./readme/mockups/adminDriver.svg) |
 
 <br><br>
 
@@ -77,6 +57,14 @@
 <img src="./readme/title4.svg"/>
 
 > Using the wireframes and mockups as a guide, we implemented the BussBoss app with the following features:
+
+### gifs
+
+| Search                                   | Reserve Trip                           | Finish Trip                            |
+| ---------------------------------------- | -------------------------------------- | -------------------------------------- |
+| ![Landing](./readme/gifs/Animation1.gif) | ![fsdaf](./readme/gifs/Animation2.gif) | ![fsdaf](./readme/gifs/Animation3.gif) |
+| Track Driver                             |
+| ![fsdaf](./readme/gifs/Animation4.gif)   |
 
 ### User Screens (Mobile)
 
@@ -87,10 +75,8 @@
 | ![Landing](./readme/screens/PassengerMain.jpg) | ![fsdaf](./readme/screens/busSchedule.jpg) | ![fsdaf](./readme/screens/CurrentTrips.jpg)      | ![fsdaf](./readme/screens/FinishTrip.jpg)     |
 | All Trips                                      | Track Bus                                  | Add Trip                                         | Driver All Trips                              |
 | ![Landing](./readme/screens/Alltrips.jpg)      | ![fsdaf](./readme/screens/map.jpg)         | ![fsdaf](./readme/screens/AddTrip.jpg)           | ![fsdaf](./readme/screens/DriverAllTrip.jpg)  |
-| Driver Main                                    | Search                                     | Reserve Trip                                     | Finsih Trip                                   |
-| ![Landing](./readme/screens/DriverMain.jpg)    | ![Landing](./readme/gifs/Animation1.gif)   | ![Landing](./readme/gifs/Animation2.gif)         | ![Landing](./readme/gifs/Animation3.gif)      |
-| Track Driver                                   |
-| ![Landing](./readme/gifs/Animation4.gif)       |
+| Driver Main                                    |
+| ![Landing](./readme/screens/DriverMain.jpg)    |
 
 ### Admin Screens (Web)
 
@@ -247,11 +233,7 @@ In `BussBoss-mobile` :
 
 Congratulations, The App Must be Working Now.
 
-<br> <br>
-
 Some Installation may be different on different OS.
 The app was never tested on an ios devices .
-
-<br> <br>
 
 Enjoy your tour and please provide me with feedback. 🎉
