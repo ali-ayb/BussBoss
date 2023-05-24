@@ -82,13 +82,13 @@ const styles = StyleSheet.create({
   title1: {
     fontWeight: "bold",
     fontSize: 18,
-    left: 60,
+    left: 50,
     top: -20,
   },
   title2: {
     fontWeight: "bold",
     fontSize: 18,
-    left: 60,
+    left: 50,
     top: -155,
   },
 
@@ -96,7 +96,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     fontSize: 18,
     color: "#FFF",
-    left: 7,
+    left: 3,
   },
   add_trip_btn: {
     backgroundColor: "#146C94",

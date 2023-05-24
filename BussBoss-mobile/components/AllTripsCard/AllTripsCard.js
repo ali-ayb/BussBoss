@@ -51,7 +51,7 @@ function AllTripsCard({ item }) {
         tintColor="#FFF"
         readonly="true"
         onFinishRating={this.ratingCompleted}
-        style={{ paddingVertical: 10, top: -100, left: 0 }}
+        style={{ paddingVertical: 10, top: -120, left: 0 }}
       />
     </View>
   );
@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
   },
   rating: {
     fontSize: 16,
-    top: -67,
+    top: -80,
     left: 25,
   },
   calender_icon: { top: 17, left: 190 },
@@ -89,7 +89,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
   },
   trip_position: {
-    top: -65,
+    top: -70,
     left: 60,
     fontSize: 14,
   },
@@ -100,7 +100,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   date: {
-    top: -115,
+    top: -125,
     left: 230,
     fontSize: 14,
   },

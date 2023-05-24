@@ -84,14 +84,14 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     color: "white",
     color: "rgba(255, 255, 255, 0.5)",
-    top: -50,
-    left: 215,
+    top: -65,
+    left: 210,
   },
   paid_number: {
     fontSize: 42,
     fontWeight: "bold",
     color: "white",
-    top: -50,
-    left: 250,
+    top: -65,
+    left: 245,
   },
 });

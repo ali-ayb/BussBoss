@@ -33,7 +33,7 @@ function DriverTripCard({ item, refreshData }) {
       <Text style={styles.passenger_number}>
         Passenger: {passenger_number}/{seats_available}
       </Text>
-      <TouchableOpacity style={styles.finish_btn} onPress={onPressLearnMore}>
+      <TouchableOpacity style={styles.cancel_btn} onPress={onPressLearnMore}>
         <Text style={styles.cancel_btn_text}>Cancel</Text>
       </TouchableOpacity>
     </View>
@@ -66,35 +66,32 @@ const styles = StyleSheet.create({
     left: 20,
   },
   trip_time: {
-    top: -50,
+    top: -53,
     left: 60,
     fontSize: 14,
   },
   trip_position: {
-    top: -25,
+    top: -33,
     left: 60,
     fontSize: 14,
   },
   passenger_number: {
-    top: -85,
-    left: 220,
+    top: -95,
+    left: 210,
     fontSize: 14,
     fontWeight: "bold",
   },
-  track_btn: {
-    borderRadius: 15,
-  },
-  finish_btn: {
+  cancel_btn: {
     backgroundColor: "#0E7BCB",
     borderRadius: 15,
     padding: 5,
-    left: "73%",
-    top: "-55%",
+    left: "70%",
+    top: "-65%",
     width: 80,
   },
   cancel_btn_text: {
     color: "#FFFFFF",
-    left: "22%",
+    left: 10,
   },
 
   track_btn: {

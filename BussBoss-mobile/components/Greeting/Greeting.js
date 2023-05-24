@@ -49,7 +49,7 @@ export default function PassengerMain() {
 
 const styles = StyleSheet.create({
   name: {
-    left: 290,
+    left: 265,
     top: 40,
     position: "absolute",
     zIndex: 2,

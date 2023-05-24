@@ -33,7 +33,7 @@ export default function RegisterPassenger() {
         <TextInput style={styles.TextInput} placeholder="  Password" />
       </View>
       <TouchableOpacity style={styles.register_btn} onPress={login}>
-        <Text style={{ fontSize: 24, color: "#FFF", top: 8, left: 35 }}>
+        <Text style={{ fontSize: 24, color: "#FFF", top: 8, left: 30 }}>
           Register
         </Text>
       </TouchableOpacity>

@@ -59,7 +59,7 @@ const MyDateTimePicker = () => {
       <TouchableOpacity
         onPress={() => showDateTimePicker("time")}
         style={styles.time}>
-        <Text style={{ color: "#FFF" }}>Time</Text>
+        <Text style={{ color: "#FFF", left: 4 }}>Time</Text>
         {showTimePicker && (
           <DateTimePicker
             value={departuretime}
@@ -72,7 +72,7 @@ const MyDateTimePicker = () => {
       <TouchableOpacity
         onPress={() => showDateTimePicker("date")}
         style={styles.date}>
-        <Text style={{ color: "#FFF" }}>Date</Text>
+        <Text style={{ color: "#FFF", left: 4 }}>Date</Text>
         {showDatePicker && (
           <DateTimePicker
             value={departureDate}
@@ -90,7 +90,7 @@ const MyDateTimePicker = () => {
       <TouchableOpacity
         onPress={() => showDateTimePicker("time")}
         style={styles.time}>
-        <Text style={{ color: "#FFF" }}>Time</Text>
+        <Text style={{ color: "#FFF", left: 4 }}>Time</Text>
         {showTimePicker && (
           <DateTimePicker
             value={arrivalTime}
@@ -103,7 +103,7 @@ const MyDateTimePicker = () => {
       <TouchableOpacity
         onPress={() => showDateTimePicker("date")}
         style={styles.date}>
-        <Text style={{ color: "#FFF" }}>Date</Text>
+        <Text style={{ color: "#FFF", left: 4 }}>Date</Text>
         {showDatePicker && (
           <DateTimePicker
             value={arrivalDate}
@@ -124,8 +124,8 @@ const MyDateTimePicker = () => {
 const styles = StyleSheet.create({
   date: {
     backgroundColor: "#19A7CE",
-    width: 50,
-    padding: 10,
+    width: 55,
+    padding: 7,
     left: 290,
     top: -50,
     borderRadius: 15,
@@ -133,8 +133,8 @@ const styles = StyleSheet.create({
   },
   time: {
     backgroundColor: "#19A7CE",
-    width: 50,
-    padding: 10,
+    width: 55,
+    padding: 7,
     left: 350,
     top: -13,
     borderRadius: 15,
@@ -143,15 +143,15 @@ const styles = StyleSheet.create({
   selectedValue: {
     backgroundColor: "#FFF",
     padding: 5,
-    width: 220,
+    width: 245,
     marginTop: 5,
-    fontSize: 16,
+    fontSize: 15,
     fontWeight: "bold",
     color: "#000",
     top: -90,
-    left: 50,
+    left: 40,
     elevation: 20,
-    borderRadius: 15,
+    borderRadius: 14,
   },
 });
 

@@ -53,7 +53,7 @@ function ReserveTripCard({ item }) {
       </Text>
       <Text style={styles.price}>{price}$</Text>
       <TouchableOpacity
-        style={styles.finish_btn}
+        style={styles.reserve_btn}
         onPress={() => {
           reserveTrip(item.id);
           // console.log(item.id);
@@ -91,30 +91,30 @@ const styles = StyleSheet.create({
     left: 20,
   },
   trip_time: {
-    top: -50,
+    top: -53,
     left: 60,
     fontSize: 14,
   },
   trip_position: {
-    top: -25,
+    top: -30,
     left: 60,
     fontSize: 14,
   },
   price: {
-    top: -85,
+    top: -95,
     left: 260,
     fontSize: 14,
   },
-  finish_btn: {
+  reserve_btn: {
     backgroundColor: "#0E7BCB",
     borderRadius: 15,
     padding: 5,
-    left: "73%",
-    top: "-55%",
+    left: "68%",
+    top: "-67%",
     width: 80,
   },
   Select_btn_text: {
     color: "#FFFFFF",
-    left: "25%",
+    left: "21%",
   },
 });

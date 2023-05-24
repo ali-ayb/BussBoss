@@ -79,7 +79,7 @@ export default function Login() {
           fontSize: 17,
           color: "#000",
           top: 150,
-          left: 100,
+          left: 75,
           marginBottom: 400,
         }}>
         Don't have an account?{" "}
@@ -97,7 +97,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     // justifyContent: "center",
     // alignContent: "center",
-    left: 110,
+    left: 80,
   },
   TextInput: {
     backgroundColor: "#FFF",

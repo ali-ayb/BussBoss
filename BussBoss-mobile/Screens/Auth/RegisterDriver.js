@@ -142,7 +142,7 @@ export default function RegisterDriver() {
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.register_btn} onPress={handleRegister}>
-          <Text style={{ fontSize: 24, color: "#FFF", top: 8, left: 35 }}>
+          <Text style={{ fontSize: 24, color: "#FFF", top: 8, left: 30 }}>
             Register
           </Text>
         </TouchableOpacity>

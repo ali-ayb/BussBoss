@@ -29,7 +29,7 @@ export default function PreRegister() {
       <CenteredLogo />
       <Text style={styles.welcome_title}>What are You?</Text>
       <TouchableOpacity style={styles.Passenger} onPress={passenger}>
-        <Text style={{ fontSize: 24, color: "#FFF", top: 12, left: 70 }}>
+        <Text style={{ fontSize: 24, color: "#FFF", top: 12, left: 55 }}>
           Passenger ?
         </Text>
       </TouchableOpacity>
@@ -42,7 +42,7 @@ export default function PreRegister() {
         }}></View>
       <View style={{ top: 100 }}>
         <TouchableOpacity style={styles.driver} onPress={driver}>
-          <Text style={{ fontSize: 24, color: "#FFF", top: 13, left: 95 }}>
+          <Text style={{ fontSize: 24, color: "#FFF", top: 13, left: 80 }}>
             Driver ?
           </Text>
         </TouchableOpacity>
